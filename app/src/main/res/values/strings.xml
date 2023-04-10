@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">English</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="email">Почта</string>
+    <string name="registration">Регистрация</string>
+    <string name="password">Пароль</string>
+    <string name="register">Зарегистриоваться</string>
+    <string name="sign">Войти</string>
+    <string name="login">Вход</string>
+    <string name="resetpassword">Сброс пароля</string>
+    <string name="sendlink">Отправить ссылку</string>
+    <string name="textviewreset">Для сброса пароля введите почту</string>
+    <string name="confirm">Подтвердить</string>
+    <string name="textnewpassword">введите новый пароль</string>
+
+
+
+</resources>
