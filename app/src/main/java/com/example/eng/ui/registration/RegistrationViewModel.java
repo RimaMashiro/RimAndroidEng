@@ -19,11 +19,11 @@ public class RegistrationViewModel extends ViewModel {
     }
 
     public void onButtonRegisterClicked(){
-        _navigationToSignFragment.setValue(true);
+
     }
 
     public void onButtonGoToSignClicked(){
-
+        _navigationToSignFragment.setValue(true);
     }
 
 }

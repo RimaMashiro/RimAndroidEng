@@ -81,7 +81,7 @@ public class PasswordResetFragment extends Fragment {
             @Override
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean) {
-                    Navigation.findNavController(binding.getRoot()).navigate(R.id.action_passwordResetFragment_to_newPaswordFragment);
+                    Navigation.findNavController(binding.getRoot()).navigate(R.id.action_passwordResetFragment_to_newPasswordFragment);
 
                 }
             }
