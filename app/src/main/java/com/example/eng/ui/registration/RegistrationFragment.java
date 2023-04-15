@@ -71,12 +71,10 @@ public class RegistrationFragment extends Fragment {
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
-
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
-
             @Override
             public void afterTextChanged(Editable editable) {
                 viewModel.onPasswordChanged(editable.toString());
@@ -85,7 +83,6 @@ public class RegistrationFragment extends Fragment {
     }
 
     private void initButtonRegister() {
-
         binding.buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,7 +92,6 @@ public class RegistrationFragment extends Fragment {
     }
 
     private void initButtonGoToSign() {
-
         binding.buttonGoToSign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,7 +106,6 @@ public class RegistrationFragment extends Fragment {
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean) {
                     Navigation.findNavController(binding.getRoot()).navigate(R.id.action_registrationFragment_to_signFragment);
-
                 }
             }
         });
