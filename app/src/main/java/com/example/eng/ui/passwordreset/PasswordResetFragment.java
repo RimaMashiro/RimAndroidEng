@@ -41,6 +41,7 @@ public class PasswordResetFragment extends Fragment {
         viewModel = provider.get(PasswordResetViewModel.class);
         initEditTextResetEmail();
         initButtonResetPassword();
+        initNavigationNewPasswordFragment();
     }
 
     private void initEditTextResetEmail() {
