@@ -42,6 +42,7 @@ public class NewPasswordFragment extends Fragment {
         viewModel= provider.get(NewPasswordViewModel.class);
         initEditTextNewPassword();
         initButtonNewPassword();
+        initNavigationToSignFragment();
 
     }
 

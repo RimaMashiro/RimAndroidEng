@@ -8,7 +8,7 @@ public class NewPasswordViewModel extends ViewModel {
 
     private  String password;
 
-    private MutableLiveData<Boolean> _navigationToSignFragment= new MutableLiveData<Boolean>(false) ;
+    private SingleLiveEvent<Boolean> _navigationToSignFragment= new SingleLiveEvent<Boolean>(false) ;
     LiveData<Boolean> navigationToSignFragment= _navigationToSignFragment ;
     public void onPasswordChanged(String password){
         this.password=password;
