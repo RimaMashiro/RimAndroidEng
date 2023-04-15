@@ -19,7 +19,7 @@ public class LoginViewModel extends ViewModel {
     private String email;
     private  String password;
 
-    private MutableLiveData<Boolean> _navigationToPasswordResetFragment= new MutableLiveData<Boolean>(false) ;
+    private SingleLiveEvent<Boolean> _navigationToPasswordResetFragment= new SingleLiveEvent<Boolean>(false) ;
 
     LiveData<Boolean> navigationToPasswordResetFragment= _navigationToPasswordResetFragment;
     public void onEmailChanged(String email){
