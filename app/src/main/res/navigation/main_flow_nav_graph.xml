@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_flow_nav_graph"
+    app:startDestination="@id/topicSelectionFragment">
+
+    <fragment
+        android:id="@+id/topicSelectionFragment"
+        android:name="com.example.eng.ui.topicselection.TopicSelectionFragment"
+        android:label="TopicSelectionFragment" >
+        <action
+            android:id="@+id/action_topicSelectionFragment_to_selectionTaskFragment"
+            app:destination="@id/selectionTaskFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectionTaskFragment"
+        android:name="com.example.eng.ui.selectiontask.SelectionTaskFragment"
+        android:label="SelectionTaskFragment" />
+</navigation>
