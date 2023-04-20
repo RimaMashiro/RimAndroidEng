@@ -41,7 +41,8 @@ public class PasswordResetFragment extends Fragment {
         ViewModelProvider provider = new ViewModelProvider(requireActivity());
         viewModel = provider.get(PasswordResetViewModel.class);
         initEditTextResetEmail();
-        initButtonResetPassword();}
+        initButtonResetPassword();
+    }
 
     private void initEditTextResetEmail() {
 
@@ -75,18 +76,5 @@ public class PasswordResetFragment extends Fragment {
             }
         });
     }
-
-    private void initNavigationNewPasswordFragment() {
-        viewModel.navigationToNewPasswordFragment.observe(getViewLifecycleOwner(), new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                if (aBoolean) {
-                    Navigation.findNavController(binding.getRoot()).navigate(R.id.action_passwordResetFragment_to_newPasswordFragment);
-
-                }
-            }
-        });
-    }
-
 
 }
