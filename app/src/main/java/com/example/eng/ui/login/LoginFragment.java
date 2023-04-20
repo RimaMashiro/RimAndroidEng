@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 
 import com.example.eng.R;
 import com.example.eng.databinding.FragmentLoginBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 
 public class LoginFragment extends Fragment {
@@ -43,6 +44,7 @@ public class LoginFragment extends Fragment {
         initEditTextSignPassword();
         initButtonSign();
         initButtonPasswordReset();
+        initErrorShowing();
     }
 
     private void initEditTextSignEmail(){
@@ -113,6 +115,13 @@ public class LoginFragment extends Fragment {
                     Navigation.findNavController(binding.getRoot()).navigate(R.id.action_signFragment_to_passwordResetFragment);
 
                 }
+            }
+        });
+    }
+    private void initErrorShowing() {
+        viewModel.showErrorMessage.observe(getViewLifecycleOwner(), aBoolean -> {
+            if (aBoolean) {
+                Snackbar.make(requireView(), getString(R.string.loginerror), Snackbar.LENGTH_SHORT).show();
             }
         });
     }
