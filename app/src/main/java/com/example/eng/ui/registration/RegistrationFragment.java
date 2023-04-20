@@ -11,13 +11,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.eng.R;
 import com.example.eng.databinding.FragmentRegistrationBinding;
-
+import com.google.android.material.snackbar.Snackbar;
 
 public class RegistrationFragment extends Fragment {
 
@@ -40,10 +39,10 @@ public class RegistrationFragment extends Fragment {
         initButtonRegister();
         initButtonGoToSign();
         initNavigationToSignFragment();
+        initErrorShowing();
     }
 
     private void initEditTextEmail() {
-
         binding.editTextEmail.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -65,16 +64,17 @@ public class RegistrationFragment extends Fragment {
     }
 
     private void initEditTextPassword() {
-
         binding.editTextPassword.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
+
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
+
             @Override
             public void afterTextChanged(Editable editable) {
                 viewModel.onPasswordChanged(editable.toString());
@@ -101,12 +101,19 @@ public class RegistrationFragment extends Fragment {
     }
 
     private void initNavigationToSignFragment() {
-        viewModel.navigationToSignFragment.observe(getViewLifecycleOwner(), new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                if (aBoolean) {
-                    Navigation.findNavController(binding.getRoot()).navigate(R.id.action_registrationFragment_to_signFragment);
-                }
+        viewModel.navigationToSignFragment.observe(getViewLifecycleOwner(), aBoolean -> {
+            if (aBoolean) {
+                Navigation.findNavController(binding.getRoot()).navigate(R.id.action_registrationFragment_to_signFragment);
+            }
+        });
+    }
+
+
+
+    private void initErrorShowing() {
+        viewModel.showErrorMessage.observe(getViewLifecycleOwner(), aBoolean -> {
+            if (aBoolean) {
+                Snackbar.make(requireView(), getString(R.string.registrationerror), Snackbar.LENGTH_SHORT).show();
             }
         });
     }
