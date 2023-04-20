@@ -80,7 +80,6 @@ public class AuthManager {
                             _navigationToSignFragment.setValue(true);;
                     }
                 });
-
     }
 
     private void reload() {
