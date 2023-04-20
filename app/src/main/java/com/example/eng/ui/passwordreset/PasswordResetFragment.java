@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.eng.databinding.FragmentPasswordResetBinding;
+import com.google.android.material.snackbar.Snackbar;
 import com.example.eng.R;
 
 
@@ -40,9 +41,7 @@ public class PasswordResetFragment extends Fragment {
         ViewModelProvider provider = new ViewModelProvider(requireActivity());
         viewModel = provider.get(PasswordResetViewModel.class);
         initEditTextResetEmail();
-        initButtonResetPassword();
-        initNavigationNewPasswordFragment();
-    }
+        initButtonResetPassword();}
 
     private void initEditTextResetEmail() {
 
