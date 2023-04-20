@@ -1,19 +1,29 @@
 package com.example.eng.ui.newpassword;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.example.eng.AuthManager;
+import com.example.eng.util.SingleLiveEvent;
+import com.google.firebase.auth.FirebaseUser;
 
 public class NewPasswordViewModel extends ViewModel {
 
-    private  String password;
+    private AuthManager authManager = AuthManager.getInstance();
+    private String password;
 
-    private SingleLiveEvent<Boolean> _navigationToSignFragment= new SingleLiveEvent<Boolean>(false) ;
-    LiveData<Boolean> navigationToSignFragment= _navigationToSignFragment ;
-    public void onPasswordChanged(String password){
-        this.password=password;
+
+    LiveData<Boolean> navigationToSignFragment = authManager.navigationToSignFragment;
+
+    LiveData<FirebaseUser> user = authManager.user;
+
+    public void onPasswordChanged(String password) {
+        this.password = password;
     }
 
-    public void onButtonNewPasswordClicked(){_navigationToSignFragment.setValue(true);}
+    public void onButtonNewPasswordClicked() {
+        authManager.updatePassword(password);
+
+    }
 
 }
