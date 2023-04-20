@@ -83,10 +83,6 @@ public class PasswordResetFragment extends Fragment {
                 if (aBoolean) {
                     Navigation.findNavController(binding.getRoot()).navigate(R.id.action_passwordResetFragment_to_newPaswordFragment);
 
-                }
-            }
-        });
-    }
 
 
 }
