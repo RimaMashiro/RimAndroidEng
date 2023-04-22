@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.ViewHolder>{
 
-    private ArrayList<Topic> topics;
+    private ArrayList<Topic> topics=new ArrayList<>();
     private final OnItemClickListener onItemClickListener;
     public TopicAdapter(OnItemClickListener onItemClickListener ) {
         this.onItemClickListener=onItemClickListener;
@@ -42,9 +42,9 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.ViewHolder>{
         return topics.size();
     }
 
-    public void updateTasksList(final ArrayList<Topic> tasks) {
+    public void updateTasksList(final ArrayList<Topic> topics) {
         this.topics.clear();
-        this.topics = tasks;
+        this.topics = topics;
         notifyDataSetChanged();
     }
     public static class ViewHolder extends RecyclerView.ViewHolder {
