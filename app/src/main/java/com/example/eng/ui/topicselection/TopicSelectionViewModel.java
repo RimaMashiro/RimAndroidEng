@@ -9,6 +9,9 @@ import java.util.ArrayList;
 public class TopicSelectionViewModel extends ViewModel implements TopicAdapter.OnItemClickListener {
     private MutableLiveData<ArrayList<Topic>> _topics = new MutableLiveData<ArrayList<Topic>>(getTopicList());
     public LiveData<ArrayList<Topic>> topics = _topics;
+    static {
+        void insertAll(ArrayList<Topic> topics){};
+    }
 
     @Override
     public void onItemClick(Topic item) {
