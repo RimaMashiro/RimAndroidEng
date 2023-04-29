@@ -45,6 +45,7 @@ public class LoginFragment extends Fragment {
         initButtonSign();
         initButtonPasswordReset();
         initErrorShowing();
+        initNavigationToPasswordResetFragment();
     }
 
     private void initEditTextSignEmail(){
