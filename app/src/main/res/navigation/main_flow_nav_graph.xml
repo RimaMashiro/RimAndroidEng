@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_flow_nav_graph"
     app:startDestination="@id/topicSelectionFragment">
 
@@ -15,5 +16,18 @@
     <fragment
         android:id="@+id/selectionTaskFragment"
         android:name="com.example.eng.ui.selectiontask.SelectionTaskFragment"
-        android:label="SelectionTaskFragment" />
+        android:label="SelectionTaskFragment" >
+        <action
+            android:id="@+id/action_selectionTaskFragment_to_grammarFragment"
+            app:destination="@id/grammarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/grammarFragment"
+        android:name="com.example.eng.ui.grammar.GrammarFragment"
+        android:label="fragment_grammar"
+        tools:layout="@layout/fragment_grammar" >
+        <action
+            android:id="@+id/action_grammarFragment_to_topicSelectionFragment"
+            app:destination="@id/topicSelectionFragment" />
+    </fragment>
 </navigation>
