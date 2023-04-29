@@ -24,12 +24,6 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "Exercise")
 
-public class Exercises1 {
-    @PrimaryKey
-
-}
-
-
 public class ExerciseFirstFragment extends Fragment {
     private ExerciseFirstViewModel viewModel;
     private FragmentExerciseFirstBinding binding;

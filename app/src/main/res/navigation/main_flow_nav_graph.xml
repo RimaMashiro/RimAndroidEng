@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_selectionTaskFragment_to_grammarFragment"
             app:destination="@id/grammarFragment" />
+        <action
+            android:id="@+id/action_selectionTaskFragment_to_exerciseFirstFragment"
+            app:destination="@id/exerciseFirstFragment" />
     </fragment>
     <fragment
         android:id="@+id/grammarFragment"
@@ -28,6 +31,15 @@
         tools:layout="@layout/fragment_grammar" >
         <action
             android:id="@+id/action_grammarFragment_to_topicSelectionFragment"
+            app:destination="@id/topicSelectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exerciseFirstFragment"
+        android:name="com.example.eng.ui.exercisefirst.ExerciseFirstFragment"
+        android:label="fragment_exercise_first"
+        tools:layout="@layout/fragment_exercise_first" >
+        <action
+            android:id="@+id/action_exerciseFirstFragment_to_topicSelectionFragment"
             app:destination="@id/topicSelectionFragment" />
     </fragment>
 </navigation>

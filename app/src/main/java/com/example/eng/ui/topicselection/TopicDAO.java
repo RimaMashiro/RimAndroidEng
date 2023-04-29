@@ -1,5 +1,6 @@
 package com.example.eng.ui.topicselection;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -12,5 +13,5 @@ public interface TopicDAO {
     @Insert
     void insertAll(ArrayList<Topic> topics);
     @Query("SELECT * FROM Topics")
-    List<Topic> getAll();
+    LiveData<List<Topic>> getAll();
 }
