@@ -5,21 +5,31 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.lifecycle.HiltViewModel;
+
+@HiltViewModel
 public class TopicSelectionViewModel extends ViewModel implements TopicAdapter.OnItemClickListener {
-    private MutableLiveData<ArrayList<Topic>> _topics = new MutableLiveData<ArrayList<Topic>>(getTopicList());
-    public LiveData<ArrayList<Topic>> topics = _topics;
+    private TopicDAO topicDAO;
+    public MutableLiveData<List<Topic>> _topics=new MutableLiveData<>();
+    public LiveData<List<Topic>> topics = _topics;
+    @Inject
+    public TopicSelectionViewModel(TopicDAO topicDAO){
+        this.topicDAO=topicDAO;
+        topics=topicDAO.getAll();
+
+        /*
+        if(topics.getValue().isEmpty()) {
+            this.topicDAO.insertAll(getTopicList());
+        }
+
+         */
 
 
-    /*
-    static {
-        insertAll(getTopicList());
     }
-
-    
-    public  void insertAll();
-
-     */
 
     @Override
     public void onItemClick(Topic item) {

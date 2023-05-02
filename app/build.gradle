@@ -1,8 +1,7 @@
 plugins {
     id 'com.android.application'
-
-        // Add the Google services Gradle plugin
     id 'com.google.gms.google-services'
+    id 'com.google.dagger.hilt.android'
 
 }
 
@@ -53,4 +52,7 @@ dependencies {
     def room_version = "2.5.1"
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
+    implementation "com.google.dagger:hilt-android:2.44"
+    annotationProcessor "com.google.dagger:hilt-compiler:2.44"
 }
+

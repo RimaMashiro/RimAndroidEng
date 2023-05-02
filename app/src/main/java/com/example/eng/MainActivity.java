@@ -26,6 +26,9 @@ import android.view.MenuItem;
 
 import java.util.ArrayList;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
 
     private MainViewModel viewModel;

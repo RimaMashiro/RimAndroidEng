@@ -9,10 +9,11 @@ import com.example.eng.R;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.ViewHolder>{
 
-    private ArrayList<Topic> topics=new ArrayList<>();
+    private List<Topic> topics=new ArrayList<>();
     private final OnItemClickListener onItemClickListener;
     public TopicAdapter(OnItemClickListener onItemClickListener ) {
         this.onItemClickListener=onItemClickListener;
@@ -42,7 +43,7 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.ViewHolder>{
         return topics.size();
     }
 
-    public void updateTasksList(final ArrayList<Topic> topics) {
+    public void updateTasksList(final List<Topic> topics) {
         this.topics.clear();
         this.topics = topics;
         notifyDataSetChanged();

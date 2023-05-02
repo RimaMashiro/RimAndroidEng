@@ -13,7 +13,7 @@ import java.util.List;
 @Dao
 public interface GrammarDAO {
     @Insert
-    void insertAll(ArrayList<Grammar> grammars);
+    void insertAll(List<Grammar> grammars);
     @Query("SELECT * FROM Grammars")
     List<Grammar> getAll();
 

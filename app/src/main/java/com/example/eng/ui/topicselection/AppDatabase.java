@@ -7,6 +7,8 @@ import com.example.eng.ui.exercisefirst.ExerciseFirstDAO;
 
 @Database(entities = {Topic.class}, version = 1)
 public abstract class  AppDatabase extends RoomDatabase {
+    public static String databaseName= "EngDatabase";
     public  abstract TopicDAO getTopicDao();
+
 
 }

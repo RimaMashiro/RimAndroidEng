@@ -11,7 +11,7 @@ import java.util.List;
 @Dao
 public interface TopicDAO {
     @Insert
-    void insertAll(ArrayList<Topic> topics);
+    void insertAll(List<Topic> topics);
     @Query("SELECT * FROM Topics")
     LiveData<List<Topic>> getAll();
 }
