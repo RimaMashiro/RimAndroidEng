@@ -11,6 +11,10 @@ public class GrammarViewModel extends ViewModel{
     private SingleLiveEvent<Boolean> _navigationToTopicSelectionFragment = new SingleLiveEvent<>();
     LiveData<Boolean> navigationToTopicSelectionFragment = _navigationToTopicSelectionFragment;
 
+    static {
+        void insertAll(ArrayList<Grammar> grammars){};
+    }
+
     public void onButtonTopicsClicked() {
         _navigationToTopicSelectionFragment.setValue(true);
     }
