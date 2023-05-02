@@ -19,4 +19,5 @@
     <string name="name_task1">Впиши ответ</string>
     <string name="task_grammar">Грамматика</string>
     <string name="task_dictionary">ловарь</string>
+    <string name="enter_answer">Введите ответ на английском</string>
 </resources>

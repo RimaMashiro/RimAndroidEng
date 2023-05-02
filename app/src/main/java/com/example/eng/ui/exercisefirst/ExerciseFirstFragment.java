@@ -19,21 +19,11 @@ import com.example.eng.databinding.FragmentExerciseFirstBinding;
 import com.example.eng.databinding.FragmentRegistrationBinding;
 import com.example.eng.ui.registration.RegistrationViewModel;
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
-@Entity(tableName = "Exercise")
-
-public class Exercises1 {
-    @PrimaryKey
-
-}
 
 
 public class ExerciseFirstFragment extends Fragment {
     private ExerciseFirstViewModel viewModel;
     private FragmentExerciseFirstBinding binding;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentExerciseFirstBinding.inflate(inflater, container, false);
@@ -48,22 +38,16 @@ public class ExerciseFirstFragment extends Fragment {
         initButtonTasks();
         initNavigationToTopicSelectionFragment();
         initNavigationToSelectionTask();
-        initEditTextPassword();
-
+        initEditTextAnswer();
     }
-
-    private void initEditTextPassword() {
+    private void initEditTextAnswer() {
         binding.answer.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
-
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
-
             @Override
             public void afterTextChanged(Editable editable) {
                 viewModel.onAnswerChanged(editable.toString());
@@ -71,13 +55,39 @@ public class ExerciseFirstFragment extends Fragment {
         });
     }
 
-
-
-
-
-
+    private  void initButtonFirstAnswer(){
+        binding.firstAnswer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewModel.onButtonFourthAnswerClicked();
+            }
+        });
+    };
+    private void initButtonSecondAnswer(){
+        binding.secondAnswer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewModel.onButtonSecondAnswerClicked();
+            }
+        });
+    };
+    private void initButtonThirdAnswer(){
+        binding.thirdAnswer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewModel.onButtonThirdAnswerClicked();
+            }
+        });
+    };
+    private  void initButtonFourthAnswer(){
+        binding.fourthAnswer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewModel.onButtonFourthAnswerClicked();
+            }
+        });
+    };
     private void initButtonTopics() {
-
         binding.buttonTopicsEx1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,9 +95,7 @@ public class ExerciseFirstFragment extends Fragment {
             }
         });
     }
-
     private void initButtonTasks() {
-
         binding.buttonTasksEx1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,8 +103,6 @@ public class ExerciseFirstFragment extends Fragment {
             }
         });
     }
-
-
     private void initNavigationToTopicSelectionFragment() {
         viewModel.navigationToTopicSelectionFragment.observe(getViewLifecycleOwner(), aBoolean -> {
             if (aBoolean) {
@@ -104,7 +110,6 @@ public class ExerciseFirstFragment extends Fragment {
             }
         });
     }
-
     private void initNavigationToSelectionTask() {
         viewModel.navigationToSelectionTaskFragment.observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
@@ -117,5 +122,4 @@ public class ExerciseFirstFragment extends Fragment {
             }
         });
     }
-
 }
