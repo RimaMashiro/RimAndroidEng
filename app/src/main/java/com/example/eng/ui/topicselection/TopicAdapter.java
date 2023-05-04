@@ -9,10 +9,11 @@ import com.example.eng.R;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.ViewHolder>{
 
-    private ArrayList<Topic> topics=new ArrayList<>();
+    private List<Topic> topics=new ArrayList<>();
     private final OnItemClickListener onItemClickListener;
     public TopicAdapter(OnItemClickListener onItemClickListener ) {
         this.onItemClickListener=onItemClickListener;
@@ -29,12 +30,7 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.ViewHolder>{
     public void onBindViewHolder(TopicAdapter.ViewHolder holder, int position) {
         Topic topic = topics.get(position);
         holder.nameView.setText(topic.getName());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onItemClickListener.onItemClick(topic);
-            }
-        });
+        holder.itemView.setOnClickListener(view -> onItemClickListener.onItemClick(topic));
     }
 
     @Override
@@ -42,24 +38,20 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.ViewHolder>{
         return topics.size();
     }
 
-    public void updateTasksList(final ArrayList<Topic> topics) {
+    public void updateTasksList(final List<Topic> topics) {
         this.topics.clear();
         this.topics = topics;
         notifyDataSetChanged();
     }
     public static class ViewHolder extends RecyclerView.ViewHolder {
-
         final TextView nameView;
         ViewHolder(View view){
             super(view);
-
             nameView = view.findViewById(R.id.name);
-
         }
     }
 
     public interface OnItemClickListener{
         void onItemClick(Topic item);
     }
-
 }

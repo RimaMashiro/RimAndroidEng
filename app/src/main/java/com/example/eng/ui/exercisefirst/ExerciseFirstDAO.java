@@ -11,11 +11,11 @@ import java.util.List;
 
 @Dao
 public interface ExerciseFirstDAO {
-    /*
-    @Insert
-    void insertAll(ArrayList<ExerciseFirstFragment> exercises);
-    @Query("SELECT * FROM Exercise")
-    getAll();
 
-     */
+    @Insert
+    void insertAll(List<Exercise> exercises);
+    @Query("SELECT * FROM Exercises")
+    List<Exercise> getAll();
+
+
 }

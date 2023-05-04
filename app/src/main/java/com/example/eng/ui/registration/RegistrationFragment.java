@@ -46,12 +46,10 @@ public class RegistrationFragment extends Fragment {
         binding.editTextEmail.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
 
             @Override
@@ -67,12 +65,10 @@ public class RegistrationFragment extends Fragment {
         binding.editTextPassword.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
 
             @Override
@@ -83,21 +79,11 @@ public class RegistrationFragment extends Fragment {
     }
 
     private void initButtonRegister() {
-        binding.buttonRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                viewModel.onButtonRegisterClicked();
-            }
-        });
+        binding.buttonRegister.setOnClickListener(view -> viewModel.onButtonRegisterClicked());
     }
 
     private void initButtonGoToSign() {
-        binding.buttonGoToSign.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                viewModel.onButtonGoToSignClicked();
-            }
-        });
+        binding.buttonGoToSign.setOnClickListener(view -> viewModel.onButtonGoToSignClicked());
     }
 
     private void initNavigationToSignFragment() {
