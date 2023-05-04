@@ -3,13 +3,13 @@ package com.example.eng.ui.login;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.eng.AuthManager;
+import com.example.eng.data.AuthManager;
 import com.example.eng.util.SingleLiveEvent;
 import com.google.firebase.auth.FirebaseUser;
 
 public class LoginViewModel extends ViewModel {
 
-    private AuthManager authManager = AuthManager.getInstance();
+    private final AuthManager authManager = AuthManager.getInstance();
     private String email;
     private String password;
 
@@ -19,7 +19,6 @@ public class LoginViewModel extends ViewModel {
 
     LiveData<FirebaseUser> user = authManager.user;
     LiveData<Boolean> showErrorMessage = authManager.showErrorMessage;
-
 
     public void onEmailChanged(String email) {
         this.email = email;
@@ -31,7 +30,6 @@ public class LoginViewModel extends ViewModel {
 
     public void onButtonSignClicked() {
         authManager.login(email, password);
-
     }
 
     public void onButtonPasswordResetClicked() {

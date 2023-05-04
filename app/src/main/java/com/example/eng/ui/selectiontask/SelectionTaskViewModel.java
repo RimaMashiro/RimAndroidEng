@@ -12,6 +12,7 @@ public class SelectionTaskViewModel extends ViewModel {
 
     private MutableLiveData<Boolean> _navigationToGrammarFragment = new SingleLiveEvent<>();
     LiveData<Boolean> navigationToGrammarFragment = _navigationToGrammarFragment;
+
     private MutableLiveData<Boolean> _navigationToExerciseFirstFragment = new SingleLiveEvent<>();
     LiveData<Boolean> navigationToExerciseFirstFragment = _navigationToExerciseFirstFragment;
 
@@ -33,6 +34,4 @@ public class SelectionTaskViewModel extends ViewModel {
     public void onButtonGoToTopicClicked() {
        // _navigationToTopicFragment.setValue(true);
     }
-
-
 }

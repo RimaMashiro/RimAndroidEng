@@ -8,13 +8,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.eng.databinding.FragmentTopicSelectionBinding;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -40,14 +36,6 @@ public class TopicSelectionFragment extends Fragment {
     private void initRecyclerView() {
         TopicAdapter adapter = new TopicAdapter( viewModel );
         binding.list.setAdapter(adapter);
-        viewModel.topics.observe(getViewLifecycleOwner(), new Observer<List<Topic>>() {
-            @Override
-            public void onChanged(List<Topic> topics) {
-                adapter.updateTasksList(topics);
-            }
-        });
+        viewModel.topics.observe(getViewLifecycleOwner(), adapter::updateTasksList);
     }
-
-
-
 }
