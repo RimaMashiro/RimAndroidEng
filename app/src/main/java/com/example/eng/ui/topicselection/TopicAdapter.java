@@ -30,12 +30,7 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.ViewHolder>{
     public void onBindViewHolder(TopicAdapter.ViewHolder holder, int position) {
         Topic topic = topics.get(position);
         holder.nameView.setText(topic.getName());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onItemClickListener.onItemClick(topic);
-            }
-        });
+        holder.itemView.setOnClickListener(view -> onItemClickListener.onItemClick(topic));
     }
 
     @Override
@@ -49,18 +44,14 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.ViewHolder>{
         notifyDataSetChanged();
     }
     public static class ViewHolder extends RecyclerView.ViewHolder {
-
         final TextView nameView;
         ViewHolder(View view){
             super(view);
-
             nameView = view.findViewById(R.id.name);
-
         }
     }
 
     public interface OnItemClickListener{
         void onItemClick(Topic item);
     }
-
 }

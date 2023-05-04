@@ -1,7 +1,6 @@
 package com.example.eng.ui.topicselection;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -13,9 +12,7 @@ public class Topic {
     private String name; // название
 
     public Topic(String name){
-
         this.name=name;
-
     }
 
     public String getName() {
@@ -25,7 +22,4 @@ public class Topic {
     public void setName(String name) {
         this.name = name;
     }
-
-
-
 }

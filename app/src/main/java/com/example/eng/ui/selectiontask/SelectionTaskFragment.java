@@ -8,13 +8,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.eng.R;
 import com.example.eng.databinding.FragmentRegistrationBinding;
-import com.example.eng.ui.registration.RegistrationViewModel;
 
 public class SelectionTaskFragment extends Fragment {
 
@@ -32,30 +30,18 @@ public class SelectionTaskFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ViewModelProvider provider = new ViewModelProvider(requireActivity());
         viewModel = provider.get(SelectionTaskViewModel.class);
-
     }
 
     private void initButtonGoToDictionary() {
-        binding.buttonGoToSign.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                viewModel.onButtonGoToDictionaryClicked();
-            }
-        });
+        binding.buttonGoToSign.setOnClickListener(view -> viewModel.onButtonGoToDictionaryClicked());
     }
 
     private void initButtonGoToGrammar() {
-        binding.buttonGoToSign.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {viewModel.onButtonGoToGrammarClicked();}
-        });
+        binding.buttonGoToSign.setOnClickListener(view -> viewModel.onButtonGoToGrammarClicked());
     }
 
     private void initButtonGoToExerciseFirst() {
-        binding.buttonGoToSign.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {viewModel.onButtonGoToGrammarClicked();}
-        });
+        binding.buttonGoToSign.setOnClickListener(view -> viewModel.onButtonGoToGrammarClicked());
     }
     private void initNavigationToDictionaryFragment() {
         viewModel.navigationToDictionaryFragment.observe(getViewLifecycleOwner(), aBoolean -> {
@@ -73,21 +59,10 @@ public class SelectionTaskFragment extends Fragment {
         });
     }
     private void initNavigationToTopicSelectionFragment() {
-        viewModel.navigationToTopicSelectionFragment.observe(getViewLifecycleOwner(), new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                if (aBoolean) {
-
-                    Navigation.findNavController(binding.getRoot()).popBackStack(R.id.topicSelectionFragment,true);
-
-                }
+        viewModel.navigationToTopicSelectionFragment.observe(getViewLifecycleOwner(), aBoolean -> {
+            if (aBoolean) {
+                Navigation.findNavController(binding.getRoot()).popBackStack(R.id.topicSelectionFragment,true);
             }
         });
     }
-
-
-
-
-
-
 }

@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.exercisefirst.ExerciseFirstFragment">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -188,7 +187,5 @@
             tools:src="@tools:sample/avatars" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

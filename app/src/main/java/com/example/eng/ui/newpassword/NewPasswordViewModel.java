@@ -3,15 +3,13 @@ package com.example.eng.ui.newpassword;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.eng.AuthManager;
-import com.example.eng.util.SingleLiveEvent;
+import com.example.eng.data.AuthManager;
 import com.google.firebase.auth.FirebaseUser;
 
 public class NewPasswordViewModel extends ViewModel {
 
     private AuthManager authManager = AuthManager.getInstance();
     private String password;
-
 
     LiveData<Boolean> navigationToSignFragment = authManager.navigationToSignFragment;
 
@@ -23,7 +21,5 @@ public class NewPasswordViewModel extends ViewModel {
 
     public void onButtonNewPasswordClicked() {
         authManager.updatePassword(password);
-
     }
-
 }
