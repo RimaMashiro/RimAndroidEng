@@ -17,18 +17,14 @@ public class TopicSelectionViewModel extends ViewModel implements TopicAdapter.O
     public MutableLiveData<List<Topic>> _topics=new MutableLiveData<>();
     public LiveData<List<Topic>> topics = _topics;
     @Inject
-    public TopicSelectionViewModel(TopicDAO topicDAO){
-        this.topicDAO=topicDAO;
-        topics=topicDAO.getAll();
+    public TopicSelectionViewModel(TopicDAO topicDAO, SharedPreferencesManager sharedPreferencesManager) {
+        this.topicDAO = topicDAO;
+        topics = this.topicDAO.getAll();
 
-        /*
-        if(topics.getValue().isEmpty()) {
+        if (sharedPreferencesManager.checkIsFirstLaunch()) {
             this.topicDAO.insertAll(getTopicList());
+            sharedPreferencesManager.setIsFirstLaunch();
         }
-
-         */
-
-
     }
 
     @Override

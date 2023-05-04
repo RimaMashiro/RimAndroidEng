@@ -10,7 +10,7 @@ import java.util.List;
 
 @Dao
 public interface TopicDAO {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(List<Topic> topics);
     @Query("SELECT * FROM Topics")
     LiveData<List<Topic>> getAll();
