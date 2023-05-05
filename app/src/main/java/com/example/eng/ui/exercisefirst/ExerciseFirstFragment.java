@@ -40,6 +40,8 @@ public class ExerciseFirstFragment extends Fragment {
         initNavigationToSelectionTask();
         initEditTextAnswer();
     }
+
+   // binding.textViewWord.setText()
     private void initEditTextAnswer() {
         binding.answer.addTextChangedListener(new TextWatcher() {
             @Override

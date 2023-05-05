@@ -4,7 +4,7 @@ import android.content.Context;
 
 import androidx.room.Room;
 
-import com.example.eng.ui.topicselection.AppDatabase;
+import com.example.eng.data.AppDatabase;
 import com.example.eng.ui.topicselection.TopicDAO;
 
 import javax.inject.Singleton;
@@ -20,16 +20,13 @@ import dagger.hilt.components.SingletonComponent;
 public class DatabaseModule {
     @Provides
     @Singleton
-    public AppDatabase provideDatabase(@ApplicationContext Context context){
+    public AppDatabase provideDatabase(@ApplicationContext Context context) {
         return Room.databaseBuilder(context, AppDatabase.class, AppDatabase.databaseName).allowMainThreadQueries().build();
-
     }
 
     @Provides
     @Singleton
-    public TopicDAO provideTopicDAO(AppDatabase database){
+    public TopicDAO provideTopicDAO(AppDatabase database) {
         return database.getTopicDao();
     }
-
-
 }

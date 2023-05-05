@@ -1,30 +1,15 @@
-package com.example.eng;
+package com.example.eng.ui;
 
 import android.os.Bundle;
 
-import com.example.eng.databinding.FragmentRegistrationBinding;
-import com.example.eng.ui.registration.RegistrationViewModel;
-import com.google.android.material.snackbar.Snackbar;
-
+import androidx.annotation.NavigationRes;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.view.View;
-
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.NavGraph;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.eng.databinding.ActivityMainBinding;
-
-import android.view.Menu;
-import android.view.MenuItem;
-
-import java.util.ArrayList;
+import com.example.eng.R;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -32,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 public class MainActivity extends AppCompatActivity {
 
     private MainViewModel viewModel;
-    private ActivityMainBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,19 +26,18 @@ public class MainActivity extends AppCompatActivity {
         viewModel = provider.get(MainViewModel.class);
         initNavigationToMainFlow();
     }
-    private void initNavigationToMainFlow(){
+
+    private void initNavigationToMainFlow() {
         viewModel.user.observe(this, firebaseUser -> {
             NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
                     .findFragmentById(R.id.containerFragment);
-            NavGraph navGraph;
             NavController navController = navHostFragment.getNavController();
-            if (firebaseUser==null){
-                navGraph = navController.getNavInflater().inflate(R.navigation.registration_nav_graph);
-            } else{
-                navGraph = navController.getNavInflater().inflate(R.navigation.main_flow_nav_graph);
-            }
+            @NavigationRes
+            int navGraphResId = firebaseUser == null ?
+                    R.navigation.registration_nav_graph :
+                    R.navigation.main_flow_nav_graph;
+            NavGraph navGraph = navController.getNavInflater().inflate(navGraphResId);
             navController.setGraph(navGraph);
         });
     }
-
 }

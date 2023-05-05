@@ -6,6 +6,7 @@ import com.example.eng.util.SingleLiveEvent;
 public class ExerciseFirstViewModel extends ViewModel{
     private String answer;
 
+
     private SingleLiveEvent<Boolean> _navigationToSelectionTaskFragment = new SingleLiveEvent<>();
     LiveData<Boolean> navigationToSelectionTaskFragment = _navigationToSelectionTaskFragment;
     private SingleLiveEvent<Boolean> _navigationToTopicSelectionFragment = new SingleLiveEvent<>();
@@ -23,6 +24,7 @@ public class ExerciseFirstViewModel extends ViewModel{
     public void onButtonSecondAnswerClicked() {}
     public void onButtonThirdAnswerClicked() {}
     public void onButtonFourthAnswerClicked() {}
+    public  void setText(){};
     public void onButtonTopicsClicked() {
         _navigationToTopicSelectionFragment.setValue(true);
     }
