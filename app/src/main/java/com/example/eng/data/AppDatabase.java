@@ -9,7 +9,7 @@ import com.example.eng.ui.grammar.GrammarDAO;
 import com.example.eng.ui.topicselection.Topic;
 import com.example.eng.ui.topicselection.TopicDAO;
 
-@Database(entities = {Topic.class, Grammar.class}, version = 1)
+@Database(entities = {Topic.class, Grammar.class}, version = 2)
 public abstract class  AppDatabase extends RoomDatabase {
     public static String databaseName= "EngDatabase";
     public  abstract TopicDAO getTopicDao();
