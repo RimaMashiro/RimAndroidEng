@@ -7,7 +7,9 @@ import androidx.room.PrimaryKey;
 public class SelectionTask {
 
     @PrimaryKey
+    @NonNull
    String name;
+
 
     String topicName;
 }

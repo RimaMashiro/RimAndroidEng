@@ -1,5 +1,7 @@
 package com.example.eng.ui.selectiontask;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.SavedStateHandle;
@@ -34,8 +36,9 @@ public class SelectionTaskViewModel extends ViewModel {
     LiveData<SelectionTask> selectionTask;
 
     @Inject
-    public SelectionTaskViewModel(SavedStateHandle savedStateHandle){
+    public SelectionTaskViewModel(SavedStateHandle savedStateHandle, SelectionTaskDAO selectionTaskDAO){
         String topicName=savedStateHandle.get("name");
+        Log.e("TAG", topicName);
         _topicName.setValue(topicName);
         this.selectionTaskDAO = selectionTaskDAO;
         selectionTask= this.selectionTaskDAO.getAll(topicName);
