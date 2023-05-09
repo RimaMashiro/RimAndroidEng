@@ -7,7 +7,7 @@
     tools:context=".ui.grammar.GrammarFragment">
 
     <TextView
-        android:id="@+id/topic"
+        android:id="@+id/topicName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="41dp"

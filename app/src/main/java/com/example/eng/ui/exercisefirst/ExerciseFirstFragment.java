@@ -41,7 +41,7 @@ public class ExerciseFirstFragment extends Fragment {
         initEditTextAnswer();
     }
 
-   // binding.textViewWord.setText()
+
     private void initEditTextAnswer() {
         binding.answer.addTextChangedListener(new TextWatcher() {
             @Override
@@ -122,6 +122,16 @@ public class ExerciseFirstFragment extends Fragment {
 
                 }
             }
+        });
+    }
+    private void  initGetArg(){
+        viewModel.topicName.observe(getViewLifecycleOwner(),topicName->{
+            binding.topicName.setText(topicName);
+        });
+    }
+    private void  initGetImgId(){
+        viewModel.imageId.observe(getViewLifecycleOwner(),imageId->{
+            binding.imageViewExercise1.setImageResource(imageId);
         });
     }
 }

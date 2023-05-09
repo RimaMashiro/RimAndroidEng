@@ -23,6 +23,9 @@
         <action
             android:id="@+id/action_selectionTaskFragment_to_exerciseFirstFragment"
             app:destination="@id/exerciseFirstFragment" />
+        <argument
+            android:name="name"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/grammarFragment"
@@ -32,6 +35,9 @@
         <action
             android:id="@+id/action_grammarFragment_to_topicSelectionFragment"
             app:destination="@id/topicSelectionFragment" />
+        <argument
+            android:name="name"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/exerciseFirstFragment"
@@ -41,5 +47,8 @@
         <action
             android:id="@+id/action_exerciseFirstFragment_to_topicSelectionFragment"
             app:destination="@id/topicSelectionFragment" />
+        <argument
+            android:name="name"
+            app:argType="string" />
     </fragment>
 </navigation>

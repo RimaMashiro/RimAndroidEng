@@ -5,6 +5,8 @@ import android.content.Context;
 import androidx.room.Room;
 
 import com.example.eng.data.AppDatabase;
+import com.example.eng.ui.grammar.Grammar;
+import com.example.eng.ui.grammar.GrammarDAO;
 import com.example.eng.ui.topicselection.TopicDAO;
 
 import javax.inject.Singleton;
@@ -29,4 +31,11 @@ public class DatabaseModule {
     public TopicDAO provideTopicDAO(AppDatabase database) {
         return database.getTopicDao();
     }
+
+    @Provides
+    @Singleton
+    public GrammarDAO provideGrammarDAO(AppDatabase database) {
+        return database.getGrammarDao();
+    }
+
 }

@@ -6,4 +6,6 @@ import androidx.room.PrimaryKey;
 public class Grammar {
     @PrimaryKey
     String name;
+    String topicName;
+    String topicGrammar;
 }

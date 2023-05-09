@@ -2,7 +2,22 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.selectiontask.SelectionTaskFragment">
+
+    <TextView
+        android:id="@+id/topicName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="353dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
 
     <TextView
         android:id="@+id/textView6"
@@ -37,12 +52,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.289"
-        app:layout_constraintStart_toStartOf="@+id/grammar"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.341" />
 
     <Button
-        android:id="@+id/exercise3"
+        android:id="@+id/buttonExercise3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="317dp"
@@ -55,7 +70,7 @@
         app:layout_constraintVertical_bias="0.783" />
 
     <Button
-        android:id="@+id/exericise2"
+        android:id="@+id/buttonExercise2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
@@ -69,7 +84,7 @@
         app:layout_constraintVertical_bias="0.547" />
 
     <Button
-        android:id="@+id/exercise1"
+        android:id="@+id/buttonExercise1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="317dp"
@@ -82,7 +97,7 @@
         app:layout_constraintVertical_bias="0.33" />
 
     <Button
-        android:id="@+id/dictionary"
+        android:id="@+id/buttonDictionary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="317dp"
@@ -95,16 +110,14 @@
         app:layout_constraintVertical_bias="0.185" />
 
     <Button
-        android:id="@+id/grammar"
+        android:id="@+id/buttonGrammar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="317dp"
-        android:layout_marginBottom="683dp"
         android:text="@string/task_grammar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.074" />
 </androidx.constraintlayout.widget.ConstraintLayout>

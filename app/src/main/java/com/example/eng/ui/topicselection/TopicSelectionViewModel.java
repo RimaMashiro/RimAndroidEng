@@ -1,9 +1,11 @@
 package com.example.eng.ui.topicselection;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.eng.data.SharedPreferencesManager;
+import com.example.eng.util.SingleLiveEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +18,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 public class TopicSelectionViewModel extends ViewModel implements TopicAdapter.OnItemClickListener {
     private TopicDAO topicDAO;
     public final LiveData<List<Topic>> topics;
+
+    private SingleLiveEvent<String> _navigationToSelectionTaskFragment = new SingleLiveEvent<>();
+    LiveData<String> navigationToSelectionTaskFragment= _navigationToSelectionTaskFragment;
 
     @Inject
     public TopicSelectionViewModel(TopicDAO topicDAO, SharedPreferencesManager sharedPreferencesManager) {
@@ -30,6 +35,7 @@ public class TopicSelectionViewModel extends ViewModel implements TopicAdapter.O
 
     @Override
     public void onItemClick(Topic item) {
+        _navigationToSelectionTaskFragment.setValue(item.getName());
     }
 
     public ArrayList<Topic> getTopicList() {

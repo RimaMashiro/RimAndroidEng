@@ -37,17 +37,17 @@ public class GrammarFragment extends Fragment {
     }
 
     private void initButtonTopics() {
-        binding.buttonTopics.setOnClickListener(view -> viewModel.onButtonTopicsClicked());
+        binding.buttonTopics.setOnClickListener(view -> viewModel.onButtonGoToTopicsSelectionClicked());
     }
 
     private void initButtonTasks() {
-        binding.buttonTasks.setOnClickListener(view -> viewModel.onButtonTopicsClicked());
+        binding.buttonTasks.setOnClickListener(view -> viewModel.onButtonGoToSelectionTasksClicked());
     }
 
     private void initNavigationToTopicSelectionFragment() {
         viewModel.navigationToTopicSelectionFragment.observe(getViewLifecycleOwner(), aBoolean -> {
             if (aBoolean) {
-                Navigation.findNavController(binding.getRoot()).navigate(R.id.action_registrationFragment_to_signFragment);
+                Navigation.findNavController(binding.getRoot()).navigate(R.id.action_grammarFragment_to_topicSelectionFragment);
             }
         });
     }
@@ -57,6 +57,12 @@ public class GrammarFragment extends Fragment {
             if (aBoolean) {
                 Navigation.findNavController(binding.getRoot()).popBackStack(R.id.selectionTaskFragment, true);
             }
+        });
+    }
+    //получение аргумента
+    private void  initGetArg(){
+        viewModel.topicName.observe(getViewLifecycleOwner(),topicName->{
+            binding.topicName.setText(topicName);
         });
     }
 }
