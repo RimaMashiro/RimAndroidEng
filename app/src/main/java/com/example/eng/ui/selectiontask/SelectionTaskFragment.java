@@ -35,6 +35,14 @@ public class SelectionTaskFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ViewModelProvider provider = new ViewModelProvider(requireActivity());
         viewModel = provider.get(SelectionTaskViewModel.class);
+        initButtonGoToGrammar();
+        initButtonGoToExerciseFirst();
+        initButtonGoToExerciseSecond();
+        initButtonGoToExerciseThird();
+        initNavigationToGrammarFragment();
+        initNavigationToExerciseFirstFragment();
+        initNavigationToTopicSelectionFragment();
+        initGetArg();
     }
     /*private void initButtonGoToDictionary() {
         binding.buttonDictionary.setOnClickListener(view -> viewModel.onButtonGoToDictionaryClicked());

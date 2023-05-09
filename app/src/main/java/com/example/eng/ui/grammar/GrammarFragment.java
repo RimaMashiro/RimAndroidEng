@@ -34,6 +34,7 @@ public class GrammarFragment extends Fragment {
         initButtonTasks();
         initNavigationToTopicSelectionFragment();
         initNavigationToSelectionTask();
+        initGetArg();
     }
 
     private void initButtonTopics() {

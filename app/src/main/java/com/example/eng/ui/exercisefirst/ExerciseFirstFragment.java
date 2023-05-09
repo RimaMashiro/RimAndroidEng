@@ -39,6 +39,12 @@ public class ExerciseFirstFragment extends Fragment {
         initNavigationToTopicSelectionFragment();
         initNavigationToSelectionTask();
         initEditTextAnswer();
+        initButtonFirstAnswer();
+        initButtonSecondAnswer();
+        initButtonThirdAnswer();
+        initButtonFourthAnswer();
+        initGetArg();
+        initGetImgId();
     }
 
 
