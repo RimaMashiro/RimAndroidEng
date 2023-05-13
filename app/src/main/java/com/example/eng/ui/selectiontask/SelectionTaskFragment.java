@@ -1,6 +1,7 @@
 package com.example.eng.ui.selectiontask;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,6 +73,7 @@ public class SelectionTaskFragment extends Fragment {
      */
     private void initNavigationToGrammarFragment() {
         viewModel.navigationToGrammarFragment.observe(getViewLifecycleOwner(), name -> {
+            Log.e("TAG",name.toString());
             NavDirections action= SelectionTaskFragmentDirections.actionSelectionTaskFragmentToGrammarFragment(name);
             Navigation.findNavController(binding.getRoot()).navigate(action);
 

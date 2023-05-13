@@ -1,6 +1,7 @@
 package com.example.eng.ui.topicselection;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
+import com.example.eng.ui.topicselection.TopicSelectionFragmentDirections;
 
 import com.example.eng.R;
 import com.example.eng.databinding.FragmentTopicSelectionBinding;
@@ -47,7 +49,8 @@ public class TopicSelectionFragment extends Fragment {
 //отправление аргумента с помощтю актион
     private void initNavigationToSelectionTaskFragment() {
         viewModel.navigationToSelectionTaskFragment.observe(getViewLifecycleOwner(), name -> {
-            NavDirections action= TopicSelectionFragmentDirections.actionTopicSelectionFragmentToSelectionTaskFragment(name);
+            Log.e("TAG", name);
+            TopicSelectionFragmentDirections.ActionTopicSelectionFragmentToSelectionTaskFragment action= TopicSelectionFragmentDirections.actionTopicSelectionFragmentToSelectionTaskFragment(name);
             Navigation.findNavController(binding.getRoot()).navigate(action);
 
         });

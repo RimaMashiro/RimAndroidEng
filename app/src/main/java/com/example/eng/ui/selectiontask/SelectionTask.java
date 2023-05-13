@@ -9,7 +9,5 @@ public class SelectionTask {
     @PrimaryKey
     @NonNull
    String name;
-
-
-    String topicName;
+   String topicName;
 }

@@ -18,16 +18,16 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 
 public class SelectionTaskViewModel extends ViewModel {
     private SelectionTaskDAO selectionTaskDAO;
-    private MutableLiveData<Boolean> _navigationToDictionaryFragment = new SingleLiveEvent<>();
+    private SingleLiveEvent<Boolean> _navigationToDictionaryFragment = new SingleLiveEvent<>();
     LiveData<Boolean> navigationToDictionaryFragment = _navigationToDictionaryFragment;
 
-    private MutableLiveData<String> _navigationToGrammarFragment = new SingleLiveEvent<>();
+    private SingleLiveEvent<String> _navigationToGrammarFragment = new SingleLiveEvent<>();
     LiveData<String> navigationToGrammarFragment = _navigationToGrammarFragment;
 
-    private MutableLiveData<String> _navigationToExerciseFirstFragment = new SingleLiveEvent<>();
+    private SingleLiveEvent<String> _navigationToExerciseFirstFragment = new SingleLiveEvent<>();
     LiveData<String> navigationToExerciseFirstFragment = _navigationToExerciseFirstFragment;
 
-    private MutableLiveData<Boolean> _navigationToTopicSelectionFragment = new SingleLiveEvent<>();
+    private SingleLiveEvent<Boolean> _navigationToTopicSelectionFragment = new SingleLiveEvent<>();
     LiveData<Boolean> navigationToTopicSelectionFragment = _navigationToTopicSelectionFragment;
 
     //для пердачи аргумента имени темы
@@ -38,15 +38,16 @@ public class SelectionTaskViewModel extends ViewModel {
     @Inject
     public SelectionTaskViewModel(SavedStateHandle savedStateHandle, SelectionTaskDAO selectionTaskDAO){
         String topicName=savedStateHandle.get("name");
-        Log.e("TAG", topicName);
+        boolean contains=savedStateHandle.contains("name");
+        Log.e("TAG", savedStateHandle.keys().toString());
         _topicName.setValue(topicName);
         this.selectionTaskDAO = selectionTaskDAO;
         selectionTask= this.selectionTaskDAO.getAll(topicName);
      }
 
-    public void onButtonGoToDictionaryClicked() {
-        _navigationToDictionaryFragment.setValue(true);
-    }
+    //public void onButtonGoToDictionaryClicked() {
+        //_navigationToDictionaryFragment.setValue(true);
+    //}
 
     public void onButtonGoToGrammarClicked() {
         _navigationToGrammarFragment.setValue(topicName.getValue());

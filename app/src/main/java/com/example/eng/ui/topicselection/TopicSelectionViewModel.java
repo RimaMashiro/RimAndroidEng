@@ -1,5 +1,7 @@
 package com.example.eng.ui.topicselection;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -35,6 +37,7 @@ public class TopicSelectionViewModel extends ViewModel implements TopicAdapter.O
 
     @Override
     public void onItemClick(Topic item) {
+        Log.e("TAG",item.getName());
         _navigationToSelectionTaskFragment.setValue(item.getName());
     }
 
