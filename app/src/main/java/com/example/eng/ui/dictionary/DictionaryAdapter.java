@@ -14,53 +14,51 @@ import com.example.eng.ui.topicselection.TopicAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DictionaryAdapter {
-    /*
+public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryAdapter.ViewHolder>{
 
-    public class DictionaryAdapter extends RecyclerView.Adapter<com.example.eng.ui.dictionary.DictionaryAdapter>{
-
-        private List<Dictionary> dictionary=new ArrayList<>();
-        private final com.example.eng.ui.topicselection.TopicAdapter.OnItemClickListener onItemClickListener;
-        public TopicAdapter(com.example.eng.ui.topicselection.TopicAdapter.OnItemClickListener onItemClickListener ) {
-            this.onItemClickListener=onItemClickListener;
-        }
-        @Override
-        public com.example.eng.ui.topicselection.TopicAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    private List<String> wordsRus=new ArrayList();
+    private List<String> wordsEng= new ArrayList();
+    @Override
+    public DictionaryAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-            View view = inflater.inflate(R.layout.list_item, parent, false);
-            return new com.example.eng.ui.topicselection.TopicAdapter.ViewHolder(view);
+            View view = inflater.inflate(R.layout.dictionary_list_item, parent, false);
+            return new ViewHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(com.example.eng.ui.topicselection.TopicAdapter.ViewHolder holder, int position) {
-            Topic topic = topics.get(position);
-            holder.nameView.setText(topic.getName());
-            holder.itemView.setOnClickListener(view -> onItemClickListener.onItemClick(topic));
+        public void onBindViewHolder(DictionaryAdapter.ViewHolder holder, int position) {
+            String wordEngl = wordsEng.get(position);
+            String wordRuss = wordsRus.get(position);
+
+            holder.wordRus.setText(wordRuss);
+            holder.wordEng.setText(wordEngl);
         }
 
-        @Override
-        public int getItemCount() {
-            return topics.size();
-        }
-
-        public void updateTasksList(final List<Topic> topics) {
-            this.topics.clear();
-            this.topics = topics;
+        public void updateWordsList(final Dictionary dictionary) {
+            this.wordsEng.clear();
+            this.wordsRus.clear();
+            wordsRus=dictionary.getWordsRus();
+            wordsEng=dictionary.getWordsEng();
             notifyDataSetChanged();
         }
         public static class ViewHolder extends RecyclerView.ViewHolder {
-            final TextView nameView;
+            final TextView wordRus;
+            final TextView wordEng;
+
             ViewHolder(View view){
                 super(view);
-                nameView = view.findViewById(R.id.name);
+                wordRus = view.findViewById(R.id.textRussians);
+                wordEng= view.findViewById(R.id.textEnglish);
             }
         }
 
-        public interface OnItemClickListener{
-            void onItemClick(Topic item);
+        @Override
+        public int getItemCount(){
+        return wordsEng.size();
         }
-    }
 
-     */
 }
+
+
+

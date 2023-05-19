@@ -26,15 +26,15 @@
         <argument
             android:name="name"
             app:argType="string" />
+        <action
+            android:id="@+id/action_selectionTaskFragment_to_dictionaryFragment"
+            app:destination="@id/dictionaryFragment" />
     </fragment>
     <fragment
         android:id="@+id/grammarFragment"
         android:name="com.example.eng.ui.grammar.GrammarFragment"
         android:label="fragment_grammar"
         tools:layout="@layout/fragment_grammar" >
-        <action
-            android:id="@+id/action_grammarFragment_to_topicSelectionFragment"
-            app:destination="@id/topicSelectionFragment" />
         <argument
             android:name="name"
             app:argType="string" />
@@ -44,9 +44,15 @@
         android:name="com.example.eng.ui.exercisefirst.ExerciseFirstFragment"
         android:label="fragment_exercise_first"
         tools:layout="@layout/fragment_exercise_first" >
-        <action
-            android:id="@+id/action_exerciseFirstFragment_to_topicSelectionFragment"
-            app:destination="@id/topicSelectionFragment" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/dictionaryFragment"
+        android:name="com.example.eng.ui.dictionary.DictionaryFragment"
+        android:label="fragment_dictionary"
+        tools:layout="@layout/fragment_dictionary" >
         <argument
             android:name="name"
             app:argType="string" />

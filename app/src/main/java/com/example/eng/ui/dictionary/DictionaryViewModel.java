@@ -2,6 +2,7 @@ package com.example.eng.ui.dictionary;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
 
 import com.example.eng.data.SharedPreferencesManager;
@@ -23,14 +24,16 @@ public class DictionaryViewModel extends ViewModel {
     LiveData<Boolean> navigationToTopicSelectionFragment = _navigationToTopicSelectionFragment;
     private MutableLiveData<String> _topicName=new MutableLiveData<>();
     LiveData<String> topicName=_topicName;
+    LiveData<Dictionary> dictionary;
 
     @Inject
-    public DictionaryViewModel(TopicDAO topicDAO, SharedPreferencesManager sharedPreferencesManager) {
+    public DictionaryViewModel(TopicDAO topicDAO, SavedStateHandle savedStateHandle, SharedPreferencesManager sharedPreferencesManager) {
+        String topicName=savedStateHandle.get("name");
         this.dictionaryDAO = dictionaryDAO;
-        //dictionary = this.dictionaryDAO.getAll();
-
+        dictionary = this.dictionaryDAO.getAll(topicName);
+        _topicName.setValue(topicName);
         if (sharedPreferencesManager.checkIsFirstLaunch()) {//если первый запуск
-            //this.dictionaryDAO.insertAll(getDictionaryList());//добавляем все
+            this.dictionaryDAO.insertAll(getDictionaryList());//добавляем все
             sharedPreferencesManager.setIsFirstLaunch();//не первый запуск
         }
     }
@@ -45,10 +48,10 @@ public class DictionaryViewModel extends ViewModel {
 
     public ArrayList<Dictionary> getDictionaryList() {
         ArrayList<Dictionary> dictionary = new ArrayList<>();
-        dictionary.add(new Dictionary("Topic1"));
-        dictionary.add(new Dictionary("Topic2"));
-        dictionary.add(new Dictionary("Topic3"));
-        dictionary.add(new Dictionary("Topic4"));
-        dictionary.add(new Dictionary("Topic5"));
+        dictionary.add(new Dictionary("Word", "Слово", "Topic1"));
+        dictionary.add(new Dictionary("Word", "Слово","Topic2"));
+        dictionary.add(new Dictionary("Word", "Слово","Topic3"));
+        dictionary.add(new Dictionary("Word", "Слово","Topic4"));
+        dictionary.add(new Dictionary("Word", "Слово","Topic5"));
         return dictionary;}
 }

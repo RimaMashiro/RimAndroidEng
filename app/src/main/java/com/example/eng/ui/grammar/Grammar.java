@@ -7,7 +7,13 @@ import androidx.room.PrimaryKey;
 public class Grammar {
     @PrimaryKey
     @NonNull
-    String name;
     String topicName;
     String topicGrammar;
+    public Grammar(String topicGrammar, String topicName){
+        this.topicName=topicName;
+        this.topicGrammar=topicGrammar;
+    }
+    public String getTopicGrammar() {
+        return this.topicGrammar;
+    }
 }

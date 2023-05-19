@@ -7,8 +7,10 @@ import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
 
 import com.example.eng.R;
+import com.example.eng.ui.grammar.Grammar;
 import com.example.eng.util.SingleLiveEvent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ExerciseFirstViewModel extends ViewModel{
@@ -26,6 +28,7 @@ public class ExerciseFirstViewModel extends ViewModel{
 
     private MutableLiveData<Integer> _imageId=new MutableLiveData<>();
     LiveData<Integer> imageId=_imageId;
+
 
     public ExerciseFirstViewModel(ExerciseFirstDAO exerciseDAO, SavedStateHandle savedStateHandle){
         String topicName=savedStateHandle.get("name");
@@ -47,12 +50,20 @@ public class ExerciseFirstViewModel extends ViewModel{
     public void onButtonSecondAnswerClicked() {}
     public void onButtonThirdAnswerClicked() {}
     public void onButtonFourthAnswerClicked() {}
-    public  void setText(){};
     public void onButtonTopicsClicked() {
         _navigationToTopicSelectionFragment.setValue(true);
     }
     public void onButtonGoToSelectionTaskClicked() {
         _navigationToSelectionTaskFragment.setValue(true);
+    }
+    public ArrayList<Exercise> getExerciseList() {
+        ArrayList<Exercise> exercise = new ArrayList<>();
+        exercise.add(new Exercise("1", "R.drawable.bird", "Topic1"));
+       exercise.add(new Exercise("2", "R.drawable.cat", "Topic2"));
+        exercise.add(new Exercise("3", "R.drawable.bird", "Topic3"));
+        exercise.add(new Exercise("4", "R.drawable.bird", "Topic4"));
+        exercise.add(new Exercise("5", "R.drawable.bird", "Topic5"));
+        return exercise;
     }
 }
 

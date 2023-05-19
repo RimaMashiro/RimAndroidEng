@@ -11,8 +11,8 @@ import java.util.List;
 
 public interface DictionaryDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertAll(List<Grammar> grammars);
+    void insertAll(List<Dictionary> dictionary);
 
-    @Query("SELECT* FROM Grammars WHERE topicName=:topicName")
-    LiveData<Grammar> getAll(String topicName);
+    @Query("SELECT* FROM Dictionaries WHERE topicName=:topicName")
+    LiveData<Dictionary> getAll(String topicName);
 }

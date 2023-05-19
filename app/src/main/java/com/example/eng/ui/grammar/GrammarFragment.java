@@ -48,7 +48,7 @@ public class GrammarFragment extends Fragment {
     private void initNavigationToTopicSelectionFragment() {
         viewModel.navigationToTopicSelectionFragment.observe(getViewLifecycleOwner(), aBoolean -> {
             if (aBoolean) {
-                Navigation.findNavController(binding.getRoot()).navigate(R.id.action_grammarFragment_to_topicSelectionFragment);
+                Navigation.findNavController(binding.getRoot()).popBackStack(R.id.topicSelectionFragment, true);
             }
         });
     }

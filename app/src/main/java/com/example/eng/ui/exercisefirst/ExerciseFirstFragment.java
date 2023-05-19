@@ -67,7 +67,7 @@ public class ExerciseFirstFragment extends Fragment {
         binding.firstAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewModel.onButtonFourthAnswerClicked();
+                viewModel.onButtonFirstAnswerClicked();
             }
         });
     };

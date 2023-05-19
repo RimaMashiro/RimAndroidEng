@@ -10,7 +10,7 @@ import java.util.List;
 @Dao
 public interface GrammarDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertAll(List<Grammar> grammars);
+    void insertAll(List<Grammar> grammar);
 
     @Query("SELECT* FROM Grammars WHERE topicName=:topicName")
 

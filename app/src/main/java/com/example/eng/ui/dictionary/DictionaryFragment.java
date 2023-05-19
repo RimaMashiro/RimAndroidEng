@@ -40,12 +40,12 @@ public class DictionaryFragment extends Fragment {
 
     }
     private void initRecyclerView() {
-        /*
-        DictionaryAdapter adapter = new DictionaryAdapter( viewModel );
-        binding.listDictionary.setAdapter(adapter);
-        viewModel.dictionary.observe(getViewLifecycleOwner(), adapter::updateTasksList);
 
-         */
+        DictionaryAdapter adapter = new DictionaryAdapter();
+        binding.listDictionary.setAdapter(adapter);
+        viewModel.dictionary.observe(getViewLifecycleOwner(), adapter::updateWordsList);
+
+
     }
 
     private void initButtonTopics() {
@@ -59,7 +59,7 @@ public class DictionaryFragment extends Fragment {
     private void initNavigationToTopicSelectionFragment() {
         viewModel.navigationToTopicSelectionFragment.observe(getViewLifecycleOwner(), aBoolean -> {
             if (aBoolean) {
-                Navigation.findNavController(binding.getRoot()).navigate(R.id.action_grammarFragment_to_topicSelectionFragment);
+                Navigation.findNavController(binding.getRoot()).popBackStack(R.id.topicSelectionFragment, true);
             }
         });
     }
