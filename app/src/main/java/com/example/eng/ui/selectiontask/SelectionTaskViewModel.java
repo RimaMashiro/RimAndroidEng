@@ -1,13 +1,10 @@
 package com.example.eng.ui.selectiontask;
 
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
 
-import com.example.eng.ui.grammar.Grammar;
 import com.example.eng.util.SingleLiveEvent;
 
 import javax.inject.Inject;
@@ -15,48 +12,50 @@ import javax.inject.Inject;
 import dagger.hilt.android.lifecycle.HiltViewModel;
 
 @HiltViewModel
-
 public class SelectionTaskViewModel extends ViewModel {
     private SelectionTaskDAO selectionTaskDAO;
-    private SingleLiveEvent<Boolean> _navigationToDictionaryFragment = new SingleLiveEvent<>();
+
+    private final SingleLiveEvent<Boolean> _navigationToDictionaryFragment = new SingleLiveEvent<>();
     LiveData<Boolean> navigationToDictionaryFragment = _navigationToDictionaryFragment;
 
-    private SingleLiveEvent<String> _navigationToGrammarFragment = new SingleLiveEvent<>();
+    private final SingleLiveEvent<String> _navigationToGrammarFragment = new SingleLiveEvent<>();
     LiveData<String> navigationToGrammarFragment = _navigationToGrammarFragment;
 
-    private SingleLiveEvent<String> _navigationToExerciseFirstFragment = new SingleLiveEvent<>();
+    private final SingleLiveEvent<String> _navigationToExerciseFirstFragment = new SingleLiveEvent<>();
     LiveData<String> navigationToExerciseFirstFragment = _navigationToExerciseFirstFragment;
 
-    private SingleLiveEvent<Boolean> _navigationToTopicSelectionFragment = new SingleLiveEvent<>();
+    private final SingleLiveEvent<Boolean> _navigationToTopicSelectionFragment = new SingleLiveEvent<>();
     LiveData<Boolean> navigationToTopicSelectionFragment = _navigationToTopicSelectionFragment;
 
     //для пердачи аргумента имени темы
-    private MutableLiveData<String>_topicName=new MutableLiveData<>();
-    LiveData<String> topicName=_topicName;
+    private final MutableLiveData<String> _topicName = new MutableLiveData<>();
+    LiveData<String> topicName = _topicName;
+
     LiveData<SelectionTask> selectionTask;
 
     @Inject
-    public SelectionTaskViewModel(SavedStateHandle savedStateHandle, SelectionTaskDAO selectionTaskDAO){
-        String topicName=savedStateHandle.get("name");
-        boolean contains=savedStateHandle.contains("name");
-        Log.e("TAG", savedStateHandle.keys().toString());
-        _topicName.setValue(topicName);
+    public SelectionTaskViewModel(SelectionTaskDAO selectionTaskDAO) {
         this.selectionTaskDAO = selectionTaskDAO;
-        selectionTask= this.selectionTaskDAO.getAll(topicName);
-     }
+    }
 
     //public void onButtonGoToDictionaryClicked() {
-        //_navigationToDictionaryFragment.setValue(true);
+    //_navigationToDictionaryFragment.setValue(true);
     //}
 
     public void onButtonGoToGrammarClicked() {
         _navigationToGrammarFragment.setValue(topicName.getValue());
     }
+
     public void onButtonGoToExerciseFirstClicked() {
         _navigationToExerciseFirstFragment.setValue(topicName.getValue());
     }
 
-     public void onButtonGoToTopicClicked() {
-       // _navigationToTopicFragment.setValue(true);
+    public void onButtonGoToTopicClicked() {
+        // _navigationToTopicFragment.setValue(true);
+    }
+
+    public void setTopicName(String topicName) {
+        _topicName.setValue(topicName);
+        selectionTask = this.selectionTaskDAO.getAll(topicName);
     }
 }

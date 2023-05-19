@@ -15,9 +15,9 @@
     <string name="registrationerror">Ошибка регистрации</string>
     <string name="loginerror">Ошибка входа</string>
     <string name="name_task3">Выбери ответ-2</string>
-    <string name="name_task2">Выьери ответ-1</string>
+    <string name="name_task2">Выбери ответ-1</string>
     <string name="name_task1">Впиши ответ</string>
     <string name="task_grammar">Грамматика</string>
-    <string name="task_dictionary">ловарь</string>
+    <string name="task_dictionary">Словарь</string>
     <string name="enter_answer">Введите ответ на английском</string>
 </resources>

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import dagger.hilt.android.AndroidEntryPoint;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +15,7 @@ import androidx.navigation.Navigation;
 import com.example.eng.R;
 import com.example.eng.databinding.FragmentGrammarBinding;
 
+@AndroidEntryPoint
 public class GrammarFragment extends Fragment {
 
     private GrammarViewModel viewModel;
@@ -30,6 +32,9 @@ public class GrammarFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ViewModelProvider provider = new ViewModelProvider(requireActivity());
         viewModel = provider.get(GrammarViewModel.class);
+        String topicName = GrammarFragmentArgs.fromBundle(getArguments()).getName();
+        viewModel.setTopicName(topicName);
+
         initButtonTopics();
         initButtonTasks();
         initNavigationToTopicSelectionFragment();
@@ -60,10 +65,9 @@ public class GrammarFragment extends Fragment {
             }
         });
     }
+
     //получение аргумента
-    private void  initGetArg(){
-        viewModel.topicName.observe(getViewLifecycleOwner(),topicName->{
-            binding.topicName.setText(topicName);
-        });
+    private void initGetArg() {
+        viewModel.topicName.observe(getViewLifecycleOwner(), topicName -> binding.topicName.setText(topicName));
     }
 }
