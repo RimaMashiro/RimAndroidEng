@@ -57,8 +57,6 @@ public class RegistrationFragment extends Fragment {
                 viewModel.onEmailChanged(editable.toString());
             }
         });
-
-
     }
 
     private void initEditTextPassword() {
@@ -93,8 +91,6 @@ public class RegistrationFragment extends Fragment {
             }
         });
     }
-
-
 
     private void initErrorShowing() {
         viewModel.showErrorMessage.observe(getViewLifecycleOwner(), aBoolean -> {

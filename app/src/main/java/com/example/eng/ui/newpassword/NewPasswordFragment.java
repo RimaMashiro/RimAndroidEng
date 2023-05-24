@@ -19,7 +19,7 @@ import com.example.eng.databinding.FragmentNewPasswordBinding;
 
 public class NewPasswordFragment extends Fragment {
 
-    private  NewPasswordViewModel viewModel;
+    private NewPasswordViewModel viewModel;
     private FragmentNewPasswordBinding binding;
 
     @Override
@@ -32,15 +32,15 @@ public class NewPasswordFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ViewModelProvider provider= new ViewModelProvider(requireActivity());
-        viewModel= provider.get(NewPasswordViewModel.class);
+        ViewModelProvider provider = new ViewModelProvider(requireActivity());
+        viewModel = provider.get(NewPasswordViewModel.class);
         initEditTextNewPassword();
         initButtonNewPassword();
         initNavigationToSignFragment();
     }
 
-    private void initEditTextNewPassword(){
-        binding.editTextNewPassword.addTextChangedListener(new TextWatcher(){
+    private void initEditTextNewPassword() {
+        binding.editTextNewPassword.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -58,15 +58,15 @@ public class NewPasswordFragment extends Fragment {
         });
     }
 
-
-    private void initButtonNewPassword(){
+    private void initButtonNewPassword() {
 
         binding.buttonNewPassword.setOnClickListener(view -> viewModel.onButtonNewPasswordClicked());
     }
+
     private void initNavigationToSignFragment() {
         viewModel.navigationToSignFragment.observe(getViewLifecycleOwner(), aBoolean -> {
             if (aBoolean) {
-                Navigation.findNavController(binding.getRoot()).popBackStack(R.id.loginFragment,true);
+                Navigation.findNavController(binding.getRoot()).popBackStack(R.id.loginFragment, true);
             }
         });
     }

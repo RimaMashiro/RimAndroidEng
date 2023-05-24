@@ -3,11 +3,12 @@ package com.example.eng.data;
 import javax.inject.Inject;
 
 public class ResultRepository {
-    int countFirst=0;
-    int countSecond=0;
-    int countThird=0;
+    int countFirst = 0;
+    int countSecond = 0;
+    int countThird = 0;
+
     @Inject
-    public ResultRepository(){
+    public ResultRepository() {
     }
 
     public int getCountFirst() {

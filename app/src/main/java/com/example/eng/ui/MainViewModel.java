@@ -13,5 +13,4 @@ public class MainViewModel extends ViewModel {
     private final AuthManager authManager = AuthManager.getInstance();
 
     LiveData<FirebaseUser> user = authManager.user;
-
 }

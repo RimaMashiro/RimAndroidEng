@@ -48,14 +48,14 @@ public class SelectionTaskViewModel extends ViewModel {
     @Inject
     public SelectionTaskViewModel(SelectionTaskDAO selectionTaskDAO, ResultRepository resultRepository) {
         this.selectionTaskDAO = selectionTaskDAO;
-        this.resultRepository=resultRepository;
-        _resultFirst.setValue(""+resultRepository.getCountFirst());
-        _resultSecond.setValue(""+resultRepository.getCountSecond());
-        _resultThird.setValue(""+resultRepository.getCountThird());
+        this.resultRepository = resultRepository;
+        _resultFirst.setValue("" + resultRepository.getCountFirst());
+        _resultSecond.setValue("" + resultRepository.getCountSecond());
+        _resultThird.setValue("" + resultRepository.getCountThird());
     }
 
     public void onButtonGoToDictionaryClicked() {
-    _navigationToDictionaryFragment.setValue(topicName.getValue());
+        _navigationToDictionaryFragment.setValue(topicName.getValue());
     }
 
     public void onButtonGoToGrammarClicked() {
@@ -63,15 +63,16 @@ public class SelectionTaskViewModel extends ViewModel {
     }
 
     public void onButtonGoToExerciseFirstClicked(ExerciseType exerciseType) {
-        Arguments arguments= new Arguments(topicName.getValue(),exerciseType);
+        Arguments arguments = new Arguments(topicName.getValue(), exerciseType);
         _navigationToExerciseFirstFragment.setValue(arguments);
     }
+
     public void onButtonGoToTopicClicked() {
-         _navigationToTopicSelectionFragment.setValue(true);
+        _navigationToTopicSelectionFragment.setValue(true);
     }
+
     public void setTopicName(String topicName) {
         _topicName.setValue(topicName);
         selectionTask = this.selectionTaskDAO.getAll(topicName);
     }
-
 }

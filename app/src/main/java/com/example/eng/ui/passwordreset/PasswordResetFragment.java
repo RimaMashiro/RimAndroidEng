@@ -51,10 +51,7 @@ public class PasswordResetFragment extends Fragment {
                 viewModel.onEmailChanged(editable.toString());
             }
         });
-
-
     }
-
 
     private void initButtonResetPassword() {
         binding.buttonResetPassword.setOnClickListener(view -> viewModel.onButtonResetPasswordClicked());

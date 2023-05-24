@@ -18,13 +18,16 @@ import com.example.eng.ui.topicselection.TopicDAO;
 
 @Database(entities = {Topic.class, Grammar.class, SelectionTask.class, Dictionary.class, Exercise.class}, version = 6)
 @TypeConverters({WordsConvertor.class})
-public abstract class  AppDatabase extends RoomDatabase {
-    public static String databaseName= "EngDatabase";
-    public  abstract TopicDAO getTopicDao();
-    public  abstract GrammarDAO getGrammarDao();
-    public  abstract SelectionTaskDAO getSelectionTaskDao();
+public abstract class AppDatabase extends RoomDatabase {
+    public static String databaseName = "EngDatabase";
+
+    public abstract TopicDAO getTopicDao();
+
+    public abstract GrammarDAO getGrammarDao();
+
+    public abstract SelectionTaskDAO getSelectionTaskDao();
+
     public abstract DictionaryDAO getDictionaryDao();
+
     public abstract ExerciseFirstDAO getExerciseFirstDao();
-
-
 }

@@ -6,19 +6,14 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.eng.R;
 import com.example.eng.data.ResultRepository;
-import com.example.eng.ui.dictionary.Dictionary;
 import com.example.eng.util.SingleLiveEvent;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.inject.Inject;
 
@@ -46,15 +41,12 @@ public class ExerciseFirstViewModel extends ViewModel {
     public LiveData<Boolean> showTrueAnswer = _showTrueAnswer;
     private final SingleLiveEvent<Boolean> _showFalseAnswer = new SingleLiveEvent<>();
     public LiveData<Boolean> showFalseAnswer = _showFalseAnswer;
-    //private final SingleLiveEvent<Boolean> _count = new SingleLiveEvent<>();
-    //public LiveData<Boolean> count = _count;
 
     @Inject
     public ExerciseFirstViewModel(ExerciseFirstDAO exerciseDAO, ExerciseRepository exerciseRepository, ResultRepository resultRepository) {
         this.exerciseDAO = exerciseDAO;
-        this.exerciseRepository=exerciseRepository;
-        this.resultRepository=resultRepository;
-
+        this.exerciseRepository = exerciseRepository;
+        this.resultRepository = resultRepository;
     }
 
     public void onAnswerChanged(String answer) {
@@ -88,7 +80,7 @@ public class ExerciseFirstViewModel extends ViewModel {
 
     public void setTopicName(String topicName) {
         _topicName.setValue(topicName);
-        exercises= exerciseDAO.getAll(topicName);
+        exercises = exerciseDAO.getAll(topicName);
         Log.d("TAG", exercises.toString());
         if (!exercises.isEmpty()) {
             exercise = exercises.get(0);
@@ -96,35 +88,32 @@ public class ExerciseFirstViewModel extends ViewModel {
         }
     }
 
-    public void answerFirstExercise(String answer){
-        HashMap<String,Integer> editAnswer=exerciseRepository.getImageAnswers();
-        for(Map.Entry<String, Integer> str: editAnswer.entrySet()){
-            if(answer.equals(str.getKey())){
+    public void answerFirstExercise(String answer) {
+        HashMap<String, Integer> editAnswer = exerciseRepository.getImageAnswers();
+        for (Map.Entry<String, Integer> str : editAnswer.entrySet()) {
+            if (answer.equals(str.getKey())) {
                 _showTrueAnswer.setValue(true);
                 resultRepository.setCountFirst();
-            }else{
+            } else {
                 _showFalseAnswer.setValue(true);
             }
         }
-        int index=exercises.indexOf(exercise);
-        if(index<exercises.size()-1){
-            exercise=exercises.get(index+1);
+        int index = exercises.indexOf(exercise);
+        if (index < exercises.size() - 1) {
+            exercise = exercises.get(index + 1);
             _imageId.setValue(exercise.getImageId());
         }
-
     }
 
 
-    public void answerSecondExercise(){
-
+    public void answerSecondExercise() {
 
 
     }
-    public void answerThirdExercise(){
+
+    public void answerThirdExercise() {
 
     }
-
-
 }
 
 

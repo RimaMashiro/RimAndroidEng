@@ -15,7 +15,6 @@ import androidx.navigation.Navigation;
 
 import com.example.eng.R;
 import com.example.eng.databinding.FragmentExerciseFirstBinding;
-import com.example.eng.ui.selectiontask.SelectionTaskFragmentArgs;
 import com.google.android.material.snackbar.Snackbar;
 
 public class ExerciseFirstFragment extends Fragment {
@@ -120,6 +119,7 @@ public class ExerciseFirstFragment extends Fragment {
             binding.imageViewExercise1.setImageResource(imageId);
         });
     }
+
     private void initTrueAnswerShowing() {
         viewModel.showTrueAnswer.observe(getViewLifecycleOwner(), aBoolean -> {
             if (aBoolean) {
@@ -127,6 +127,7 @@ public class ExerciseFirstFragment extends Fragment {
             }
         });
     }
+
     private void initFalseAnswerShowing() {
         viewModel.showTrueAnswer.observe(getViewLifecycleOwner(), aBoolean -> {
             if (aBoolean) {
