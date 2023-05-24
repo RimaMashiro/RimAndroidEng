@@ -21,7 +21,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:visibility="">
+        android:visibility="gone">
     <Button
         android:id="@+id/fourthAnswerEng"
         android:layout_width="wrap_content"
@@ -85,7 +85,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:visibility="gone">
+        >
 
         <EditText
             android:id="@+id/answer"
@@ -138,7 +138,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="gone">
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/textViewWord"

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import dagger.hilt.android.AndroidEntryPoint;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,11 +16,10 @@ import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import com.example.eng.R;
-import com.example.eng.databinding.FragmentRegistrationBinding;
 import com.example.eng.databinding.FragmentSelectionTaskBinding;
-import com.example.eng.ui.topicselection.TopicSelectionFragment;
-import com.example.eng.ui.topicselection.TopicSelectionFragmentDirections;
+import com.example.eng.ui.exercisefirst.ExerciseType;
 
+@AndroidEntryPoint
 public class SelectionTaskFragment extends Fragment {
 
     private SelectionTaskViewModel viewModel;
@@ -36,67 +36,91 @@ public class SelectionTaskFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ViewModelProvider provider = new ViewModelProvider(requireActivity());
         viewModel = provider.get(SelectionTaskViewModel.class);
+        String topicName = SelectionTaskFragmentArgs.fromBundle(getArguments()).getName();
+        viewModel.setTopicName(topicName);
+
+
         initButtonGoToGrammar();
+        initButtonGoToDictionary();
         initButtonGoToExerciseFirst();
         initButtonGoToExerciseSecond();
         initButtonGoToExerciseThird();
         initNavigationToGrammarFragment();
+        initNavigationToDictionaryFragment();
         initNavigationToExerciseFirstFragment();
         initNavigationToTopicSelectionFragment();
         initGetArg();
+        initTaskResult();
     }
-    /*private void initButtonGoToDictionary() {
+
+    private void initButtonGoToDictionary() {
         binding.buttonDictionary.setOnClickListener(view -> viewModel.onButtonGoToDictionaryClicked());
     }
-     */
+
     private void initButtonGoToGrammar() {
         binding.buttonGrammar.setOnClickListener(view -> viewModel.onButtonGoToGrammarClicked());
 
     }
+
     private void initButtonGoToExerciseFirst() {
-        binding.buttonExercise1.setOnClickListener(view -> viewModel.onButtonGoToExerciseFirstClicked());
+        binding.buttonExercise1.setOnClickListener(view -> viewModel.onButtonGoToExerciseFirstClicked(ExerciseType.FIRST));
     }
+
     private void initButtonGoToExerciseSecond() {
-        binding.buttonExercise2.setOnClickListener(view -> viewModel.onButtonGoToExerciseFirstClicked());
+        binding.buttonExercise2.setOnClickListener(view -> viewModel.onButtonGoToExerciseFirstClicked(ExerciseType.SECOND));
     }
+
     private void initButtonGoToExerciseThird() {
-        binding.buttonExercise3.setOnClickListener(view -> viewModel.onButtonGoToExerciseFirstClicked());
+        binding.buttonExercise3.setOnClickListener(view -> viewModel.onButtonGoToExerciseFirstClicked(ExerciseType.THIRD));
     }
-    /*
+
+
     private void initNavigationToDictionaryFragment() {
-        viewModel.navigationToGrammarFragment.observe(getViewLifecycleOwner(), name -> {
-            NavDirections action= SelectionTaskFragmentDirections.actionSelectionTaskFragmentToGrammarFragment(name);
+        viewModel.navigationToDictionaryFragment.observe(getViewLifecycleOwner(), name -> {
+            NavDirections action= SelectionTaskFragmentDirections.actionSelectionTaskFragmentToDictionaryFragment(name);
             Navigation.findNavController(binding.getRoot()).navigate(action);
 
         });
     }
-     */
+
     private void initNavigationToGrammarFragment() {
         viewModel.navigationToGrammarFragment.observe(getViewLifecycleOwner(), name -> {
-            Log.e("TAG",name.toString());
-            NavDirections action= SelectionTaskFragmentDirections.actionSelectionTaskFragmentToGrammarFragment(name);
+            NavDirections action = SelectionTaskFragmentDirections.actionSelectionTaskFragmentToGrammarFragment(name);
             Navigation.findNavController(binding.getRoot()).navigate(action);
-
         });
     }
+
     private void initNavigationToExerciseFirstFragment() {
-        viewModel.navigationToExerciseFirstFragment.observe(getViewLifecycleOwner(), name -> {
-            NavDirections action= SelectionTaskFragmentDirections.actionSelectionTaskFragmentToExerciseFirstFragment(name);
+        viewModel.navigationToExerciseFirstFragment.observe(getViewLifecycleOwner(), arguments -> {
+            NavDirections action = SelectionTaskFragmentDirections.actionSelectionTaskFragmentToExerciseFirstFragment(arguments.name,arguments.exerciseType);
             Navigation.findNavController(binding.getRoot()).navigate(action);
-
         });
     }
+
     private void initNavigationToTopicSelectionFragment() {
         viewModel.navigationToTopicSelectionFragment.observe(getViewLifecycleOwner(), aBoolean -> {
             if (aBoolean) {
-                Navigation.findNavController(binding.getRoot()).popBackStack(R.id.topicSelectionFragment,true);
+                Navigation.findNavController(binding.getRoot()).popBackStack(R.id.topicSelectionFragment, true);
             }
         });
     }
+
     //получение аргумента
-    private void  initGetArg(){
-        viewModel.topicName.observe(getViewLifecycleOwner(),topicName->{
-            binding.topicName.setText(topicName);
+    private void initGetArg() {
+        viewModel.topicName.observe(getViewLifecycleOwner(), topicName -> binding.topicName.setText(topicName));
+    }
+    private void initTaskResult(){
+        viewModel.resultFirst.observe(getViewLifecycleOwner(), result->{
+            String text=getString(R.string.result_pattern, result);
+            binding.textViewCountFirst.setText(text);
+        });
+        viewModel.resultSecond.observe(getViewLifecycleOwner(), result->{
+            String text=getString(R.string.result_pattern, result);
+            binding.textViewCountSecond.setText(text);
+        });
+        viewModel.resultThird.observe(getViewLifecycleOwner(), result->{
+            String text=getString(R.string.result_pattern, result);
+            binding.textViewCountThird.setText(text);
         });
     }
 }

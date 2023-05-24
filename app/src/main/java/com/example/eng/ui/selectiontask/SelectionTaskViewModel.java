@@ -1,13 +1,12 @@
 package com.example.eng.ui.selectiontask;
 
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
 
-import com.example.eng.ui.grammar.Grammar;
+import com.example.eng.data.ResultRepository;
+import com.example.eng.ui.exercisefirst.ExerciseType;
 import com.example.eng.util.SingleLiveEvent;
 
 import javax.inject.Inject;
@@ -15,48 +14,64 @@ import javax.inject.Inject;
 import dagger.hilt.android.lifecycle.HiltViewModel;
 
 @HiltViewModel
-
 public class SelectionTaskViewModel extends ViewModel {
     private SelectionTaskDAO selectionTaskDAO;
-    private SingleLiveEvent<Boolean> _navigationToDictionaryFragment = new SingleLiveEvent<>();
-    LiveData<Boolean> navigationToDictionaryFragment = _navigationToDictionaryFragment;
+    private ResultRepository resultRepository;
 
-    private SingleLiveEvent<String> _navigationToGrammarFragment = new SingleLiveEvent<>();
+
+    private final SingleLiveEvent<String> _navigationToDictionaryFragment = new SingleLiveEvent<>();
+    LiveData<String> navigationToDictionaryFragment = _navigationToDictionaryFragment;
+
+    private final SingleLiveEvent<String> _navigationToGrammarFragment = new SingleLiveEvent<>();
     LiveData<String> navigationToGrammarFragment = _navigationToGrammarFragment;
 
-    private SingleLiveEvent<String> _navigationToExerciseFirstFragment = new SingleLiveEvent<>();
-    LiveData<String> navigationToExerciseFirstFragment = _navigationToExerciseFirstFragment;
+    private final SingleLiveEvent<Arguments> _navigationToExerciseFirstFragment = new SingleLiveEvent<>();
+    LiveData<Arguments> navigationToExerciseFirstFragment = _navigationToExerciseFirstFragment;
 
-    private SingleLiveEvent<Boolean> _navigationToTopicSelectionFragment = new SingleLiveEvent<>();
+    private final SingleLiveEvent<Boolean> _navigationToTopicSelectionFragment = new SingleLiveEvent<>();
     LiveData<Boolean> navigationToTopicSelectionFragment = _navigationToTopicSelectionFragment;
 
     //для пердачи аргумента имени темы
-    private MutableLiveData<String>_topicName=new MutableLiveData<>();
-    LiveData<String> topicName=_topicName;
+    private final MutableLiveData<String> _topicName = new MutableLiveData<>();
+    LiveData<String> topicName = _topicName;
+
     LiveData<SelectionTask> selectionTask;
 
-    @Inject
-    public SelectionTaskViewModel(SavedStateHandle savedStateHandle, SelectionTaskDAO selectionTaskDAO){
-        String topicName=savedStateHandle.get("name");
-        boolean contains=savedStateHandle.contains("name");
-        Log.e("TAG", savedStateHandle.keys().toString());
-        _topicName.setValue(topicName);
-        this.selectionTaskDAO = selectionTaskDAO;
-        selectionTask= this.selectionTaskDAO.getAll(topicName);
-     }
 
-    //public void onButtonGoToDictionaryClicked() {
-        //_navigationToDictionaryFragment.setValue(true);
-    //}
+    private final MutableLiveData<String> _resultFirst = new MutableLiveData<>();
+    LiveData<String> resultFirst = _resultFirst;
+    private final MutableLiveData<String> _resultSecond = new MutableLiveData<>();
+    LiveData<String> resultSecond = _resultSecond;
+    private final MutableLiveData<String> _resultThird = new MutableLiveData<>();
+    LiveData<String> resultThird = _resultThird;
+
+    @Inject
+    public SelectionTaskViewModel(SelectionTaskDAO selectionTaskDAO, ResultRepository resultRepository) {
+        this.selectionTaskDAO = selectionTaskDAO;
+        this.resultRepository=resultRepository;
+        _resultFirst.setValue(""+resultRepository.getCountFirst());
+        _resultSecond.setValue(""+resultRepository.getCountSecond());
+        _resultThird.setValue(""+resultRepository.getCountThird());
+    }
+
+    public void onButtonGoToDictionaryClicked() {
+    _navigationToDictionaryFragment.setValue(topicName.getValue());
+    }
 
     public void onButtonGoToGrammarClicked() {
         _navigationToGrammarFragment.setValue(topicName.getValue());
     }
-    public void onButtonGoToExerciseFirstClicked() {
-        _navigationToExerciseFirstFragment.setValue(topicName.getValue());
+
+    public void onButtonGoToExerciseFirstClicked(ExerciseType exerciseType) {
+        Arguments arguments= new Arguments(topicName.getValue(),exerciseType);
+        _navigationToExerciseFirstFragment.setValue(arguments);
+    }
+    public void onButtonGoToTopicClicked() {
+         _navigationToTopicSelectionFragment.setValue(true);
+    }
+    public void setTopicName(String topicName) {
+        _topicName.setValue(topicName);
+        selectionTask = this.selectionTaskDAO.getAll(topicName);
     }
 
-     public void onButtonGoToTopicClicked() {
-       // _navigationToTopicFragment.setValue(true);
-    }
 }

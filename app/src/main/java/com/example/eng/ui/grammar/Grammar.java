@@ -13,6 +13,20 @@ public class Grammar {
         this.topicName=topicName;
         this.topicGrammar=topicGrammar;
     }
+
+    @NonNull
+    public String getTopicName() {
+        return topicName;
+    }
+
+    public void setTopicName(@NonNull String topicName) {
+        this.topicName = topicName;
+    }
+
+    public void setTopicGrammar(String topicGrammar) {
+        this.topicGrammar = topicGrammar;
+    }
+
     public String getTopicGrammar() {
         return this.topicGrammar;
     }

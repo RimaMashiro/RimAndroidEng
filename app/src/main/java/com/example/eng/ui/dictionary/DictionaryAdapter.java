@@ -36,11 +36,12 @@ public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryAdapter.Vi
         }
 
         public void updateWordsList(final Dictionary dictionary) {
+            if(dictionary!=null){
             this.wordsEng.clear();
             this.wordsRus.clear();
             wordsRus=dictionary.getWordsRus();
             wordsEng=dictionary.getWordsEng();
-            notifyDataSetChanged();
+            notifyDataSetChanged();}
         }
         public static class ViewHolder extends RecyclerView.ViewHolder {
             final TextView wordRus;

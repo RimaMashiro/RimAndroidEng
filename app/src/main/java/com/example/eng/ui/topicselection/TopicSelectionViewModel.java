@@ -1,9 +1,6 @@
 package com.example.eng.ui.topicselection;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.eng.data.SharedPreferencesManager;
@@ -22,7 +19,7 @@ public class TopicSelectionViewModel extends ViewModel implements TopicAdapter.O
     public final LiveData<List<Topic>> topics;
 
     private SingleLiveEvent<String> _navigationToSelectionTaskFragment = new SingleLiveEvent<>();
-    LiveData<String> navigationToSelectionTaskFragment= _navigationToSelectionTaskFragment;
+    LiveData<String> navigationToSelectionTaskFragment = _navigationToSelectionTaskFragment;
 
     @Inject
     public TopicSelectionViewModel(TopicDAO topicDAO, SharedPreferencesManager sharedPreferencesManager) {
@@ -37,7 +34,6 @@ public class TopicSelectionViewModel extends ViewModel implements TopicAdapter.O
 
     @Override
     public void onItemClick(Topic item) {
-        Log.e("TAG",item.getName());
         _navigationToSelectionTaskFragment.setValue(item.getName());
     }
 

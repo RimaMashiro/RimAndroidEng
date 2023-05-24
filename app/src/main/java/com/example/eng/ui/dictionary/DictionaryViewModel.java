@@ -10,13 +10,17 @@ import com.example.eng.ui.topicselection.TopicDAO;
 import com.example.eng.util.SingleLiveEvent;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import dagger.hilt.android.lifecycle.HiltViewModel;
+
+@HiltViewModel
 public class DictionaryViewModel extends ViewModel {
     private DictionaryDAO dictionaryDAO;
-    //public final LiveData<List<Dictionary>> dictionary;
+    //public final LiveData<List<Dictionary>> dictionary
 
     private final SingleLiveEvent<Boolean> _navigationToSelectionTaskFragment = new SingleLiveEvent<>();
     LiveData<Boolean> navigationToSelectionTaskFragment = _navigationToSelectionTaskFragment;
@@ -27,15 +31,16 @@ public class DictionaryViewModel extends ViewModel {
     LiveData<Dictionary> dictionary;
 
     @Inject
-    public DictionaryViewModel(TopicDAO topicDAO, SavedStateHandle savedStateHandle, SharedPreferencesManager sharedPreferencesManager) {
-        String topicName=savedStateHandle.get("name");
+    public DictionaryViewModel(DictionaryDAO dictionaryDAO, SharedPreferencesManager sharedPreferencesManager) {
         this.dictionaryDAO = dictionaryDAO;
-        dictionary = this.dictionaryDAO.getAll(topicName);
-        _topicName.setValue(topicName);
         if (sharedPreferencesManager.checkIsFirstLaunch()) {//если первый запуск
             this.dictionaryDAO.insertAll(getDictionaryList());//добавляем все
             sharedPreferencesManager.setIsFirstLaunch();//не первый запуск
         }
+    }
+    public void setTopicName(String topicName) {
+        _topicName.setValue(topicName);
+        dictionary = this.dictionaryDAO.getAll(topicName);
     }
 
     public void onButtonGoToTopicsSelectionClicked() {
@@ -48,10 +53,15 @@ public class DictionaryViewModel extends ViewModel {
 
     public ArrayList<Dictionary> getDictionaryList() {
         ArrayList<Dictionary> dictionary = new ArrayList<>();
-        dictionary.add(new Dictionary("Word", "Слово", "Topic1"));
-        dictionary.add(new Dictionary("Word", "Слово","Topic2"));
-        dictionary.add(new Dictionary("Word", "Слово","Topic3"));
-        dictionary.add(new Dictionary("Word", "Слово","Topic4"));
-        dictionary.add(new Dictionary("Word", "Слово","Topic5"));
+        String [] wordEn= new String[]{"word","write"};
+        String [] wordRu= new String[]{"слово","писать"};
+        List<String> wordEng = Arrays.asList(wordEn);
+        List<String> wordRus = Arrays.asList(wordRu);
+
+        dictionary.add(new Dictionary(wordEng, wordRus,"Topic1"));
+        dictionary.add(new Dictionary(wordEng, wordRus,"Topic2"));
+        dictionary.add(new Dictionary(wordEng, wordRus,"Topic3"));
+        dictionary.add(new Dictionary(wordEng, wordRus,"Topic4"));
+        dictionary.add(new Dictionary(wordEng, wordRus,"Topic5"));
         return dictionary;}
 }

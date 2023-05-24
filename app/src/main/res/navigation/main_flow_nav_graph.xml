@@ -47,6 +47,9 @@
         <argument
             android:name="name"
             app:argType="string" />
+        <argument
+            android:name="exerciseType"
+            app:argType="com.example.eng.ui.exercisefirst.ExerciseType" />
     </fragment>
     <fragment
         android:id="@+id/dictionaryFragment"

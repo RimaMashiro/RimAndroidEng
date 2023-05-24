@@ -16,8 +16,17 @@ public class Dictionary {
         @NonNull
         private String topicName;
 
-        private List<String> wordsEng;
+    public void setWordsEng(List<String> wordsEng) {
+        this.wordsEng = wordsEng;
+    }
+
+    public void setWordsRus(List<String> wordsRus) {
+        this.wordsRus = wordsRus;
+    }
+
+    private List<String> wordsEng;
         private List<String> wordsRus;
+
 
 
         public Dictionary(  List<String> wordsEng, List<String> wordsRus, String topicName){

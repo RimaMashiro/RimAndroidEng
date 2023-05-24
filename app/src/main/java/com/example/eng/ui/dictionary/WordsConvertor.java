@@ -1,9 +1,11 @@
 package com.example.eng.ui.dictionary;
 
+import androidx.room.ProvidedTypeConverter;
 import androidx.room.TypeConverter;
 
 import java.util.Arrays;
 import java.util.List;
+
 
 public class WordsConvertor {
     @TypeConverter
