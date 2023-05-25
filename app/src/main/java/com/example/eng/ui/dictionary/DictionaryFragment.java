@@ -1,5 +1,6 @@
 package com.example.eng.ui.dictionary;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -45,6 +46,7 @@ public class DictionaryFragment extends Fragment {
     private void initTopicName() {
         String topicName = DictionaryFragmentArgs.fromBundle(getArguments()).getName();
         viewModel.setTopicName(topicName);
+        binding.topicName.setText(topicName);
     }
 
     private void initRecyclerView() {

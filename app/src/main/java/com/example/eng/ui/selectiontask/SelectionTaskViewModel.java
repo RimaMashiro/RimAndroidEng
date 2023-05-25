@@ -33,9 +33,6 @@ public class SelectionTaskViewModel extends ViewModel {
     private final MutableLiveData<String> _topicName = new MutableLiveData<>();
     LiveData<String> topicName = _topicName;
 
-    LiveData<SelectionTask> selectionTask;
-
-
     private final MutableLiveData<String> _resultFirst = new MutableLiveData<>();
     LiveData<String> resultFirst = _resultFirst;
 

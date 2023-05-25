@@ -19,7 +19,7 @@ public class MainViewModel extends ViewModel {
 
     @Inject
     public MainViewModel(DataManager dataManager, SharedPreferencesManager sharedPreferencesManager) {
-        if(sharedPreferencesManager.checkIsFirstLaunch()){
+        if (sharedPreferencesManager.checkIsFirstLaunch()) {
             dataManager.addData();
             sharedPreferencesManager.setIsFirstLaunch();
         }

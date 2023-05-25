@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Dictionary;
 import java.util.Objects;
 
 @Entity(tableName = "Grammars")

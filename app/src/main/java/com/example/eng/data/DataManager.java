@@ -8,7 +8,6 @@ import com.example.eng.ui.exercisefirst.ExerciseFirstDAO;
 import com.example.eng.ui.exercisefirst.ExerciseType;
 import com.example.eng.ui.grammar.Grammar;
 import com.example.eng.ui.grammar.GrammarDAO;
-import com.example.eng.ui.selectiontask.SelectionTaskDAO;
 import com.example.eng.ui.topicselection.Topic;
 import com.example.eng.ui.topicselection.TopicDAO;
 
@@ -23,7 +22,6 @@ import javax.inject.Singleton;
 public class DataManager {
     private TopicDAO topicDAO;
     private GrammarDAO grammarDAO;
-    private SelectionTaskDAO selectionTaskDAO;
     private DictionaryDAO dictionaryDAO;
     private ExerciseFirstDAO exerciseFirstDAO;
 
@@ -31,13 +29,11 @@ public class DataManager {
     public DataManager(
             TopicDAO topicDAO,
             GrammarDAO grammarDAO,
-            SelectionTaskDAO selectionTaskDAO,
             DictionaryDAO dictionaryDAO,
             ExerciseFirstDAO exerciseFirstDAO
     ) {
         this.topicDAO = topicDAO;
         this.grammarDAO = grammarDAO;
-        this.selectionTaskDAO = selectionTaskDAO;
         this.dictionaryDAO = dictionaryDAO;
         this.exerciseFirstDAO = exerciseFirstDAO;
         addData();
