@@ -63,9 +63,9 @@ public class DataManager {
 
     public ArrayList<Exercise> getExerciseList() {
         ArrayList<Exercise> exercises = new ArrayList<>();
-        String[] wordEn1 = new String[]{"bird", "heaven", "eag", "card", "cat"};//слва к которым нужно найти перевод
+        String[] wordEn1 = new String[]{"bird", "heaven", "egg", "card", "cat"};//слва к которым нужно найти перевод
         String[] wordRu1 = new String[]{"птица", "небо", "яйцо", "карта", "кошка"};
-        String[] wordEngEx1 = new String[]{"bird", "heaven", "eag", "card", "cat", "bird", "heaven", "eag", "card", "cat", "bird", "heaven", "eag", "card", "cat", "bird", "heaven"};
+        String[] wordEngEx1 = new String[]{"bird", "heaven", "egg", "card", "cat", "bird", "heaven", "egg", "card", "cat", "bird", "heaven", "egg", "card", "cat", "bird", "heaven"};
         String[] wordRusEx1 = new String[]{"птица", "небо", "яйцо", "карта", "кошка", "птица", "небо", "яйцо", "карта", "кошка", "птица", "яйцо", "карта", "кошка", "птица", "небо", "яйцо", "карта", "кошка", "небо"};
         List<String> wordEnglish1 = Arrays.asList(wordEn1);
         List<String> wordRussian1 = Arrays.asList(wordRu1);

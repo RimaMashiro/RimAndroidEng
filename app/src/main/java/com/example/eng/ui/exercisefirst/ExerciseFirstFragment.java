@@ -36,6 +36,7 @@ public class ExerciseFirstFragment extends Fragment {
         viewModel.setTopicName(topicName);
 
         initButtonTopics();
+        initButtonAnswer();
         initButtonTasks();
         initNavigationToTopicSelectionFragment();
         initNavigationToSelectionTask();
@@ -46,8 +47,7 @@ public class ExerciseFirstFragment extends Fragment {
         initButtonFourthAnswer();
         initGetArg();
         initGetImgId();
-        initTrueAnswerShowing();
-        initFalseAnswerShowing();
+        initAnswerResultShowing();
     }
 
 
@@ -66,6 +66,10 @@ public class ExerciseFirstFragment extends Fragment {
                 viewModel.onAnswerChanged(editable.toString());
             }
         });
+    }
+
+    private void initButtonAnswer() {
+        binding.buttonAnswer.setOnClickListener(view -> viewModel.onButtonAnswer());
     }
 
     private void initButtonFirstAnswer() {
@@ -120,17 +124,11 @@ public class ExerciseFirstFragment extends Fragment {
         });
     }
 
-    private void initTrueAnswerShowing() {
-        viewModel.showTrueAnswer.observe(getViewLifecycleOwner(), aBoolean -> {
+    private void initAnswerResultShowing() {
+        viewModel.showAnswerResult.observe(getViewLifecycleOwner(), aBoolean -> {
             if (aBoolean) {
                 Snackbar.make(requireView(), getString(R.string.trueAnswer), Snackbar.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    private void initFalseAnswerShowing() {
-        viewModel.showTrueAnswer.observe(getViewLifecycleOwner(), aBoolean -> {
-            if (aBoolean) {
+            } else {
                 Snackbar.make(requireView(), getString(R.string.falseAnswer), Snackbar.LENGTH_SHORT).show();
             }
         });

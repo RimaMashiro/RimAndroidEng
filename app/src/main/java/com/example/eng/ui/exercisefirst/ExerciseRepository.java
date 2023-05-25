@@ -24,7 +24,7 @@ public class ExerciseRepository {
         HashMap<String, Integer> hashMap = new HashMap<>();
         hashMap.put("bird", R.drawable.bird);
         hashMap.put("cat", R.drawable.cat);
-        hashMap.put("eag", R.drawable.eag);
+        hashMap.put("egg", R.drawable.eag);
         hashMap.put("card", R.drawable.card);
         hashMap.put("heaven", R.drawable.heaven);
         return hashMap;

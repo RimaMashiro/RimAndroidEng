@@ -38,11 +38,8 @@ public class ExerciseFirstViewModel extends ViewModel {
     private final MutableLiveData<Integer> _imageId = new MutableLiveData<>();
     LiveData<Integer> imageId = _imageId;
 
-    private final SingleLiveEvent<Boolean> _showTrueAnswer = new SingleLiveEvent<>();
-    public LiveData<Boolean> showTrueAnswer = _showTrueAnswer;
-
-    private final SingleLiveEvent<Boolean> _showFalseAnswer = new SingleLiveEvent<>();
-    public LiveData<Boolean> showFalseAnswer = _showFalseAnswer;
+    private final SingleLiveEvent<Boolean> _showAnswerResult = new SingleLiveEvent<>();
+    public LiveData<Boolean> showAnswerResult = _showAnswerResult;
 
     @Inject
     public ExerciseFirstViewModel(ExerciseFirstDAO exerciseDAO, ExerciseRepository exerciseRepository, ResultRepository resultRepository) {
@@ -55,8 +52,12 @@ public class ExerciseFirstViewModel extends ViewModel {
         this.answer = answer;
     }
 
-    public void onButtonFirstAnswerClicked() {
+    public void onButtonAnswer() {
         answerFirstExercise(answer);
+    }
+
+    public void onButtonFirstAnswerClicked() {
+
     }
 
     public void onButtonSecondAnswerClicked() {
@@ -83,7 +84,6 @@ public class ExerciseFirstViewModel extends ViewModel {
     public void setTopicName(String topicName) {
         _topicName.setValue(topicName);
         exercises = exerciseDAO.getAll(topicName);
-        Log.d("TAG", exercises.toString());
         if (!exercises.isEmpty()) {
             exercise = exercises.get(0);
             _imageId.setValue(exercise.getImageId());
@@ -91,15 +91,20 @@ public class ExerciseFirstViewModel extends ViewModel {
     }
 
     public void answerFirstExercise(String answer) {
+        Log.d("TAG", "answerFirstExercise " + answer);
         HashMap<String, Integer> editAnswer = exerciseRepository.getImageAnswers();
+        boolean isAnswerCorrect = false;
+
         for (Map.Entry<String, Integer> str : editAnswer.entrySet()) {
             if (answer.equals(str.getKey())) {
-                _showTrueAnswer.setValue(true);
+                isAnswerCorrect = true;
                 resultRepository.setCountFirst();
-            } else {
-                _showFalseAnswer.setValue(true);
+                break;
             }
         }
+        Log.d("TAG", "answerFirstExercise, isAnswerCorrect " + isAnswerCorrect);
+        _showAnswerResult.setValue(isAnswerCorrect);
+
         int index = exercises.indexOf(exercise);
         if (index < exercises.size() - 1) {
             exercise = exercises.get(index + 1);
@@ -107,9 +112,7 @@ public class ExerciseFirstViewModel extends ViewModel {
         }
     }
 
-
     public void answerSecondExercise() {
-
 
     }
 
