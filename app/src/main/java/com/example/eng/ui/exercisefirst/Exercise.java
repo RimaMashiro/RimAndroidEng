@@ -5,9 +5,11 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.util.List;
+import java.util.Objects;
 
 @Entity(tableName = "Exercises")
 public class Exercise {
+
     @PrimaryKey
     @NonNull
     private String id; // название
@@ -20,7 +22,16 @@ public class Exercise {
     private List<String> wordRusExercise;
     private ExerciseType exerciseType;
 
-    public Exercise(String id, int imageId, ExerciseType exerciseType, String topicName, List<String> wordsEnglish, List<String> wordsRussians, List<String> wordEngExercise, List<String> wordRusExercise) {
+    public Exercise(
+            String id,
+            int imageId,
+            ExerciseType exerciseType,
+            String topicName,
+            List<String> wordsEnglish,
+            List<String> wordsRussians,
+            List<String> wordEngExercise,
+            List<String> wordRusExercise
+    ) {
         this.id = id;
         this.imageId = imageId;
         this.wordsEnglish = wordsEnglish;
@@ -29,6 +40,31 @@ public class Exercise {
         this.wordRusExercise = wordRusExercise;
         this.exerciseType = exerciseType;
         this.topicName = topicName;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, imageId, topicName, wordsEnglish, wordsRussians, wordEngExercise, wordRusExercise, exerciseType);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Exercise exercise = (Exercise) o;
+        return imageId == exercise.imageId &&
+                id.equals(exercise.id) &&
+                Objects.equals(topicName, exercise.topicName) &&
+                Objects.equals(wordsEnglish, exercise.wordsEnglish) &&
+                Objects.equals(wordsRussians, exercise.wordsRussians) &&
+                Objects.equals(wordEngExercise, exercise.wordEngExercise) &&
+                Objects.equals(wordRusExercise, exercise.wordRusExercise) &&
+                exerciseType == exercise.exerciseType;
+    }
+
+    @Override
+    public String toString() {
+        return "Exercise{" + "id='" + id + '\'' + ", imageId=" + imageId + ", topicName='" + topicName + '\'' + ", wordsEnglish=" + wordsEnglish + ", wordsRussians=" + wordsRussians + ", wordEngExercise=" + wordEngExercise + ", wordRusExercise=" + wordRusExercise + ", exerciseType=" + exerciseType + '}';
     }
 
     public String getId() {
