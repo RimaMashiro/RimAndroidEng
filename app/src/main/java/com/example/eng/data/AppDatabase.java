@@ -16,7 +16,7 @@ import com.example.eng.ui.selectiontask.SelectionTaskDAO;
 import com.example.eng.ui.topicselection.Topic;
 import com.example.eng.ui.topicselection.TopicDAO;
 
-@Database(entities = {Topic.class, Grammar.class, SelectionTask.class, Dictionary.class, Exercise.class}, version = 6)
+@Database(entities = {Topic.class, Grammar.class, SelectionTask.class, Dictionary.class, Exercise.class}, version = 7)
 @TypeConverters({WordsConvertor.class})
 public abstract class AppDatabase extends RoomDatabase {
     public static String databaseName = "EngDatabase";

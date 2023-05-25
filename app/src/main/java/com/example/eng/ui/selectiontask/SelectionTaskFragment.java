@@ -1,11 +1,9 @@
 package com.example.eng.ui.selectiontask;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import dagger.hilt.android.AndroidEntryPoint;
 
 import androidx.annotation.NonNull;

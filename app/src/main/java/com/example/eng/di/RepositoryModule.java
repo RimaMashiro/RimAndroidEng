@@ -25,6 +25,4 @@ public class RepositoryModule {
     public ResultRepository provideResultRepository(){
         return  new ResultRepository();
     }
-
-
 }

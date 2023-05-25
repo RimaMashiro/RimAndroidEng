@@ -9,6 +9,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
@@ -44,6 +45,11 @@ public class GrammarFragment extends Fragment {
 
     private void initButtonTopics() {
         binding.buttonTopics.setOnClickListener(view -> viewModel.onButtonGoToTopicsSelectionClicked());
+        viewModel.grammar.observe(getViewLifecycleOwner(), grammar -> {
+            if (grammar != null) {
+                binding.grammar.setText(grammar.topicGrammar);
+            }
+        });
     }
 
     private void initButtonTasks() {

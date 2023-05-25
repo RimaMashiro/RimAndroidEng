@@ -51,12 +51,10 @@ public class DatabaseModule {
     public ExerciseFirstDAO provideExerciseFirstDAO(AppDatabase database) {
         return database.getExerciseFirstDao();
     }
+
     @Provides
     @Singleton
     public DictionaryDAO provideDictionaryDAO(AppDatabase database) {
         return database.getDictionaryDao();
     }
-
-
-
 }

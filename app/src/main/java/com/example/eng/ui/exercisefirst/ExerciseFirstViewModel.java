@@ -37,8 +37,10 @@ public class ExerciseFirstViewModel extends ViewModel {
 
     private final MutableLiveData<Integer> _imageId = new MutableLiveData<>();
     LiveData<Integer> imageId = _imageId;
+
     private final SingleLiveEvent<Boolean> _showTrueAnswer = new SingleLiveEvent<>();
     public LiveData<Boolean> showTrueAnswer = _showTrueAnswer;
+
     private final SingleLiveEvent<Boolean> _showFalseAnswer = new SingleLiveEvent<>();
     public LiveData<Boolean> showFalseAnswer = _showFalseAnswer;
 

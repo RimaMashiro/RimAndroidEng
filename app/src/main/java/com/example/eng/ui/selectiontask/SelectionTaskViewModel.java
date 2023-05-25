@@ -15,9 +15,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 
 @HiltViewModel
 public class SelectionTaskViewModel extends ViewModel {
-    private SelectionTaskDAO selectionTaskDAO;
     private ResultRepository resultRepository;
-
 
     private final SingleLiveEvent<String> _navigationToDictionaryFragment = new SingleLiveEvent<>();
     LiveData<String> navigationToDictionaryFragment = _navigationToDictionaryFragment;
@@ -40,14 +38,15 @@ public class SelectionTaskViewModel extends ViewModel {
 
     private final MutableLiveData<String> _resultFirst = new MutableLiveData<>();
     LiveData<String> resultFirst = _resultFirst;
+
     private final MutableLiveData<String> _resultSecond = new MutableLiveData<>();
     LiveData<String> resultSecond = _resultSecond;
+
     private final MutableLiveData<String> _resultThird = new MutableLiveData<>();
     LiveData<String> resultThird = _resultThird;
 
     @Inject
-    public SelectionTaskViewModel(SelectionTaskDAO selectionTaskDAO, ResultRepository resultRepository) {
-        this.selectionTaskDAO = selectionTaskDAO;
+    public SelectionTaskViewModel(ResultRepository resultRepository) {
         this.resultRepository = resultRepository;
         _resultFirst.setValue("" + resultRepository.getCountFirst());
         _resultSecond.setValue("" + resultRepository.getCountSecond());
@@ -73,6 +72,5 @@ public class SelectionTaskViewModel extends ViewModel {
 
     public void setTopicName(String topicName) {
         _topicName.setValue(topicName);
-        selectionTask = this.selectionTaskDAO.getAll(topicName);
     }
 }
