@@ -22,6 +22,6 @@
     <string name="enter_answer">Введите ответ на английском</string>
     <string name="trueAnswer">Правильно</string>
     <string name="falseAnswer">Неправильно</string>
-    <string name="result_pattern">%1$s/8</string>
+    <string name="result_pattern">%1$d/8</string>
     <string name="ok">Ok</string>
 </resources>

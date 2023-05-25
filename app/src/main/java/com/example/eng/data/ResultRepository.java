@@ -1,37 +1,49 @@
 package com.example.eng.data;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
 import javax.inject.Inject;
 
 public class ResultRepository {
-    int countFirst = 0;
-    int countSecond = 0;
-    int countThird = 0;
+
+    private MutableLiveData<Integer> _countFirst = new MutableLiveData<>(0);
+    public LiveData<Integer> countFirst = _countFirst;
+
+    private MutableLiveData<Integer> _countSecond = new MutableLiveData<>(0);
+    public LiveData<Integer> countSecond = _countSecond;
+
+    private MutableLiveData<Integer> _countThird = new MutableLiveData<>(0);
+    public LiveData<Integer> countThird = _countThird;
 
     @Inject
     public ResultRepository() {
     }
 
-    public int getCountFirst() {
+    public LiveData<Integer> getCountFirst() {
         return countFirst;
     }
 
     public void setCountFirst() {
-        countFirst++;
+        int nextCount = _countFirst.getValue();
+        _countFirst.setValue(nextCount + 1);
     }
 
-    public int getCountSecond() {
+    public LiveData<Integer> getCountSecond() {
         return countSecond;
     }
 
     public void setCountSecond() {
-        countSecond++;
+        int nextCount = _countSecond.getValue();
+        _countSecond.setValue(nextCount + 1);
     }
 
-    public int getCountThird() {
+    public LiveData<Integer> getCountThird() {
         return countThird;
     }
 
     public void setCountThird() {
-        countThird++;
+        int nextCount = _countThird.getValue();
+        _countThird.setValue(nextCount + 1);
     }
 }

@@ -1,7 +1,5 @@
 package com.example.eng.ui.exercisefirst;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -53,7 +51,7 @@ public class ExerciseFirstViewModel extends ViewModel {
     }
 
     public void onButtonImageAnswerClicked() {
-        checkAnswer(answer);
+        checkAnswerFirst(answer);
         showNextImage();
     }
 
@@ -91,7 +89,7 @@ public class ExerciseFirstViewModel extends ViewModel {
         }
     }
 
-    public void checkAnswer(String answer) {
+    public void checkAnswerFirst(String answer) {
         HashMap<String, Integer> editAnswer = exerciseRepository.getImageAnswers();
         boolean isAnswerCorrect = false;
 

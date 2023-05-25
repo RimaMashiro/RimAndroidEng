@@ -37,7 +37,6 @@ public class SelectionTaskFragment extends Fragment {
         String topicName = SelectionTaskFragmentArgs.fromBundle(getArguments()).getName();
         viewModel.setTopicName(topicName);
 
-
         initButtonGoToGrammar();
         initButtonGoToDictionary();
         initButtonGoToExerciseFirst();

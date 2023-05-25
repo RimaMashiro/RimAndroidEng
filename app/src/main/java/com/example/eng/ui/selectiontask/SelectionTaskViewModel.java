@@ -33,21 +33,18 @@ public class SelectionTaskViewModel extends ViewModel {
     private final MutableLiveData<String> _topicName = new MutableLiveData<>();
     LiveData<String> topicName = _topicName;
 
-    private final MutableLiveData<String> _resultFirst = new MutableLiveData<>();
-    LiveData<String> resultFirst = _resultFirst;
+    LiveData<Integer> resultFirst;
 
-    private final MutableLiveData<String> _resultSecond = new MutableLiveData<>();
-    LiveData<String> resultSecond = _resultSecond;
+    LiveData<Integer> resultSecond;
 
-    private final MutableLiveData<String> _resultThird = new MutableLiveData<>();
-    LiveData<String> resultThird = _resultThird;
+    LiveData<Integer> resultThird;
 
     @Inject
     public SelectionTaskViewModel(ResultRepository resultRepository) {
         this.resultRepository = resultRepository;
-        _resultFirst.setValue("" + resultRepository.getCountFirst());
-        _resultSecond.setValue("" + resultRepository.getCountSecond());
-        _resultThird.setValue("" + resultRepository.getCountThird());
+        resultFirst = resultRepository.getCountFirst();
+        resultSecond = resultRepository.getCountSecond();
+        resultThird = resultRepository.getCountThird();
     }
 
     public void onButtonGoToDictionaryClicked() {
