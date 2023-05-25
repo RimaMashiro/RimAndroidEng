@@ -14,7 +14,7 @@ public class Exercise {
     @NonNull
     private String id; // название
 
-    private int imageId;
+    private String imageId;
     private String topicName;
     private List<String> wordsEnglish;
     private List<String> wordsRussians;
@@ -24,7 +24,7 @@ public class Exercise {
 
     public Exercise(
             String id,
-            int imageId,
+            String imageId,
             ExerciseType exerciseType,
             String topicName,
             List<String> wordsEnglish,
@@ -75,11 +75,11 @@ public class Exercise {
         this.id = id;
     }
 
-    public int getImageId() {
+    public String getImageId() {
         return this.imageId;
     }
 
-    public void setImageId(int imageId) {
+    public void setImageId(String imageId) {
         this.imageId = imageId;
     }
 

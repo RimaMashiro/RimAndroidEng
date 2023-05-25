@@ -35,8 +35,8 @@ public class ExerciseFirstViewModel extends ViewModel {
     private final MutableLiveData<String> _topicName = new MutableLiveData<>();
     LiveData<String> topicName = _topicName;
 
-    private final MutableLiveData<Integer> _imageId = new MutableLiveData<>();
-    LiveData<Integer> imageId = _imageId;
+    private final MutableLiveData<String> _imageId = new MutableLiveData<>();
+    LiveData<String> imageId = _imageId;
 
     private final SingleLiveEvent<Boolean> _showAnswerResult = new SingleLiveEvent<>();
     public LiveData<Boolean> showAnswerResult = _showAnswerResult;
@@ -52,8 +52,9 @@ public class ExerciseFirstViewModel extends ViewModel {
         this.answer = answer;
     }
 
-    public void onButtonAnswer() {
-        answerFirstExercise(answer);
+    public void onButtonImageAnswerClicked() {
+        checkAnswer(answer);
+        showNextImage();
     }
 
     public void onButtonFirstAnswerClicked() {
@@ -90,8 +91,7 @@ public class ExerciseFirstViewModel extends ViewModel {
         }
     }
 
-    public void answerFirstExercise(String answer) {
-        Log.d("TAG", "answerFirstExercise " + answer);
+    public void checkAnswer(String answer) {
         HashMap<String, Integer> editAnswer = exerciseRepository.getImageAnswers();
         boolean isAnswerCorrect = false;
 
@@ -102,9 +102,10 @@ public class ExerciseFirstViewModel extends ViewModel {
                 break;
             }
         }
-        Log.d("TAG", "answerFirstExercise, isAnswerCorrect " + isAnswerCorrect);
         _showAnswerResult.setValue(isAnswerCorrect);
+    }
 
+    private void showNextImage() {
         int index = exercises.indexOf(exercise);
         if (index < exercises.size() - 1) {
             exercise = exercises.get(index + 1);

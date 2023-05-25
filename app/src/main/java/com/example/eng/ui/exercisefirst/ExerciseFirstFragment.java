@@ -1,5 +1,6 @@
 package com.example.eng.ui.exercisefirst;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
@@ -32,11 +34,13 @@ public class ExerciseFirstFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ViewModelProvider provider = new ViewModelProvider(requireActivity());
         viewModel = provider.get(ExerciseFirstViewModel.class);
+
         String topicName = ExerciseFirstFragmentArgs.fromBundle(getArguments()).getName();
         viewModel.setTopicName(topicName);
 
+        // сделать получение типа задания и в зависимости от него отображать нужный лэйаут
         initButtonTopics();
-        initButtonAnswer();
+        initButtonImageAnswer();
         initButtonTasks();
         initNavigationToTopicSelectionFragment();
         initNavigationToSelectionTask();
@@ -68,8 +72,11 @@ public class ExerciseFirstFragment extends Fragment {
         });
     }
 
-    private void initButtonAnswer() {
-        binding.buttonAnswer.setOnClickListener(view -> viewModel.onButtonAnswer());
+    private void initButtonImageAnswer() {
+        binding.buttonAnswer.setOnClickListener(view -> {
+            viewModel.onButtonImageAnswerClicked();
+            binding.answer.setText("");
+        });
     }
 
     private void initButtonFirstAnswer() {
@@ -120,7 +127,9 @@ public class ExerciseFirstFragment extends Fragment {
 
     private void initGetImgId() {
         viewModel.imageId.observe(getViewLifecycleOwner(), imageId -> {
-            binding.imageViewExercise1.setImageResource(imageId);
+            int resourceID = requireActivity().getResources().getIdentifier(imageId, "drawable", requireActivity().getPackageName());
+            Drawable drawable = ContextCompat.getDrawable(requireContext(), resourceID);
+            binding.imageViewExercise1.setBackground(drawable);
         });
     }
 

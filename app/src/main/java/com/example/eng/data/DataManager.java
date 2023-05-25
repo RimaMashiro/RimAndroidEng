@@ -71,7 +71,9 @@ public class DataManager {
         List<String> wordRussian1 = Arrays.asList(wordRu1);
         List<String> wordEng1 = Arrays.asList(wordEngEx1);
         List<String> wordRus1 = Arrays.asList(wordRusEx1);
-        exercises.add(new Exercise(UUID.randomUUID().toString(), R.drawable.bird, ExerciseType.FIRST, "Topic1", wordEnglish1, wordRussian1, wordEng1, wordRus1));
+
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "bird", ExerciseType.FIRST, "Topic1", wordEnglish1, wordRussian1, wordEng1, wordRus1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "eag", ExerciseType.FIRST, "Topic1", wordEnglish1, wordRussian1, wordEng1, wordRus1));
         return exercises;
     }
 
