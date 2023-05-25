@@ -11,6 +11,7 @@ import com.example.eng.ui.grammar.GrammarDAO;
 import com.example.eng.ui.topicselection.Topic;
 import com.example.eng.ui.topicselection.TopicDAO;
 
+import android.util.Log;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -52,7 +53,6 @@ public class DataManager {
         String[] wordRu = new String[]{"слово", "писать"};
         List<String> wordEng = Arrays.asList(wordEn);
         List<String> wordRus = Arrays.asList(wordRu);
-
         dictionary.add(new Dictionary(wordEng, wordRus, "Topic1"));
         dictionary.add(new Dictionary(wordEng, wordRus, "Topic2"));
         dictionary.add(new Dictionary(wordEng, wordRus, "Topic3"));
