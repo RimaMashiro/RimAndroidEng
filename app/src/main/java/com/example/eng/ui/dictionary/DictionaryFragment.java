@@ -1,6 +1,5 @@
 package com.example.eng.ui.dictionary;
 
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -10,23 +9,17 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.eng.R;
 import com.example.eng.databinding.FragmentDictionaryBinding;
-import com.example.eng.databinding.FragmentTopicSelectionBinding;
-import com.example.eng.ui.grammar.GrammarFragmentArgs;
-import com.example.eng.ui.topicselection.TopicAdapter;
-import com.example.eng.ui.topicselection.TopicSelectionViewModel;
 
 public class DictionaryFragment extends Fragment {
 
     private DictionaryViewModel viewModel;
     private FragmentDictionaryBinding binding;
-    private DictionaryDAO dictionaryDAO;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,30 +32,29 @@ public class DictionaryFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ViewModelProvider provider = new ViewModelProvider(requireActivity());
         viewModel = provider.get(DictionaryViewModel.class);
-        String topicName = DictionaryFragmentArgs.fromBundle(getArguments()).getName();
-        viewModel.setTopicName(topicName);
+
+        initTopicName();
         initRecyclerView();
         initButtonTopics();
         initButtonTasks();
         initNavigationToTopicSelectionFragment();
         initNavigationToSelectionTask();
-
     }
-    private void initRecyclerView() {
 
+    private void initTopicName() {
+        String topicName = DictionaryFragmentArgs.fromBundle(getArguments()).getName();
+        viewModel.setTopicName(topicName);
+        binding.topicName.setText(topicName);
+    }
+
+    private void initRecyclerView() {
         DictionaryAdapter adapter = new DictionaryAdapter();
         binding.listDictionary.setAdapter(adapter);
-        viewModel.dictionary.observe(getViewLifecycleOwner(), new Observer<Dictionary>() {
-            @Override
-            public void onChanged(Dictionary dictionary) {
-                if(dictionary!=null){
-                Log.d("TAG", dictionary.toString());}
+        viewModel.dictionary.observe(getViewLifecycleOwner(), dictionary -> {
+            if (dictionary != null) {
                 adapter.updateWordsList(dictionary);
             }
         });
-
-
-
     }
 
     private void initButtonTopics() {
@@ -88,5 +80,4 @@ public class DictionaryFragment extends Fragment {
             }
         });
     }
-
 }

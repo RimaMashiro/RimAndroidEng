@@ -1,11 +1,9 @@
 package com.example.eng.ui.selectiontask;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import dagger.hilt.android.AndroidEntryPoint;
 
 import androidx.annotation.NonNull;
@@ -38,7 +36,6 @@ public class SelectionTaskFragment extends Fragment {
         viewModel = provider.get(SelectionTaskViewModel.class);
         String topicName = SelectionTaskFragmentArgs.fromBundle(getArguments()).getName();
         viewModel.setTopicName(topicName);
-
 
         initButtonGoToGrammar();
         initButtonGoToDictionary();
@@ -77,7 +74,7 @@ public class SelectionTaskFragment extends Fragment {
 
     private void initNavigationToDictionaryFragment() {
         viewModel.navigationToDictionaryFragment.observe(getViewLifecycleOwner(), name -> {
-            NavDirections action= SelectionTaskFragmentDirections.actionSelectionTaskFragmentToDictionaryFragment(name);
+            NavDirections action = SelectionTaskFragmentDirections.actionSelectionTaskFragmentToDictionaryFragment(name);
             Navigation.findNavController(binding.getRoot()).navigate(action);
 
         });
@@ -92,7 +89,7 @@ public class SelectionTaskFragment extends Fragment {
 
     private void initNavigationToExerciseFirstFragment() {
         viewModel.navigationToExerciseFirstFragment.observe(getViewLifecycleOwner(), arguments -> {
-            NavDirections action = SelectionTaskFragmentDirections.actionSelectionTaskFragmentToExerciseFirstFragment(arguments.name,arguments.exerciseType);
+            NavDirections action = SelectionTaskFragmentDirections.actionSelectionTaskFragmentToExerciseFirstFragment(arguments.name, arguments.exerciseType);
             Navigation.findNavController(binding.getRoot()).navigate(action);
         });
     }
@@ -109,17 +106,18 @@ public class SelectionTaskFragment extends Fragment {
     private void initGetArg() {
         viewModel.topicName.observe(getViewLifecycleOwner(), topicName -> binding.topicName.setText(topicName));
     }
-    private void initTaskResult(){
-        viewModel.resultFirst.observe(getViewLifecycleOwner(), result->{
-            String text=getString(R.string.result_pattern, result);
+
+    private void initTaskResult() {
+        viewModel.resultFirst.observe(getViewLifecycleOwner(), result -> {
+            String text = getString(R.string.result_pattern, result);
             binding.textViewCountFirst.setText(text);
         });
-        viewModel.resultSecond.observe(getViewLifecycleOwner(), result->{
-            String text=getString(R.string.result_pattern, result);
+        viewModel.resultSecond.observe(getViewLifecycleOwner(), result -> {
+            String text = getString(R.string.result_pattern, result);
             binding.textViewCountSecond.setText(text);
         });
-        viewModel.resultThird.observe(getViewLifecycleOwner(), result->{
-            String text=getString(R.string.result_pattern, result);
+        viewModel.resultThird.observe(getViewLifecycleOwner(), result -> {
+            String text = getString(R.string.result_pattern, result);
             binding.textViewCountThird.setText(text);
         });
     }

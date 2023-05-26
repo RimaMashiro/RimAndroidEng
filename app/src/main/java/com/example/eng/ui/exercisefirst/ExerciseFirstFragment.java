@@ -1,5 +1,6 @@
 package com.example.eng.ui.exercisefirst;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,13 +10,13 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.eng.R;
 import com.example.eng.databinding.FragmentExerciseFirstBinding;
-import com.example.eng.ui.selectiontask.SelectionTaskFragmentArgs;
 import com.google.android.material.snackbar.Snackbar;
 
 public class ExerciseFirstFragment extends Fragment {
@@ -33,10 +34,13 @@ public class ExerciseFirstFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ViewModelProvider provider = new ViewModelProvider(requireActivity());
         viewModel = provider.get(ExerciseFirstViewModel.class);
+
         String topicName = ExerciseFirstFragmentArgs.fromBundle(getArguments()).getName();
         viewModel.setTopicName(topicName);
 
+        // сделать получение типа задания и в зависимости от него отображать нужный лэйаут
         initButtonTopics();
+        initButtonImageAnswer();
         initButtonTasks();
         initNavigationToTopicSelectionFragment();
         initNavigationToSelectionTask();
@@ -47,8 +51,7 @@ public class ExerciseFirstFragment extends Fragment {
         initButtonFourthAnswer();
         initGetArg();
         initGetImgId();
-        initTrueAnswerShowing();
-        initFalseAnswerShowing();
+        initAnswerResultShowing();
     }
 
 
@@ -66,6 +69,13 @@ public class ExerciseFirstFragment extends Fragment {
             public void afterTextChanged(Editable editable) {
                 viewModel.onAnswerChanged(editable.toString());
             }
+        });
+    }
+
+    private void initButtonImageAnswer() {
+        binding.buttonAnswer.setOnClickListener(view -> {
+            viewModel.onButtonImageAnswerClicked();
+            binding.answer.setText("");
         });
     }
 
@@ -117,19 +127,17 @@ public class ExerciseFirstFragment extends Fragment {
 
     private void initGetImgId() {
         viewModel.imageId.observe(getViewLifecycleOwner(), imageId -> {
-            binding.imageViewExercise1.setImageResource(imageId);
+            int resourceID = requireActivity().getResources().getIdentifier(imageId, "drawable", requireActivity().getPackageName());
+            Drawable drawable = ContextCompat.getDrawable(requireContext(), resourceID);
+            binding.imageViewExercise1.setBackground(drawable);
         });
     }
-    private void initTrueAnswerShowing() {
-        viewModel.showTrueAnswer.observe(getViewLifecycleOwner(), aBoolean -> {
+
+    private void initAnswerResultShowing() {
+        viewModel.showAnswerResult.observe(getViewLifecycleOwner(), aBoolean -> {
             if (aBoolean) {
                 Snackbar.make(requireView(), getString(R.string.trueAnswer), Snackbar.LENGTH_SHORT).show();
-            }
-        });
-    }
-    private void initFalseAnswerShowing() {
-        viewModel.showTrueAnswer.observe(getViewLifecycleOwner(), aBoolean -> {
-            if (aBoolean) {
+            } else {
                 Snackbar.make(requireView(), getString(R.string.falseAnswer), Snackbar.LENGTH_SHORT).show();
             }
         });

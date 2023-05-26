@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import com.example.eng.R;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,16 +12,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.ViewHolder>{
+public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.ViewHolder> {
 
-    private List<Topic> topics=new ArrayList<>();
+    private List<Topic> topics = new ArrayList<>();
     private final OnItemClickListener onItemClickListener;
-    public TopicAdapter(OnItemClickListener onItemClickListener ) {
-        this.onItemClickListener=onItemClickListener;
+
+    public TopicAdapter(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
+
     @Override
     public TopicAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.list_item, parent, false);
         return new ViewHolder(view);
@@ -43,15 +45,17 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.ViewHolder>{
         this.topics = topics;
         notifyDataSetChanged();
     }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         final TextView nameView;
-        ViewHolder(View view){
+
+        ViewHolder(View view) {
             super(view);
             nameView = view.findViewById(R.id.name);
         }
     }
 
-    public interface OnItemClickListener{
+    public interface OnItemClickListener {
         void onItemClick(Topic item);
     }
 }

@@ -8,7 +8,6 @@ import com.example.eng.data.AppDatabase;
 import com.example.eng.ui.dictionary.DictionaryDAO;
 import com.example.eng.ui.exercisefirst.ExerciseFirstDAO;
 import com.example.eng.ui.grammar.GrammarDAO;
-import com.example.eng.ui.selectiontask.SelectionTaskDAO;
 import com.example.eng.ui.topicselection.TopicDAO;
 
 import javax.inject.Singleton;
@@ -42,21 +41,13 @@ public class DatabaseModule {
 
     @Provides
     @Singleton
-    public SelectionTaskDAO provideSelectionTaskDAO(AppDatabase database) {
-        return database.getSelectionTaskDao();
-    }
-
-    @Provides
-    @Singleton
     public ExerciseFirstDAO provideExerciseFirstDAO(AppDatabase database) {
         return database.getExerciseFirstDao();
     }
+
     @Provides
     @Singleton
     public DictionaryDAO provideDictionaryDAO(AppDatabase database) {
         return database.getDictionaryDao();
     }
-
-
-
 }

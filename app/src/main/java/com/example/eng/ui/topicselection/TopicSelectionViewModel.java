@@ -3,10 +3,8 @@ package com.example.eng.ui.topicselection;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.eng.data.SharedPreferencesManager;
 import com.example.eng.util.SingleLiveEvent;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -22,28 +20,13 @@ public class TopicSelectionViewModel extends ViewModel implements TopicAdapter.O
     LiveData<String> navigationToSelectionTaskFragment = _navigationToSelectionTaskFragment;
 
     @Inject
-    public TopicSelectionViewModel(TopicDAO topicDAO, SharedPreferencesManager sharedPreferencesManager) {
+    public TopicSelectionViewModel(TopicDAO topicDAO) {
         this.topicDAO = topicDAO;
         topics = this.topicDAO.getAll();
-
-        if (sharedPreferencesManager.checkIsFirstLaunch()) {//если первый запуск
-            this.topicDAO.insertAll(getTopicList());//добавляем все
-            sharedPreferencesManager.setIsFirstLaunch();//не первый запуск
-        }
     }
 
     @Override
     public void onItemClick(Topic item) {
         _navigationToSelectionTaskFragment.setValue(item.getName());
-    }
-
-    public ArrayList<Topic> getTopicList() {
-        ArrayList<Topic> topics = new ArrayList<>();
-        topics.add(new Topic("Topic1"));
-        topics.add(new Topic("Topic2"));
-        topics.add(new Topic("Topic3"));
-        topics.add(new Topic("Topic4"));
-        topics.add(new Topic("Topic5"));
-        return topics;
     }
 }

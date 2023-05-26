@@ -15,9 +15,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 
 @HiltViewModel
 public class SelectionTaskViewModel extends ViewModel {
-    private SelectionTaskDAO selectionTaskDAO;
     private ResultRepository resultRepository;
-
 
     private final SingleLiveEvent<String> _navigationToDictionaryFragment = new SingleLiveEvent<>();
     LiveData<String> navigationToDictionaryFragment = _navigationToDictionaryFragment;
@@ -35,27 +33,22 @@ public class SelectionTaskViewModel extends ViewModel {
     private final MutableLiveData<String> _topicName = new MutableLiveData<>();
     LiveData<String> topicName = _topicName;
 
-    LiveData<SelectionTask> selectionTask;
+    LiveData<Integer> resultFirst;
 
+    LiveData<Integer> resultSecond;
 
-    private final MutableLiveData<String> _resultFirst = new MutableLiveData<>();
-    LiveData<String> resultFirst = _resultFirst;
-    private final MutableLiveData<String> _resultSecond = new MutableLiveData<>();
-    LiveData<String> resultSecond = _resultSecond;
-    private final MutableLiveData<String> _resultThird = new MutableLiveData<>();
-    LiveData<String> resultThird = _resultThird;
+    LiveData<Integer> resultThird;
 
     @Inject
-    public SelectionTaskViewModel(SelectionTaskDAO selectionTaskDAO, ResultRepository resultRepository) {
-        this.selectionTaskDAO = selectionTaskDAO;
-        this.resultRepository=resultRepository;
-        _resultFirst.setValue(""+resultRepository.getCountFirst());
-        _resultSecond.setValue(""+resultRepository.getCountSecond());
-        _resultThird.setValue(""+resultRepository.getCountThird());
+    public SelectionTaskViewModel(ResultRepository resultRepository) {
+        this.resultRepository = resultRepository;
+        resultFirst = resultRepository.getCountFirst();
+        resultSecond = resultRepository.getCountSecond();
+        resultThird = resultRepository.getCountThird();
     }
 
     public void onButtonGoToDictionaryClicked() {
-    _navigationToDictionaryFragment.setValue(topicName.getValue());
+        _navigationToDictionaryFragment.setValue(topicName.getValue());
     }
 
     public void onButtonGoToGrammarClicked() {
@@ -63,15 +56,15 @@ public class SelectionTaskViewModel extends ViewModel {
     }
 
     public void onButtonGoToExerciseFirstClicked(ExerciseType exerciseType) {
-        Arguments arguments= new Arguments(topicName.getValue(),exerciseType);
+        Arguments arguments = new Arguments(topicName.getValue(), exerciseType);
         _navigationToExerciseFirstFragment.setValue(arguments);
     }
+
     public void onButtonGoToTopicClicked() {
-         _navigationToTopicSelectionFragment.setValue(true);
-    }
-    public void setTopicName(String topicName) {
-        _topicName.setValue(topicName);
-        selectionTask = this.selectionTaskDAO.getAll(topicName);
+        _navigationToTopicSelectionFragment.setValue(true);
     }
 
+    public void setTopicName(String topicName) {
+        _topicName.setValue(topicName);
+    }
 }
