@@ -37,8 +37,8 @@ public class ExerciseFirstFragment extends Fragment {
 
         String topicName = ExerciseFirstFragmentArgs.fromBundle(getArguments()).getName();
         viewModel.setTopicName(topicName);
+        ExerciseType exerciseType = ExerciseFirstFragmentArgs.fromBundle(getArguments()).getExerciseType();
 
-        // сделать получение типа задания и в зависимости от него отображать нужный лэйаут
         initButtonTopics();
         initButtonImageAnswer();
         initButtonTasks();
@@ -49,9 +49,9 @@ public class ExerciseFirstFragment extends Fragment {
         initButtonSecondAnswer();
         initButtonThirdAnswer();
         initButtonFourthAnswer();
-        initGetArg();
         initGetImgId();
         initAnswerResultShowing();
+        initExerciseLayot(exerciseType);
     }
 
 
@@ -119,11 +119,7 @@ public class ExerciseFirstFragment extends Fragment {
         });
     }
 
-    private void initGetArg() {
-        viewModel.topicName.observe(getViewLifecycleOwner(), topicName -> {
-            binding.topicName.setText(topicName);
-        });
-    }
+
 
     private void initGetImgId() {
         viewModel.imageId.observe(getViewLifecycleOwner(), imageId -> {
@@ -141,5 +137,19 @@ public class ExerciseFirstFragment extends Fragment {
                 Snackbar.make(requireView(), getString(R.string.falseAnswer), Snackbar.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private  void initExerciseLayot(ExerciseType exerciseType) {
+        switch (exerciseType) {
+            case FIRST:
+                binding.firstExercise.setVisibility(View.VISIBLE);
+                break;
+            case SECOND:
+                binding.secondExercise.setVisibility(View.VISIBLE);
+                break;
+            case THIRD:
+                binding.thirdExercise.setVisibility(View.VISIBLE);
+                break;
+        }
     }
 }

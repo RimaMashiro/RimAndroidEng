@@ -74,12 +74,15 @@ public class DataManager {
 
         exercises.add(new Exercise(UUID.randomUUID().toString(), "bird", ExerciseType.FIRST, "Topic1", wordEnglish1, wordRussian1, wordEng1, wordRus1));
         exercises.add(new Exercise(UUID.randomUUID().toString(), "eag", ExerciseType.FIRST, "Topic1", wordEnglish1, wordRussian1, wordEng1, wordRus1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "eag", ExerciseType.SECOND, "Topic1", wordEnglish1, wordRussian1, wordEng1, wordRus1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "eag", ExerciseType.THIRD, "Topic1", wordEnglish1, wordRussian1, wordEng1, wordRus1));
         return exercises;
     }
 
     public ArrayList<Grammar> getGrammarList() {
         ArrayList<Grammar> grammars = new ArrayList<>();
         // реализовать добавление грамматики
+        grammars.add(new Grammar("Инфинитив в английском языке представляет собой неличную форму английского глагола, которая обозначает только действие, не указывая ни лица, ни числа. Инфинитив отвечает на вопросы: что делать? что сделать?", "Topic1"));
         return grammars;
     }
 

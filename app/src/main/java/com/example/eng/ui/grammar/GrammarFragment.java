@@ -15,6 +15,7 @@ import androidx.navigation.Navigation;
 
 import com.example.eng.R;
 import com.example.eng.databinding.FragmentGrammarBinding;
+import com.example.eng.ui.dictionary.DictionaryFragmentArgs;
 
 @AndroidEntryPoint
 public class GrammarFragment extends Fragment {
@@ -40,9 +41,15 @@ public class GrammarFragment extends Fragment {
         initButtonTasks();
         initNavigationToTopicSelectionFragment();
         initNavigationToSelectionTask();
-        initGetArg();
+        initTopicName();
+
     }
 
+    private void initTopicName() {
+        String topicName = DictionaryFragmentArgs.fromBundle(getArguments()).getName();
+        viewModel.setTopicName(topicName);
+        binding.topicName.setText(topicName);
+    }
     private void initButtonTopics() {
         binding.buttonTopics.setOnClickListener(view -> viewModel.onButtonGoToTopicsSelectionClicked());
         viewModel.grammar.observe(getViewLifecycleOwner(), grammar -> {
@@ -59,7 +66,7 @@ public class GrammarFragment extends Fragment {
     private void initNavigationToTopicSelectionFragment() {
         viewModel.navigationToTopicSelectionFragment.observe(getViewLifecycleOwner(), aBoolean -> {
             if (aBoolean) {
-                Navigation.findNavController(binding.getRoot()).popBackStack(R.id.topicSelectionFragment, true);
+                Navigation.findNavController(binding.getRoot()).popBackStack(R.id.topicSelectionFragment  , true);
             }
         });
     }
@@ -72,8 +79,5 @@ public class GrammarFragment extends Fragment {
         });
     }
 
-    //получение аргумента
-    private void initGetArg() {
-        viewModel.topicName.observe(getViewLifecycleOwner(), topicName -> binding.topicName.setText(topicName));
-    }
+
 }

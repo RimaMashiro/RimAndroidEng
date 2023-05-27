@@ -1,5 +1,7 @@
 package com.example.eng.ui.exercisefirst;
 
+import android.view.View;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -23,6 +25,7 @@ public class ExerciseFirstViewModel extends ViewModel {
     private ResultRepository resultRepository;
     private Exercise exercise;
     private List<Exercise> exercises;
+    private ExerciseType type;
 
     private final SingleLiveEvent<Boolean> _navigationToSelectionTaskFragment = new SingleLiveEvent<>();
     LiveData<Boolean> navigationToSelectionTaskFragment = _navigationToSelectionTaskFragment;
@@ -32,6 +35,8 @@ public class ExerciseFirstViewModel extends ViewModel {
 
     private final MutableLiveData<String> _topicName = new MutableLiveData<>();
     LiveData<String> topicName = _topicName;
+
+
 
     private final MutableLiveData<String> _imageId = new MutableLiveData<>();
     LiveData<String> imageId = _imageId;
@@ -44,6 +49,7 @@ public class ExerciseFirstViewModel extends ViewModel {
         this.exerciseDAO = exerciseDAO;
         this.exerciseRepository = exerciseRepository;
         this.resultRepository = resultRepository;
+
     }
 
     public void onAnswerChanged(String answer) {
@@ -69,8 +75,6 @@ public class ExerciseFirstViewModel extends ViewModel {
     public void onButtonFourthAnswerClicked() {
     }
 
-    public void setText() {
-    }
 
     public void onButtonTopicsClicked() {
         _navigationToTopicSelectionFragment.setValue(true);
@@ -112,6 +116,8 @@ public class ExerciseFirstViewModel extends ViewModel {
     }
 
     public void answerSecondExercise() {
+        int index = exercises.indexOf(exercise);
+        //if(index %)
 
     }
 

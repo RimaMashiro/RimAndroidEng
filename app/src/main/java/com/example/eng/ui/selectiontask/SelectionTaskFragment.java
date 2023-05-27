@@ -46,7 +46,6 @@ public class SelectionTaskFragment extends Fragment {
         initNavigationToDictionaryFragment();
         initNavigationToExerciseFirstFragment();
         initNavigationToTopicSelectionFragment();
-        initGetArg();
         initTaskResult();
     }
 
@@ -102,10 +101,7 @@ public class SelectionTaskFragment extends Fragment {
         });
     }
 
-    //получение аргумента
-    private void initGetArg() {
-        viewModel.topicName.observe(getViewLifecycleOwner(), topicName -> binding.topicName.setText(topicName));
-    }
+
 
     private void initTaskResult() {
         viewModel.resultFirst.observe(getViewLifecycleOwner(), result -> {

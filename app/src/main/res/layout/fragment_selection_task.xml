@@ -28,27 +28,29 @@
             android:id="@+id/buttonGrammar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="32dp"
             android:background="@drawable/background_round_corner"
-            android:text="@string/task_grammar" />
+            android:text="@string/task_grammar"
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/buttonDictionary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/background_round_corner"
             android:text="@string/task_dictionary" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="32dp">
 
             <Button
                 android:id="@+id/buttonExercise1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#FFFFFF"
+                android:background="@drawable/background_round_corner"
                 android:text="@string/name_task1" />
 
             <TextView
@@ -62,13 +64,13 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="32dp">
 
             <Button
                 android:id="@+id/buttonExercise2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#3BFFFFFF"
+                android:background="@drawable/background_round_corner"
                 android:text="@string/name_task2" />
 
             <TextView
@@ -87,6 +89,7 @@
                 android:id="@+id/buttonExercise3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/background_round_corner"
                 android:text="@string/name_task3" />
 
             <TextView

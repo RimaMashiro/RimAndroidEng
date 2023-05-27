@@ -19,6 +19,7 @@
         app:layout_constraintVertical_bias="0.067" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/secondExercise"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone">
@@ -84,8 +85,10 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/firstExercise"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -135,6 +138,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/thirdExercise"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:visibility="gone"
@@ -224,6 +228,7 @@
         android:layout_height="79dp"
         android:layout_marginStart="38dp"
         android:layout_marginEnd="287dp"
+        android:src="@drawable/topics"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -236,6 +241,7 @@
         android:id="@+id/buttonTasksEx1"
         android:layout_width="78dp"
         android:layout_height="65dp"
+        android:src="@drawable/tasks"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.804"
