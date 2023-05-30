@@ -11,9 +11,11 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
+import com.example.eng.R;
 import com.example.eng.databinding.FragmentTopicSelectionBinding;
 
 import dagger.hilt.android.AndroidEntryPoint;
+import java.util.Objects;
 
 @AndroidEntryPoint
 public class TopicSelectionFragment extends Fragment {
@@ -45,8 +47,13 @@ public class TopicSelectionFragment extends Fragment {
     //отправление аргумента с помощтю актион
     private void initNavigationToSelectionTaskFragment() {
         viewModel.navigationToSelectionTaskFragment.observe(getViewLifecycleOwner(), name -> {
-            TopicSelectionFragmentDirections.ActionTopicSelectionFragmentToSelectionTaskFragment action = TopicSelectionFragmentDirections.actionTopicSelectionFragmentToSelectionTaskFragment(name);
-            Navigation.findNavController(binding.getRoot()).navigate(action);
+            if (Objects.requireNonNull(
+                    Navigation.findNavController(binding.getRoot()).getCurrentDestination()
+            ).getId() == R.id.topicSelectionFragment
+            ) {
+                TopicSelectionFragmentDirections.ActionTopicSelectionFragmentToSelectionTaskFragment action = TopicSelectionFragmentDirections.actionTopicSelectionFragmentToSelectionTaskFragment(name);
+                Navigation.findNavController(binding.getRoot()).navigate(action);
+            }
         });
     }
 }

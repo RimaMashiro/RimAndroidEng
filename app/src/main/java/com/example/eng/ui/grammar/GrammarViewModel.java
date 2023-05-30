@@ -16,12 +16,6 @@ public class GrammarViewModel extends ViewModel {
     @Inject
     public GrammarDAO grammarDAO;
 
-    private final SingleLiveEvent<Boolean> _navigationToSelectionTaskFragment = new SingleLiveEvent<>();
-    LiveData<Boolean> navigationToSelectionTaskFragment = _navigationToSelectionTaskFragment;
-
-    private final SingleLiveEvent<Boolean> _navigationToTopicSelectionFragment = new SingleLiveEvent<>();
-    LiveData<Boolean> navigationToTopicSelectionFragment = _navigationToTopicSelectionFragment;
-
     private final MutableLiveData<String> _topicName = new MutableLiveData<>();
     LiveData<String> topicName = _topicName;
 
@@ -39,14 +33,6 @@ public class GrammarViewModel extends ViewModel {
     @Inject
     public GrammarViewModel(GrammarDAO grammarDAO) {
         this.grammarDAO = grammarDAO;
-    }
-
-    public void onButtonGoToTopicsSelectionClicked() {
-        _navigationToTopicSelectionFragment.setValue(true);
-    }
-
-    public void onButtonGoToSelectionTasksClicked() {
-        _navigationToSelectionTaskFragment.setValue(true);
     }
 
     public void setTopicName(String topicName) {

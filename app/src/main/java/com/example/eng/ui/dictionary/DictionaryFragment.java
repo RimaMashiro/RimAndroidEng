@@ -37,8 +37,6 @@ public class DictionaryFragment extends Fragment {
         initRecyclerView();
         initButtonTopics();
         initButtonTasks();
-        initNavigationToTopicSelectionFragment();
-        initNavigationToSelectionTask();
     }
 
     private void initTopicName() {
@@ -58,26 +56,16 @@ public class DictionaryFragment extends Fragment {
     }
 
     private void initButtonTopics() {
-        binding.buttonTopicsDict.setOnClickListener(view -> viewModel.onButtonGoToTopicsSelectionClicked());
+        binding.buttonTopicsDict.setOnClickListener(view ->
+                Navigation.findNavController(
+                        binding.getRoot()).popBackStack(R.id.topicSelectionFragment, false
+                )
+        );
     }
 
     private void initButtonTasks() {
-        binding.buttonTasksDict.setOnClickListener(view -> viewModel.onButtonGoToSelectionTasksClicked());
-    }
-
-    private void initNavigationToTopicSelectionFragment() {
-        viewModel.navigationToTopicSelectionFragment.observe(getViewLifecycleOwner(), aBoolean -> {
-            if (aBoolean) {
-                Navigation.findNavController(binding.getRoot()).popBackStack(R.id.topicSelectionFragment, true);
-            }
-        });
-    }
-
-    private void initNavigationToSelectionTask() {
-        viewModel.navigationToSelectionTaskFragment.observe(getViewLifecycleOwner(), aBoolean -> {
-            if (aBoolean) {
-                Navigation.findNavController(binding.getRoot()).popBackStack(R.id.selectionTaskFragment, true);
-            }
-        });
+        binding.buttonTasksDict.setOnClickListener(view ->
+                Navigation.findNavController(binding.getRoot()).popBackStack()
+        );
     }
 }

@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/topicSelectionFragment"
         android:name="com.example.eng.ui.topicselection.TopicSelectionFragment"
-        android:label="TopicSelectionFragment" >
+        android:label="TopicSelectionFragment">
         <action
             android:id="@+id/action_topicSelectionFragment_to_selectionTaskFragment"
             app:destination="@id/selectionTaskFragment" />
@@ -16,13 +16,14 @@
     <fragment
         android:id="@+id/selectionTaskFragment"
         android:name="com.example.eng.ui.selectiontask.SelectionTaskFragment"
-        android:label="SelectionTaskFragment" >
+        android:label="SelectionTaskFragment">
         <action
             android:id="@+id/action_selectionTaskFragment_to_grammarFragment"
             app:destination="@id/grammarFragment" />
         <action
             android:id="@+id/action_selectionTaskFragment_to_exerciseFirstFragment"
-            app:destination="@id/exerciseFirstFragment" />
+            app:destination="@id/exerciseFirstFragment"
+            app:popUpToInclusive="false" />
         <argument
             android:name="name"
             app:argType="string" />
@@ -34,7 +35,7 @@
         android:id="@+id/grammarFragment"
         android:name="com.example.eng.ui.grammar.GrammarFragment"
         android:label="fragment_grammar"
-        tools:layout="@layout/fragment_grammar" >
+        tools:layout="@layout/fragment_grammar">
         <argument
             android:name="name"
             app:argType="string" />
@@ -43,7 +44,7 @@
         android:id="@+id/exerciseFirstFragment"
         android:name="com.example.eng.ui.exercisefirst.ExerciseFirstFragment"
         android:label="fragment_exercise_first"
-        tools:layout="@layout/fragment_exercise_first" >
+        tools:layout="@layout/fragment_exercise_first">
         <argument
             android:name="name"
             app:argType="string" />
@@ -55,7 +56,7 @@
         android:id="@+id/dictionaryFragment"
         android:name="com.example.eng.ui.dictionary.DictionaryFragment"
         android:label="fragment_dictionary"
-        tools:layout="@layout/fragment_dictionary" >
+        tools:layout="@layout/fragment_dictionary">
         <argument
             android:name="name"
             app:argType="string" />

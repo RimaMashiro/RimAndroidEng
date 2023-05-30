@@ -8,10 +8,10 @@
     tools:context=".ui.dictionary.DictionaryFragment">
 
     <TextView
-        android:textSize="22sp"
         android:id="@+id/topicName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="22sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="TextView" />
@@ -40,8 +40,7 @@
         app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listDictionary"
-        app:layout_constraintVertical_bias="0.333"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintVertical_bias="0.333" />
 
     <ImageButton
         android:id="@+id/buttonTasksDict"
@@ -53,7 +52,6 @@
         app:layout_constraintHorizontal_bias="0.872"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/buttonTopicsDict"
-        app:layout_constraintVertical_bias="0.258"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintVertical_bias="0.258" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -101,8 +101,6 @@ public class SelectionTaskFragment extends Fragment {
         });
     }
 
-
-
     private void initTaskResult() {
         viewModel.resultFirst.observe(getViewLifecycleOwner(), result -> {
             String text = getString(R.string.result_pattern, result);

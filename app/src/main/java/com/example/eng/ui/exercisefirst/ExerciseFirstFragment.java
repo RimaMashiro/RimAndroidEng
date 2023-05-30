@@ -40,10 +40,8 @@ public class ExerciseFirstFragment extends Fragment {
         ExerciseType exerciseType = ExerciseFirstFragmentArgs.fromBundle(getArguments()).getExerciseType();
 
         initButtonTopics();
-        initButtonImageAnswer();
         initButtonTasks();
-        initNavigationToTopicSelectionFragment();
-        initNavigationToSelectionTask();
+        initButtonImageAnswer();
         initEditTextAnswer();
         initButtonFirstAnswer();
         initButtonSecondAnswer();
@@ -53,7 +51,6 @@ public class ExerciseFirstFragment extends Fragment {
         initAnswerResultShowing();
         initExerciseLayot(exerciseType);
     }
-
 
     private void initEditTextAnswer() {
         binding.answer.addTextChangedListener(new TextWatcher() {
@@ -96,30 +93,18 @@ public class ExerciseFirstFragment extends Fragment {
     }
 
     private void initButtonTopics() {
-        binding.buttonTopicsEx1.setOnClickListener(view -> viewModel.onButtonTopicsClicked());
+        binding.buttonTopicsEx1.setOnClickListener(view ->
+                Navigation.findNavController(
+                        binding.getRoot()).popBackStack(R.id.topicSelectionFragment, false
+                )
+        );
     }
 
     private void initButtonTasks() {
-        binding.buttonTasksEx1.setOnClickListener(view -> viewModel.onButtonGoToSelectionTaskClicked());
+        binding.buttonTasksEx1.setOnClickListener(view ->
+                Navigation.findNavController(binding.getRoot()).popBackStack()
+        );
     }
-
-    private void initNavigationToTopicSelectionFragment() {
-        viewModel.navigationToTopicSelectionFragment.observe(getViewLifecycleOwner(), aBoolean -> {
-            if (aBoolean) {
-                Navigation.findNavController(binding.getRoot()).navigate(R.id.action_registrationFragment_to_signFragment);
-            }
-        });
-    }
-
-    private void initNavigationToSelectionTask() {
-        viewModel.navigationToSelectionTaskFragment.observe(getViewLifecycleOwner(), aBoolean -> {
-            if (aBoolean) {
-                Navigation.findNavController(binding.getRoot()).popBackStack(R.id.selectionTaskFragment, true);
-            }
-        });
-    }
-
-
 
     private void initGetImgId() {
         viewModel.imageId.observe(getViewLifecycleOwner(), imageId -> {
@@ -139,7 +124,7 @@ public class ExerciseFirstFragment extends Fragment {
         });
     }
 
-    private  void initExerciseLayot(ExerciseType exerciseType) {
+    private void initExerciseLayot(ExerciseType exerciseType) {
         switch (exerciseType) {
             case FIRST:
                 binding.firstExercise.setVisibility(View.VISIBLE);
@@ -153,3 +138,4 @@ public class ExerciseFirstFragment extends Fragment {
         }
     }
 }
+

@@ -9,7 +9,6 @@ import dagger.hilt.android.AndroidEntryPoint;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
@@ -39,10 +38,8 @@ public class GrammarFragment extends Fragment {
 
         initButtonTopics();
         initButtonTasks();
-        initNavigationToTopicSelectionFragment();
-        initNavigationToSelectionTask();
         initTopicName();
-
+        initGrammarText();
     }
 
     private void initTopicName() {
@@ -50,8 +47,8 @@ public class GrammarFragment extends Fragment {
         viewModel.setTopicName(topicName);
         binding.topicName.setText(topicName);
     }
-    private void initButtonTopics() {
-        binding.buttonTopics.setOnClickListener(view -> viewModel.onButtonGoToTopicsSelectionClicked());
+
+    private void initGrammarText() {
         viewModel.grammar.observe(getViewLifecycleOwner(), grammar -> {
             if (grammar != null) {
                 binding.grammar.setText(grammar.topicGrammar);
@@ -59,25 +56,17 @@ public class GrammarFragment extends Fragment {
         });
     }
 
+    private void initButtonTopics() {
+        binding.buttonTopics.setOnClickListener(view ->
+                Navigation.findNavController(
+                        binding.getRoot()).popBackStack(R.id.topicSelectionFragment, false
+                )
+        );
+    }
+
     private void initButtonTasks() {
-        binding.buttonTasks.setOnClickListener(view -> viewModel.onButtonGoToSelectionTasksClicked());
+        binding.buttonTasks.setOnClickListener(view ->
+                Navigation.findNavController(binding.getRoot()).popBackStack()
+        );
     }
-
-    private void initNavigationToTopicSelectionFragment() {
-        viewModel.navigationToTopicSelectionFragment.observe(getViewLifecycleOwner(), aBoolean -> {
-            if (aBoolean) {
-                Navigation.findNavController(binding.getRoot()).popBackStack(R.id.topicSelectionFragment  , true);
-            }
-        });
-    }
-
-    private void initNavigationToSelectionTask() {
-        viewModel.navigationToSelectionTaskFragment.observe(getViewLifecycleOwner(), aBoolean -> {
-            if (aBoolean) {
-                Navigation.findNavController(binding.getRoot()).popBackStack(R.id.selectionTaskFragment, true);
-            }
-        });
-    }
-
-
 }
