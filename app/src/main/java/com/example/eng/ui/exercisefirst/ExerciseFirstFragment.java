@@ -1,5 +1,6 @@
 package com.example.eng.ui.exercisefirst;
 
+import android.app.AlertDialog;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
@@ -20,6 +21,7 @@ import com.example.eng.databinding.FragmentExerciseFirstBinding;
 import com.google.android.material.snackbar.Snackbar;
 
 public class ExerciseFirstFragment extends Fragment {
+
     private ExerciseFirstViewModel viewModel;
     private FragmentExerciseFirstBinding binding;
 
@@ -49,6 +51,8 @@ public class ExerciseFirstFragment extends Fragment {
         initButtonFourthAnswer();
         initGetImgId();
         initAnswerResultShowing();
+        initFinishDialogShowing();
+        initEmptyAnswerShowing();
         initExerciseLayot(exerciseType);
     }
 
@@ -122,6 +126,24 @@ public class ExerciseFirstFragment extends Fragment {
                 Snackbar.make(requireView(), getString(R.string.falseAnswer), Snackbar.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void initFinishDialogShowing() {
+        viewModel.showFinishDialog.observe(getViewLifecycleOwner(), result -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+            builder.setPositiveButton(R.string.ok, (dialog, id) ->
+                    Navigation.findNavController(binding.getRoot()).popBackStack()
+            );
+            builder.setMessage(getString(R.string.finish_result_dialog_pattern, result));
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        });
+    }
+
+    private void initEmptyAnswerShowing() {
+        viewModel.showEmptyAnswerMessage.observe(getViewLifecycleOwner(), result ->
+                Snackbar.make(requireView(), getString(R.string.empty_answer_message), Snackbar.LENGTH_SHORT).show()
+        );
     }
 
     private void initExerciseLayot(ExerciseType exerciseType) {

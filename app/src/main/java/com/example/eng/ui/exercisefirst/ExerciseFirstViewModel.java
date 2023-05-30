@@ -17,7 +17,7 @@ import javax.inject.Inject;
 
 @HiltViewModel
 public class ExerciseFirstViewModel extends ViewModel {
-    private String answer;
+    private String answer = "";
     private ExerciseFirstDAO exerciseDAO;
     private ExerciseRepository exerciseRepository;
     private ResultRepository resultRepository;
@@ -34,12 +34,17 @@ public class ExerciseFirstViewModel extends ViewModel {
     private final SingleLiveEvent<Boolean> _showAnswerResult = new SingleLiveEvent<>();
     public LiveData<Boolean> showAnswerResult = _showAnswerResult;
 
+    private final SingleLiveEvent<Integer> _showFinishDialog = new SingleLiveEvent<>();
+    public LiveData<Integer> showFinishDialog = _showFinishDialog;
+
+    private final SingleLiveEvent<Boolean> _showEmptyAnswerMessage = new SingleLiveEvent<>();
+    public LiveData<Boolean> showEmptyAnswerMessage = _showEmptyAnswerMessage;
+
     @Inject
     public ExerciseFirstViewModel(ExerciseFirstDAO exerciseDAO, ExerciseRepository exerciseRepository, ResultRepository resultRepository) {
         this.exerciseDAO = exerciseDAO;
         this.exerciseRepository = exerciseRepository;
         this.resultRepository = resultRepository;
-
     }
 
     public void onAnswerChanged(String answer) {
@@ -47,8 +52,12 @@ public class ExerciseFirstViewModel extends ViewModel {
     }
 
     public void onButtonImageAnswerClicked() {
-        checkAnswerFirst(answer);
-        showNextImage();
+        if (!answer.isEmpty()) {
+            checkAnswerFirst(answer);
+            showNextImage();
+        } else {
+            _showEmptyAnswerMessage.setValue(true);
+        }
     }
 
     public void onButtonFirstAnswerClicked() {
@@ -93,6 +102,8 @@ public class ExerciseFirstViewModel extends ViewModel {
         if (index < exercises.size() - 1) {
             exercise = exercises.get(index + 1);
             _imageId.setValue(exercise.getImageId());
+        } else {
+            _showFinishDialog.setValue(resultRepository.countFirst.getValue());
         }
     }
 

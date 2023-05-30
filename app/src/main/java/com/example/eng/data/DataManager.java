@@ -1,6 +1,5 @@
 package com.example.eng.data;
 
-import com.example.eng.R;
 import com.example.eng.ui.dictionary.Dictionary;
 import com.example.eng.ui.dictionary.DictionaryDAO;
 import com.example.eng.ui.exercisefirst.Exercise;
@@ -11,7 +10,6 @@ import com.example.eng.ui.grammar.GrammarDAO;
 import com.example.eng.ui.topicselection.Topic;
 import com.example.eng.ui.topicselection.TopicDAO;
 
-import android.util.Log;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -37,7 +35,6 @@ public class DataManager {
         this.grammarDAO = grammarDAO;
         this.dictionaryDAO = dictionaryDAO;
         this.exerciseFirstDAO = exerciseFirstDAO;
-        addData();
     }
 
     public void addData() {
