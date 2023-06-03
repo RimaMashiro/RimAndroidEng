@@ -55,7 +55,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonRegister"
-        android:layout_width="210dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="146dp"
         android:layout_marginEnd="171dp"
@@ -74,7 +74,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonGoToSign"
-        android:layout_width="210dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/background_round_corner"
         android:backgroundTint="#C17CF3"
@@ -83,9 +83,9 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/buttonRegister"
         app:layout_constraintHorizontal_bias="0.477"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/buttonRegister"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
         app:layout_constraintVertical_bias="0.585" />
 </androidx.constraintlayout.widget.ConstraintLayout>

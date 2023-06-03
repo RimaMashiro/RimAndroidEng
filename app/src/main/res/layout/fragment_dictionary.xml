@@ -36,26 +36,26 @@
         android:id="@+id/buttonTopicsDict"
         android:layout_width="55dp"
         android:layout_height="48dp"
+        android:background="@android:color/transparent"
         android:src="@drawable/baseline_home_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listDictionary"
-        app:layout_constraintVertical_bias="0.333"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintVertical_bias="0.333" />
 
     <ImageButton
         android:id="@+id/buttonTasksDict"
         android:layout_width="55dp"
         android:layout_height="60dp"
+        android:background="@android:color/transparent"
         android:src="@drawable/baseline_menu_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.872"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/buttonTopicsDict"
-        app:layout_constraintVertical_bias="0.258"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintVertical_bias="0.258" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

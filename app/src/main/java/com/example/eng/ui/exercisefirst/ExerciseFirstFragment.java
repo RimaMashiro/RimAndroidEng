@@ -25,7 +25,6 @@ public class ExerciseFirstFragment extends Fragment {
 
     private ExerciseFirstViewModel viewModel;
     private FragmentExerciseFirstBinding binding;
-    private  ExerciseFirstDAO exerciseDAO;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -42,6 +41,7 @@ public class ExerciseFirstFragment extends Fragment {
         String topicName = ExerciseFirstFragmentArgs.fromBundle(getArguments()).getName();
         viewModel.setTopicName(topicName);
         ExerciseType exerciseType = ExerciseFirstFragmentArgs.fromBundle(getArguments()).getExerciseType();
+        viewModel.setExerciseType(exerciseType);
 
         initButtonTopics();
         initButtonTasks();
@@ -64,6 +64,7 @@ public class ExerciseFirstFragment extends Fragment {
         viewModel.setTopicName(topicName);
         binding.topicName.setText(topicName);
     }
+
     private void initEditTextAnswer() {
         binding.answer.addTextChangedListener(new TextWatcher() {
             @Override

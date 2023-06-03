@@ -47,6 +47,11 @@ public class ExerciseFirstViewModel extends ViewModel {
         this.resultRepository = resultRepository;
     }
 
+    public void setExerciseType(ExerciseType type) {
+        this.type = type;
+        resultRepository.clearResult(type);
+    }
+
     public void onAnswerChanged(String answer) {
         this.answer = answer;
     }

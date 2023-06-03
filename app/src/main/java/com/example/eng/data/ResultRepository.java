@@ -3,6 +3,9 @@ package com.example.eng.data;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.eng.ui.exercisefirst.ExerciseType;
+
+import android.util.Log;
 import javax.inject.Inject;
 
 public class ResultRepository {
@@ -45,5 +48,19 @@ public class ResultRepository {
     public void setCountThird() {
         int nextCount = _countThird.getValue();
         _countThird.setValue(nextCount + 1);
+    }
+
+    public void clearResult(ExerciseType type) {
+        switch (type) {
+            case FIRST:
+                _countFirst.setValue(0);
+                break;
+            case SECOND:
+                _countSecond.setValue(0);
+                break;
+            default:
+                _countThird.setValue(0);
+                break;
+        }
     }
 }
