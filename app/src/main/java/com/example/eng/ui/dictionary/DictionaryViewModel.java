@@ -22,8 +22,8 @@ public class DictionaryViewModel extends ViewModel {
 
         @Override
         public Dictionary apply(String input) {
-            if (topicName.getValue() != null) {
-                return dictionaryDAO.getAll();
+            if (input != null) {
+                return dictionaryDAO.getAll(input);
             }
             return null;
         }

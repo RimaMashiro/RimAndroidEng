@@ -38,11 +38,6 @@ public class ExerciseFirstFragment extends Fragment {
         ViewModelProvider provider = new ViewModelProvider(requireActivity());
         viewModel = provider.get(ExerciseFirstViewModel.class);
 
-        String topicName = ExerciseFirstFragmentArgs.fromBundle(getArguments()).getName();
-        viewModel.setTopicName(topicName);
-        ExerciseType exerciseType = ExerciseFirstFragmentArgs.fromBundle(getArguments()).getExerciseType();
-        viewModel.setExerciseType(exerciseType);
-
         initButtonTopics();
         initButtonTasks();
         initButtonImageAnswer();
@@ -55,14 +50,20 @@ public class ExerciseFirstFragment extends Fragment {
         initAnswerResultShowing();
         initFinishDialogShowing();
         initEmptyAnswerShowing();
-        initExerciseLayot(exerciseType);
         initTopicName();
+        initExerciseType();
     }
 
     private void initTopicName() {
         String topicName = DictionaryFragmentArgs.fromBundle(getArguments()).getName();
         viewModel.setTopicName(topicName);
         binding.topicName.setText(topicName);
+    }
+
+    private void initExerciseType() {
+        ExerciseType exerciseType = ExerciseFirstFragmentArgs.fromBundle(getArguments()).getExerciseType();
+        viewModel.setExerciseType(exerciseType);
+        initExerciseLayout(exerciseType);
     }
 
     private void initEditTextAnswer() {
@@ -155,7 +156,7 @@ public class ExerciseFirstFragment extends Fragment {
         );
     }
 
-    private void initExerciseLayot(ExerciseType exerciseType) {
+    private void initExerciseLayout(ExerciseType exerciseType) {
         switch (exerciseType) {
             case FIRST:
                 binding.firstExercise.setVisibility(View.VISIBLE);

@@ -62,7 +62,6 @@ public class SelectionTaskFragment extends Fragment {
 
     private void initButtonGoToGrammar() {
         binding.buttonGrammar.setOnClickListener(view -> viewModel.onButtonGoToGrammarClicked());
-
     }
 
     private void initButtonGoToExerciseFirst() {
@@ -77,12 +76,10 @@ public class SelectionTaskFragment extends Fragment {
         binding.buttonExercise3.setOnClickListener(view -> viewModel.onButtonGoToExerciseFirstClicked(ExerciseType.THIRD));
     }
 
-
     private void initNavigationToDictionaryFragment() {
         viewModel.navigationToDictionaryFragment.observe(getViewLifecycleOwner(), name -> {
             NavDirections action = SelectionTaskFragmentDirections.actionSelectionTaskFragmentToDictionaryFragment(name);
             Navigation.findNavController(binding.getRoot()).navigate(action);
-
         });
     }
 
