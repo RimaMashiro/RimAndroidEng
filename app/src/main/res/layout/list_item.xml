@@ -9,8 +9,10 @@
     <TextView
         android:id="@+id/name"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textSize="22sp"
+        android:layout_height="35dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textSize="24sp"
+        android:textColor="#956B9C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

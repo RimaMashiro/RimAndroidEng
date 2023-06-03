@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import com.example.eng.R;
@@ -51,7 +52,7 @@ public class TopicSelectionFragment extends Fragment {
                     Navigation.findNavController(binding.getRoot()).getCurrentDestination()
             ).getId() == R.id.topicSelectionFragment
             ) {
-                TopicSelectionFragmentDirections.ActionTopicSelectionFragmentToSelectionTaskFragment action = TopicSelectionFragmentDirections.actionTopicSelectionFragmentToSelectionTaskFragment(name);
+                NavDirections action = TopicSelectionFragmentDirections.actionTopicSelectionFragmentToSelectionTaskFragment(name);
                 Navigation.findNavController(binding.getRoot()).navigate(action);
             }
         });

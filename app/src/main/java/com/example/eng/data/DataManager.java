@@ -46,12 +46,12 @@ public class DataManager {
 
     public ArrayList<Dictionary> getDictionaryList() {
         ArrayList<Dictionary> dictionary = new ArrayList<>();
-        String[] wordEn = new String[]{"word", "write"};
-        String[] wordRu = new String[]{"слово", "писать"};
+        String[] wordEn = new String[]{"bird", "heaven", "egg", "card", "cat"};
+        String[] wordRu = new String[]{"птица", "небо", "яйцо", "карта", "кошка"};
         List<String> wordEng = Arrays.asList(wordEn);
         List<String> wordRus = Arrays.asList(wordRu);
-        dictionary.add(new Dictionary(wordEng, wordRus, "Topic1"));
-        dictionary.add(new Dictionary(wordEng, wordRus, "Topic2"));
+        dictionary.add(new Dictionary(wordEng, wordRus, "Инфинитив"));
+        dictionary.add(new Dictionary(wordEng, wordRus, "Глаголы to be"));
         dictionary.add(new Dictionary(wordEng, wordRus, "Topic3"));
         dictionary.add(new Dictionary(wordEng, wordRus, "Topic4"));
         dictionary.add(new Dictionary(wordEng, wordRus, "Topic5"));
@@ -69,27 +69,32 @@ public class DataManager {
         List<String> wordEng1 = Arrays.asList(wordEngEx1);
         List<String> wordRus1 = Arrays.asList(wordRusEx1);
 
-        exercises.add(new Exercise(UUID.randomUUID().toString(), "bird", ExerciseType.FIRST, "Topic1", wordEnglish1, wordRussian1, wordEng1, wordRus1));
-        exercises.add(new Exercise(UUID.randomUUID().toString(), "eag", ExerciseType.FIRST, "Topic1", wordEnglish1, wordRussian1, wordEng1, wordRus1));
-        exercises.add(new Exercise(UUID.randomUUID().toString(), "eag", ExerciseType.SECOND, "Topic1", wordEnglish1, wordRussian1, wordEng1, wordRus1));
-        exercises.add(new Exercise(UUID.randomUUID().toString(), "eag", ExerciseType.THIRD, "Topic1", wordEnglish1, wordRussian1, wordEng1, wordRus1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "bird", ExerciseType.FIRST, "Инфинитив", wordEnglish1, wordRussian1, wordEng1, wordRus1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "eag", ExerciseType.FIRST, "Инфинитив", wordEnglish1, wordRussian1, wordEng1, wordRus1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "card", ExerciseType.FIRST, "Инфинитив", wordEnglish1, wordRussian1, wordEng1, wordRus1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "heaven", ExerciseType.FIRST, "Инфинитив", wordEnglish1, wordRussian1, wordEng1, wordRus1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "cat", ExerciseType.FIRST, "Инфинитив", wordEnglish1, wordRussian1, wordEng1, wordRus1));
+
         return exercises;
     }
 
     public ArrayList<Grammar> getGrammarList() {
         ArrayList<Grammar> grammars = new ArrayList<>();
-        // реализовать добавление грамматики
-        grammars.add(new Grammar("Инфинитив в английском языке представляет собой неличную форму английского глагола, которая обозначает только действие, не указывая ни лица, ни числа. Инфинитив отвечает на вопросы: что делать? что сделать?", "Topic1"));
+        grammars.add(new Grammar("Инфинитив в английском языке представляет собой неличную форму английского глагола, которая обозначает только действие, не указывая ни лица, ни числа. Инфинитив отвечает на вопросы: что делать? что сделать?\n" +"to read – читать\n" +
+                "to speak – говорить \n"+"В русском языке инфинитив чаще называют неопределённой формой глагола. Именно инфинитив приводится в словарях, как начальная форма глагола.\n" +
+                "\n" +
+                "Формальным признаком инфинитива в английском языке является частица to, которая перед инфинитивом в некоторых случаях опускается." +
+                "", "Инфинитив"));
         return grammars;
     }
 
     public ArrayList<Topic> getTopicList() {
         ArrayList<Topic> topics = new ArrayList<>();
-        topics.add(new Topic("Topic1"));
-        topics.add(new Topic("Topic2"));
-        topics.add(new Topic("Topic3"));
-        topics.add(new Topic("Topic4"));
-        topics.add(new Topic("Topic5"));
+        topics.add(new Topic("Инфинитив"));
+        topics.add(new Topic("Глагол to be "));
+        topics.add(new Topic("Простое настоящее время"));
+        topics.add(new Topic("Простое прошедшее время"));
+        topics.add(new Topic("Модальный глагол Can"));
         return topics;
     }
 }

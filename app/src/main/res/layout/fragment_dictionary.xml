@@ -11,7 +11,9 @@
         android:id="@+id/topicName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="22sp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textColor="#AF83B6"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="TextView" />
@@ -32,26 +34,28 @@
 
     <ImageButton
         android:id="@+id/buttonTopicsDict"
-        android:layout_width="85dp"
-        android:layout_height="67dp"
-        android:src="@drawable/topics"
+        android:layout_width="55dp"
+        android:layout_height="48dp"
+        android:src="@drawable/baseline_home_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listDictionary"
-        app:layout_constraintVertical_bias="0.333" />
+        app:layout_constraintVertical_bias="0.333"
+        tools:src="@tools:sample/avatars" />
 
     <ImageButton
         android:id="@+id/buttonTasksDict"
-        android:layout_width="66dp"
+        android:layout_width="55dp"
         android:layout_height="60dp"
-        android:src="@drawable/tasks"
+        android:src="@drawable/baseline_menu_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.872"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/buttonTopicsDict"
-        app:layout_constraintVertical_bias="0.258" />
+        app:layout_constraintVertical_bias="0.258"
+        tools:src="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

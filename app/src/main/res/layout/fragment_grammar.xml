@@ -14,30 +14,37 @@
         android:layout_marginTop="26dp"
         android:layout_marginEnd="312dp"
         android:layout_marginBottom="686dp"
+        android:fontFamily="sans-serif-condensed-medium"
         android:text="TextView"
+        android:textColor="#AF83B6"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.476" />
 
     <TextView
         android:id="@+id/grammar"
-        android:layout_width="406dp"
-        android:layout_height="368dp"
+        android:layout_width="397dp"
+        android:layout_height="490dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.339"
-        tools:layout_editor_absoluteX="4dp" />
+        app:layout_constraintVertical_bias="0.339" />
 
     <ImageButton
         android:id="@+id/buttonTopics"
-        android:layout_width="79dp"
-        android:layout_height="57dp"
+        android:layout_width="55dp"
+        android:layout_height="48dp"
         android:layout_marginStart="38dp"
         android:layout_marginEnd="287dp"
-        android:src="@drawable/topics"
+        android:src="@drawable/baseline_home_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -48,9 +55,9 @@
 
     <ImageButton
         android:id="@+id/buttonTasks"
-        android:layout_width="79dp"
-        android:layout_height="57dp"
-        android:src="@drawable/tasks"
+        android:layout_width="55dp"
+        android:layout_height="48dp"
+        android:src="@drawable/baseline_menu_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.804"

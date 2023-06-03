@@ -22,8 +22,8 @@
     <string name="enter_answer">Введите ответ на английском</string>
     <string name="trueAnswer">Правильно</string>
     <string name="falseAnswer">Неправильно</string>
-    <string name="result_pattern">%1$d/8</string>
+    <string name="result_pattern">%1$d/5</string>
     <string name="ok">Ok</string>
-    <string name="finish_result_dialog_pattern">Вы получили %1$d/8 баллов</string>
+    <string name="finish_result_dialog_pattern">Вы получили %1$d/5 баллов</string>
     <string name="empty_answer_message">Введите ответ</string>
 </resources>

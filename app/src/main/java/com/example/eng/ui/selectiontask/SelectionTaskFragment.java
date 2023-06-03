@@ -15,6 +15,7 @@ import androidx.navigation.Navigation;
 
 import com.example.eng.R;
 import com.example.eng.databinding.FragmentSelectionTaskBinding;
+import com.example.eng.ui.dictionary.DictionaryFragmentArgs;
 import com.example.eng.ui.exercisefirst.ExerciseType;
 
 @AndroidEntryPoint
@@ -47,8 +48,14 @@ public class SelectionTaskFragment extends Fragment {
         initNavigationToExerciseFirstFragment();
         initNavigationToTopicSelectionFragment();
         initTaskResult();
+        initTopicName();
     }
 
+    private void initTopicName() {
+        String topicName = DictionaryFragmentArgs.fromBundle(getArguments()).getName();
+        viewModel.setTopicName(topicName);
+        binding.topicName.setText(topicName);
+    }
     private void initButtonGoToDictionary() {
         binding.buttonDictionary.setOnClickListener(view -> viewModel.onButtonGoToDictionaryClicked());
     }

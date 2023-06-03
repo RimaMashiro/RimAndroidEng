@@ -11,8 +11,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="177dp"
         android:layout_marginEnd="177dp"
+        android:fontFamily="sans-serif-condensed-medium"
         android:text="@string/login"
-        android:textSize="24sp"
+        android:textColor="#AF83B6"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
@@ -22,8 +24,11 @@
 
     <EditText
         android:id="@+id/editTextSignEmail"
-        android:layout_width="wrap_content"
+        android:layout_width="210dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="101dp"
+        android:layout_marginEnd="101dp"
+        android:backgroundTint="#9258BC"
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
@@ -36,10 +41,11 @@
 
     <EditText
         android:id="@+id/editTextSignPassword"
-        android:layout_width="wrap_content"
+        android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="101dp"
         android:layout_marginEnd="101dp"
+        android:backgroundTint="#9258BC"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
@@ -49,27 +55,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonSign"
-        android:layout_width="wrap_content"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="158dp"
         android:layout_marginEnd="159dp"
+        android:background="@drawable/background_round_corner"
+        android:backgroundTint="#C17CF3"
+        android:fontFamily="sans-serif-medium"
         android:text="@string/sign"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.669" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonPasswordReset"
-        android:layout_width="wrap_content"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="158dp"
         android:layout_marginEnd="159dp"
+        android:background="@drawable/background_round_corner"
+        android:backgroundTint="#C17CF3"
+        android:fontFamily="sans-serif-medium"
         android:text="@string/resetpassword"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"

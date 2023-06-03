@@ -18,12 +18,14 @@ import androidx.navigation.Navigation;
 
 import com.example.eng.R;
 import com.example.eng.databinding.FragmentExerciseFirstBinding;
+import com.example.eng.ui.dictionary.DictionaryFragmentArgs;
 import com.google.android.material.snackbar.Snackbar;
 
 public class ExerciseFirstFragment extends Fragment {
 
     private ExerciseFirstViewModel viewModel;
     private FragmentExerciseFirstBinding binding;
+    private  ExerciseFirstDAO exerciseDAO;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -54,8 +56,14 @@ public class ExerciseFirstFragment extends Fragment {
         initFinishDialogShowing();
         initEmptyAnswerShowing();
         initExerciseLayot(exerciseType);
+        initTopicName();
     }
 
+    private void initTopicName() {
+        String topicName = DictionaryFragmentArgs.fromBundle(getArguments()).getName();
+        viewModel.setTopicName(topicName);
+        binding.topicName.setText(topicName);
+    }
     private void initEditTextAnswer() {
         binding.answer.addTextChangedListener(new TextWatcher() {
             @Override

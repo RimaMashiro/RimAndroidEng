@@ -11,7 +11,9 @@
         android:id="@+id/topicName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="22sp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textColor="#AF83B6"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="TextView" />
@@ -26,38 +28,47 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonGrammar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="170dp"
+            android:layout_height="43dp"
             android:layout_marginBottom="32dp"
             android:background="@drawable/background_round_corner"
+            android:backgroundTint="#C17CF3"
+            android:fontFamily="sans-serif-medium"
             android:text="@string/task_grammar"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonDictionary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="170dp"
+            android:layout_height="43dp"
             android:layout_marginBottom="32dp"
             android:background="@drawable/background_round_corner"
-            android:text="@string/task_dictionary" />
+            android:backgroundTint="#C17CF3"
+            android:text="@string/task_dictionary"
+            android:textColor="#FFFFFF" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonExercise1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="170dp"
+                android:layout_height="43dp"
                 android:background="@drawable/background_round_corner"
-                android:text="@string/name_task1" />
+                android:backgroundTint="#C17CF3"
+                android:text="@string/name_task1"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/textViewCountFirst"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:textSize="14sp"
                 tools:text="TextView" />
         </LinearLayout>
 
@@ -66,12 +77,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonExercise2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="170dp"
+                android:layout_height="43dp"
                 android:background="@drawable/background_round_corner"
-                android:text="@string/name_task2" />
+                android:backgroundTint="#C17CF3"
+                android:text="@string/name_task2"
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/textViewCountSecond"
@@ -85,12 +98,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonExercise3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="170dp"
+                android:layout_height="43dp"
                 android:background="@drawable/background_round_corner"
-                android:text="@string/name_task3" />
+                android:backgroundTint="#C17CF3"
+                android:text="@string/name_task3"
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/textViewCountThird"
