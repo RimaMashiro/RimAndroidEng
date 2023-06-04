@@ -95,7 +95,7 @@ public class ExerciseFirstViewModel extends ViewModel {
         for (Map.Entry<String, Integer> str : editAnswer.entrySet()) {
             if (answer.equals(str.getKey())) {
                 isAnswerCorrect = true;
-                resultRepository.setCountFirst();
+                resultRepository.setResultFirst();
                 break;
             }
         }
@@ -108,7 +108,7 @@ public class ExerciseFirstViewModel extends ViewModel {
             exercise = exercises.get(index + 1);
             _imageId.setValue(exercise.getImageId());
         } else {
-            _showFinishDialog.setValue(resultRepository.countFirst.getValue());
+            _showFinishDialog.setValue(resultRepository.resultFirst.getValue());
         }
     }
 

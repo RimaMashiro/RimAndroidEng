@@ -5,61 +5,69 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.eng.ui.exercisefirst.ExerciseType;
 
-import android.util.Log;
 import javax.inject.Inject;
 
 public class ResultRepository {
 
-    private MutableLiveData<Integer> _countFirst = new MutableLiveData<>(0);
-    public LiveData<Integer> countFirst = _countFirst;
+    private SharedPreferencesManager sharedPreferencesManager;
 
-    private MutableLiveData<Integer> _countSecond = new MutableLiveData<>(0);
-    public LiveData<Integer> countSecond = _countSecond;
+    private MutableLiveData<Integer> _resultFirst = new MutableLiveData<>();
+    public LiveData<Integer> resultFirst = _resultFirst;
 
-    private MutableLiveData<Integer> _countThird = new MutableLiveData<>(0);
-    public LiveData<Integer> countThird = _countThird;
+    private MutableLiveData<Integer> _resultSecond = new MutableLiveData<>(0);
+    public LiveData<Integer> resultSecond = _resultSecond;
+
+    private MutableLiveData<Integer> _resultThird = new MutableLiveData<>(0);
+    public LiveData<Integer> resultThird = _resultThird;
 
     @Inject
-    public ResultRepository() {
+    public ResultRepository(SharedPreferencesManager sharedPreferencesManager) {
+        this.sharedPreferencesManager = sharedPreferencesManager;
+        _resultFirst.setValue(sharedPreferencesManager.getResultFirst());
+        _resultSecond.setValue(sharedPreferencesManager.getResultSecond());
+        _resultThird.setValue(sharedPreferencesManager.getResultThird());
     }
 
-    public LiveData<Integer> getCountFirst() {
-        return countFirst;
+    public LiveData<Integer> getResultFirst() {
+        return resultFirst;
     }
 
-    public void setCountFirst() {
-        int nextCount = _countFirst.getValue();
-        _countFirst.setValue(nextCount + 1);
+    public void setResultFirst() {
+        int nextCount = _resultFirst.getValue();
+        sharedPreferencesManager.setResultFirst(nextCount + 1);
+        _resultFirst.setValue(sharedPreferencesManager.getResultFirst());
     }
 
-    public LiveData<Integer> getCountSecond() {
-        return countSecond;
+    public LiveData<Integer> getResultSecond() {
+        return resultSecond;
     }
 
-    public void setCountSecond() {
-        int nextCount = _countSecond.getValue();
-        _countSecond.setValue(nextCount + 1);
+    public void setResultSecond() {
+        int nextCount = _resultSecond.getValue();
+        sharedPreferencesManager.setResultSecond(nextCount + 1);
+        _resultSecond.setValue(sharedPreferencesManager.getResultSecond());
     }
 
-    public LiveData<Integer> getCountThird() {
-        return countThird;
+    public LiveData<Integer> getResultThird() {
+        return resultThird;
     }
 
-    public void setCountThird() {
-        int nextCount = _countThird.getValue();
-        _countThird.setValue(nextCount + 1);
+    public void setResultThird() {
+        int nextCount = _resultThird.getValue();
+        sharedPreferencesManager.setResultThird(nextCount + 1);
+        _resultThird.setValue(sharedPreferencesManager.getResultThird());
     }
 
     public void clearResult(ExerciseType type) {
         switch (type) {
             case FIRST:
-                _countFirst.setValue(0);
+                _resultFirst.setValue(0);
                 break;
             case SECOND:
-                _countSecond.setValue(0);
+                _resultSecond.setValue(0);
                 break;
             default:
-                _countThird.setValue(0);
+                _resultThird.setValue(0);
                 break;
         }
     }

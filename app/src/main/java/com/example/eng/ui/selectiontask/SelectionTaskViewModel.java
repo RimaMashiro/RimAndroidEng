@@ -42,9 +42,9 @@ public class SelectionTaskViewModel extends ViewModel {
     @Inject
     public SelectionTaskViewModel(ResultRepository resultRepository) {
         this.resultRepository = resultRepository;
-        resultFirst = resultRepository.getCountFirst();
-        resultSecond = resultRepository.getCountSecond();
-        resultThird = resultRepository.getCountThird();
+        resultFirst = resultRepository.getResultFirst();
+        resultSecond = resultRepository.getResultSecond();
+        resultThird = resultRepository.getResultThird();
     }
 
     public void onButtonGoToDictionaryClicked() {

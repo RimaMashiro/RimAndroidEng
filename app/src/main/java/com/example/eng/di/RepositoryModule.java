@@ -1,6 +1,7 @@
 package com.example.eng.di;
 
 import com.example.eng.data.ResultRepository;
+import com.example.eng.data.SharedPreferencesManager;
 import com.example.eng.ui.exercisefirst.ExerciseFirstDAO;
 import com.example.eng.ui.exercisefirst.ExerciseRepository;
 
@@ -22,7 +23,7 @@ public class RepositoryModule {
     }
     @Provides
     @Singleton
-    public ResultRepository provideResultRepository(){
-        return  new ResultRepository();
+    public ResultRepository provideResultRepository(SharedPreferencesManager sharedPreferencesManager){
+        return  new ResultRepository(sharedPreferencesManager);
     }
 }
