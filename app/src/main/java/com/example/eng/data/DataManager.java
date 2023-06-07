@@ -22,24 +22,25 @@ public class DataManager {
     private TopicDAO topicDAO;
     private GrammarDAO grammarDAO;
     private DictionaryDAO dictionaryDAO;
-    private ExerciseFirstDAO exerciseFirstDAO;
+    private ExerciseFirstDAO exerciseDAO;
+
 
     @Inject
     public DataManager(
             TopicDAO topicDAO,
             GrammarDAO grammarDAO,
             DictionaryDAO dictionaryDAO,
-            ExerciseFirstDAO exerciseFirstDAO
+            ExerciseFirstDAO exerciseDAO
     ) {
         this.topicDAO = topicDAO;
         this.grammarDAO = grammarDAO;
         this.dictionaryDAO = dictionaryDAO;
-        this.exerciseFirstDAO = exerciseFirstDAO;
+        this.exerciseDAO = exerciseDAO;
     }
 
     public void addData() {
         dictionaryDAO.insertAll(getDictionaryList());
-        exerciseFirstDAO.insertAll(getExerciseList());
+        exerciseDAO.insertAll(getExerciseList());
         grammarDAO.insertAll(getGrammarList());
         topicDAO.insertAll(getTopicList());
     }
@@ -60,20 +61,25 @@ public class DataManager {
 
     public ArrayList<Exercise> getExerciseList() {
         ArrayList<Exercise> exercises = new ArrayList<>();
-        String[] wordEn1 = new String[]{"bird", "heaven", "egg", "card", "cat"};//слва к которым нужно найти перевод
-        String[] wordRu1 = new String[]{"птица", "небо", "яйцо", "карта", "кошка"};
-        String[] wordEngEx1 = new String[]{"bird", "heaven", "egg", "card", "cat", "bird", "heaven", "egg", "card", "cat", "bird", "heaven", "egg", "card", "cat", "bird", "heaven"};
-        String[] wordRusEx1 = new String[]{"птица", "небо", "яйцо", "карта", "кошка", "птица", "небо", "яйцо", "карта", "кошка", "птица", "яйцо", "карта", "кошка", "птица", "небо", "яйцо", "карта", "кошка", "небо"};
-        List<String> wordEnglish1 = Arrays.asList(wordEn1);
-        List<String> wordRussian1 = Arrays.asList(wordRu1);
-        List<String> wordEng1 = Arrays.asList(wordEngEx1);
-        List<String> wordRus1 = Arrays.asList(wordRusEx1);
+        String[] wordsExSecond1 = new String[]{"bird", "heaven", "egg", "card", "cat"};//слва к которым нужно найти перевод
+        String[] wordsExThird1 = new String[]{"птица", "небо", "яйцо", "карта", "кошка"};
+        String[] wordsAnswSecond1 = new String[]{"птица", "небо", "яйцо", "карта", "кошка", "птица", "небо", "яйцо", "карта", "кошка", "птица", "яйцо", "карта", "кошка", "птица", "небо", "яйцо", "карта", "кошка", "небо"};
+        String[] wordsAnswThird1 = new String[]{"bird", "heaven", "egg", "card", "cat", "bird", "heaven", "egg", "card", "cat", "bird", "heaven", "egg", "card", "cat", "bird", "heaven"};
 
-        exercises.add(new Exercise(UUID.randomUUID().toString(), "bird", ExerciseType.FIRST, "Инфинитив", wordEnglish1, wordRussian1, wordEng1, wordRus1));
-        exercises.add(new Exercise(UUID.randomUUID().toString(), "eag", ExerciseType.FIRST, "Инфинитив", wordEnglish1, wordRussian1, wordEng1, wordRus1));
-        exercises.add(new Exercise(UUID.randomUUID().toString(), "card", ExerciseType.FIRST, "Инфинитив", wordEnglish1, wordRussian1, wordEng1, wordRus1));
-        exercises.add(new Exercise(UUID.randomUUID().toString(), "heaven", ExerciseType.FIRST, "Инфинитив", wordEnglish1, wordRussian1, wordEng1, wordRus1));
-        exercises.add(new Exercise(UUID.randomUUID().toString(), "cat", ExerciseType.FIRST, "Инфинитив", wordEnglish1, wordRussian1, wordEng1, wordRus1));
+        List<String> wordsExerciseSecond1 = Arrays.asList(wordsExSecond1);
+        List<String> wordsExerciseThird1 = Arrays.asList(wordsExThird1);
+        List<String> wordsAnswersSecond1 = Arrays.asList(wordsAnswSecond1);
+        List<String> wordsAnswersThird1 = Arrays.asList(wordsAnswThird1);
+
+
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "bird", ExerciseType.FIRST, "Инфинитив", wordsExerciseSecond1, wordsAnswersSecond1, wordsExerciseThird1, wordsAnswersThird1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "eag", ExerciseType.FIRST, "Инфинитив", wordsExerciseSecond1, wordsAnswersSecond1, wordsExerciseThird1, wordsAnswersThird1 ));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "card", ExerciseType.FIRST, "Инфинитив", wordsExerciseSecond1, wordsAnswersSecond1,  wordsExerciseThird1, wordsAnswersThird1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "heaven", ExerciseType.FIRST, "Инфинитив", wordsExerciseSecond1,  wordsAnswersSecond1, wordsExerciseThird1, wordsAnswersThird1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "cat", ExerciseType.FIRST, "Инфинитив", wordsExerciseSecond1,  wordsAnswersSecond1,wordsExerciseThird1, wordsAnswersThird1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "cat", ExerciseType.SECOND, "Инфинитив", wordsExerciseSecond1,  wordsAnswersSecond1, wordsExerciseThird1, wordsAnswersThird1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "cat", ExerciseType.SECOND, "Инфинитив", wordsExerciseSecond1, wordsAnswersSecond1, wordsExerciseThird1, wordsAnswersThird1));
+
 
         return exercises;
     }

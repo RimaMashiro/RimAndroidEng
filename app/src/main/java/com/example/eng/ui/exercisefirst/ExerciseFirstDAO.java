@@ -14,9 +14,10 @@ public interface ExerciseFirstDAO {
     @Insert
     void insertAll(List<Exercise> exercises);
 
-    @Query("SELECT* FROM Exercises WHERE topicName=:topicName")
-    List<Exercise> getAll(String topicName);
+    @Query("SELECT* FROM Exercises WHERE topicName=:topicName AND exerciseType=:exerciseType")
+    List<Exercise> getAll(String topicName, ExerciseType exerciseType);
 
     @Query("SELECT* FROM Exercises ")
-    Exercise getAll();
+    List<Exercise> getAll();
+
 }

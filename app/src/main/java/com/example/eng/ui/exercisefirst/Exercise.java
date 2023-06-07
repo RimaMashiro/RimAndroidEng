@@ -16,10 +16,10 @@ public class Exercise {
 
     private String imageId;
     private String topicName;
-    private List<String> wordsEnglish;
-    private List<String> wordsRussians;
-    private List<String> wordEngExercise;
-    private List<String> wordRusExercise;
+    private List<String> wordsExerciseSecond;
+    private List<String> wordsAnswersSecond;
+    private List<String> wordsExerciseThird;
+    private List<String> wordsAnswersThird;
     private ExerciseType exerciseType;
 
     public Exercise(
@@ -27,24 +27,24 @@ public class Exercise {
             String imageId,
             ExerciseType exerciseType,
             String topicName,
-            List<String> wordsEnglish,
-            List<String> wordsRussians,
-            List<String> wordEngExercise,
-            List<String> wordRusExercise
+            List<String> wordsExerciseSecond,
+            List<String> wordsAnswersSecond,
+            List<String> wordsExerciseThird,
+            List<String> wordsAnswersThird
     ) {
         this.id = id;
         this.imageId = imageId;
-        this.wordsEnglish = wordsEnglish;
-        this.wordsRussians = wordsRussians;
-        this.wordEngExercise = wordEngExercise;
-        this.wordRusExercise = wordRusExercise;
+        this.wordsExerciseSecond = wordsExerciseSecond;
+        this.wordsAnswersSecond = wordsAnswersSecond;
+        this.wordsExerciseThird = wordsExerciseThird;
+        this.wordsAnswersThird = wordsAnswersThird;
         this.exerciseType = exerciseType;
         this.topicName = topicName;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, imageId, topicName, wordsEnglish, wordsRussians, wordEngExercise, wordRusExercise, exerciseType);
+        return Objects.hash(id, imageId, topicName, wordsExerciseSecond, wordsAnswersSecond, wordsExerciseThird, wordsAnswersThird, exerciseType);
     }
 
     @Override
@@ -55,16 +55,16 @@ public class Exercise {
         return imageId == exercise.imageId &&
                 id.equals(exercise.id) &&
                 Objects.equals(topicName, exercise.topicName) &&
-                Objects.equals(wordsEnglish, exercise.wordsEnglish) &&
-                Objects.equals(wordsRussians, exercise.wordsRussians) &&
-                Objects.equals(wordEngExercise, exercise.wordEngExercise) &&
-                Objects.equals(wordRusExercise, exercise.wordRusExercise) &&
+                Objects.equals(wordsExerciseSecond, exercise.wordsExerciseSecond) &&
+                Objects.equals(wordsAnswersSecond, exercise.wordsAnswersSecond) &&
+                Objects.equals(wordsExerciseThird, exercise.wordsExerciseThird) &&
+                Objects.equals(wordsAnswersThird, exercise.wordsAnswersThird) &&
                 exerciseType == exercise.exerciseType;
     }
 
     @Override
     public String toString() {
-        return "Exercise{" + "id='" + id + '\'' + ", imageId=" + imageId + ", topicName='" + topicName + '\'' + ", wordsEnglish=" + wordsEnglish + ", wordsRussians=" + wordsRussians + ", wordEngExercise=" + wordEngExercise + ", wordRusExercise=" + wordRusExercise + ", exerciseType=" + exerciseType + '}';
+        return "Exercise{" + "id='" + id + '\'' + ", imageId=" + imageId + ", topicName='" + topicName + '\'' + ", wordsEnglish=" + wordsExerciseSecond + ", wordsRussians=" + wordsAnswersSecond + ", wordEngExercise=" + wordsExerciseThird + ", wordRusExercise=" + wordsAnswersThird + ", exerciseType=" + exerciseType + '}';
     }
 
     public String getId() {
@@ -91,20 +91,20 @@ public class Exercise {
         this.topicName = topicName;
     }
 
-    public List<String> getWordsEnglish() {
-        return this.wordsEnglish;
+    public List<String> getWordsExerciseSecond() {
+        return this.wordsExerciseSecond;
     }
 
-    public void setWordsEnglish(List<String> wordsEnglish) {
-        this.wordsEnglish = wordsEnglish;
+    public void setWordsExerciseSecond(List<String> wordsExerciseSecond) {
+        this.wordsExerciseSecond = wordsExerciseSecond;
     }
 
-    public List<String> getWordsRussians() {
-        return this.wordsRussians;
+    public List<String> getWordsAnswersSecond() {
+        return this.wordsAnswersSecond;
     }
 
-    public void setWordsRussians(List<String> wordsRussians) {
-        this.wordsRussians = wordsRussians;
+    public void setWordsAnswersSecond(List<String> wordsAnswersSecond) {
+        this.wordsAnswersSecond = wordsAnswersSecond;
     }
 
     public void setExerciseType(ExerciseType exerciseType) {
@@ -115,19 +115,19 @@ public class Exercise {
         return this.exerciseType;
     }
 
-    public List<String> getWordEngExercise() {
-        return wordEngExercise;
+    public List<String> getWordsExerciseThird() {
+        return wordsExerciseThird;
     }
 
-    public void setWordEngExercise(List<String> wordEngExercise) {
-        this.wordEngExercise = wordEngExercise;
+    public void setWordsExerciseThird(List<String> wordsExerciseThird) {
+        this.wordsExerciseThird = wordsExerciseThird;
     }
 
-    public List<String> getWordRusExercise() {
-        return wordRusExercise;
+    public List<String> getWordsAnswersThird() {
+        return wordsAnswersThird;
     }
 
-    public void setWordRusExercise(List<String> wordRusExercise) {
-        this.wordRusExercise = wordRusExercise;
+    public void setWordsAnswersThird(List<String> wordsAnswersThird) {
+        this.wordsAnswersThird = wordsAnswersThird;
     }
 }
