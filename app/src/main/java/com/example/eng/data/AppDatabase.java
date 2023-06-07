@@ -14,7 +14,7 @@ import com.example.eng.ui.grammar.GrammarDAO;
 import com.example.eng.ui.topicselection.Topic;
 import com.example.eng.ui.topicselection.TopicDAO;
 
-@Database(entities = {Topic.class, Grammar.class, Dictionary.class, Exercise.class}, version = 10)
+@Database(entities = {Topic.class, Grammar.class, Dictionary.class, Exercise.class}, version = 11)
 @TypeConverters({WordsConvertor.class})
 public abstract class AppDatabase extends RoomDatabase {
 

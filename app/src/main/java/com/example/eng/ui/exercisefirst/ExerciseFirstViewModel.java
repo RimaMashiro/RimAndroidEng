@@ -1,7 +1,5 @@
 package com.example.eng.ui.exercisefirst;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -29,16 +27,19 @@ public class ExerciseFirstViewModel extends ViewModel {
     private List<String> listExerciseSecond;
     private List<String> listAnswersSecond;
 
+    int secondExerciseCurrentIndex = 0;
+    int secondExerciseAnswerCurrentIndex = 0;
+
     private final MutableLiveData<String> _topicName = new MutableLiveData<>();
     LiveData<String> topicName = _topicName;
 
     private final MutableLiveData<String> _imageId = new MutableLiveData<>();
     LiveData<String> imageId = _imageId;
 
-    private final MutableLiveData<String> _wordsExerciseSecond = new MutableLiveData<>();
-    LiveData<String> wordsExerciseSecond = _wordsExerciseSecond;
-    private final MutableLiveData<List<String>> _wordsAnswersSecond = new MutableLiveData<>();
-    LiveData<List<String>> wordsAnswersSecond =_wordsAnswersSecond ;
+    private final MutableLiveData<String> _exerciseSecond = new MutableLiveData<>();
+    LiveData<String> exerciseSecond = _exerciseSecond;
+    private final MutableLiveData<List<String>> _exerciseSecondAnswers = new MutableLiveData<>();
+    LiveData<List<String>> exerciseSecondAnswers = _exerciseSecondAnswers;
 
 
     private final SingleLiveEvent<Boolean> _showAnswerResult = new SingleLiveEvent<>();
@@ -59,13 +60,11 @@ public class ExerciseFirstViewModel extends ViewModel {
 
     public void setExerciseType(ExerciseType type) {
         this.type = type;
-        Log.d("TAG", type.toString());
         resultRepository.clearResult(type);
         exercises = exerciseDAO.getAll(topicName.getValue(), type);
-        Log.d("TAG", exercises.toString());
         if (!exercises.isEmpty()) {
             exercise = exercises.get(0);
-            switch (type){
+            switch (type) {
                 case FIRST:
                     startExerciseFirst();
                     break;
@@ -77,19 +76,24 @@ public class ExerciseFirstViewModel extends ViewModel {
                     break;
             }
         }
-
     }
 
-    private void startExerciseFirst(){
+    private void startExerciseFirst() {
         _imageId.setValue(exercise.getImageId());
     }
-    private void startExerciseSecond(){
-        listExerciseSecond=exercise.getWordsExerciseSecond();
-        listAnswersSecond=exercise.getWordsAnswersSecond();
 
+    private void startExerciseSecond() {
+        listExerciseSecond = exercise.getWordsExerciseSecond();
+        listAnswersSecond = exercise.getWordsAnswersSecond();
+        String exerciseSecond = listExerciseSecond.get(secondExerciseCurrentIndex);
+        _exerciseSecond.setValue(exerciseSecond);
 
+        List<String> answers = listAnswersSecond.subList(secondExerciseAnswerCurrentIndex, secondExerciseAnswerCurrentIndex + 4);
+        _exerciseSecondAnswers.setValue(answers);
     }
-    private void startExerciseThird(){}
+
+    private void startExerciseThird() {
+    }
 
     public void onAnswerChanged(String answer) {
         this.answer = answer;
@@ -123,7 +127,6 @@ public class ExerciseFirstViewModel extends ViewModel {
 
     }
 
-
     public void checkAnswerFirst(String answer) {
         HashMap<String, Integer> editAnswer = exerciseRepository.getImageAnswers();
         boolean isAnswerCorrect = false;
@@ -149,16 +152,14 @@ public class ExerciseFirstViewModel extends ViewModel {
     }
 
     public void answerSecondExercise() {
-        int i=0;
-        int exerciseIndex = listExerciseSecond.indexOf(i);
-        if (exerciseIndex <listExerciseSecond.size() - 1) {
-            i = listExerciseSecond.get(exerciseIndex + 1);
-            wordsExerciseSecond.setValue(i.getWordsExerciseSecond());
-        } else {
-            _showFinishDialog.setValue(resultRepository.resultFirst.getValue());
-        }
-        int answerIndex
-
+//        int i = 0;
+//        int exerciseIndex = listExerciseSecond.indexOf(i);
+//        if (exerciseIndex < listExerciseSecond.size() - 1) {
+//            i = listExerciseSecond.get(exerciseIndex + 1);
+//            exerciseSecond.setValue(i.getWordsExerciseSecond());
+//        } else {
+//            _showFinishDialog.setValue(resultRepository.resultFirst.getValue());
+//        }
     }
 
     public void answerThirdExercise() {

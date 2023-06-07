@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
@@ -52,6 +53,8 @@ public class ExerciseFirstFragment extends Fragment {
         initEmptyAnswerShowing();
         initTopicName();
         initExerciseType();
+        initExerciseSecond();
+        initExerciseSecondAnswers();
     }
 
     private void initTopicName() {
@@ -169,5 +172,21 @@ public class ExerciseFirstFragment extends Fragment {
                 break;
         }
     }
+
+    private void initExerciseSecond() {
+        viewModel.exerciseSecond.observe(getViewLifecycleOwner(), exercise -> binding.textExerciseSecond.setText(exercise));
+    }
+
+    private void initExerciseSecondAnswers() {
+        viewModel.exerciseSecondAnswers.observe(getViewLifecycleOwner(), answers -> {
+                    binding.firstAnswerEng.setText(answers.get(0));
+                    binding.secondAnswerEng.setText(answers.get(1));
+                    binding.thirdAnswerEng.setText(answers.get(2));
+                    binding.fourthAnswerEng.setText(answers.get(3));
+                }
+        );
+    }
 }
+
+
 
