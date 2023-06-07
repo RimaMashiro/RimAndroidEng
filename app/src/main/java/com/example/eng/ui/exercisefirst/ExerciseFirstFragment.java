@@ -8,12 +8,12 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import dagger.hilt.android.AndroidEntryPoint;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
@@ -22,6 +22,7 @@ import com.example.eng.databinding.FragmentExerciseFirstBinding;
 import com.example.eng.ui.dictionary.DictionaryFragmentArgs;
 import com.google.android.material.snackbar.Snackbar;
 
+@AndroidEntryPoint
 public class ExerciseFirstFragment extends Fragment {
 
     private ExerciseFirstViewModel viewModel;
@@ -36,7 +37,7 @@ public class ExerciseFirstFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ViewModelProvider provider = new ViewModelProvider(requireActivity());
+        ViewModelProvider provider = new ViewModelProvider(this);
         viewModel = provider.get(ExerciseFirstViewModel.class);
 
         initButtonTopics();
@@ -69,6 +70,8 @@ public class ExerciseFirstFragment extends Fragment {
         initExerciseLayout(exerciseType);
     }
 
+    // First exercise
+
     private void initEditTextAnswer() {
         binding.answer.addTextChangedListener(new TextWatcher() {
             @Override
@@ -93,21 +96,58 @@ public class ExerciseFirstFragment extends Fragment {
         });
     }
 
+    private void initGetImgId() {
+        viewModel.imageId.observe(getViewLifecycleOwner(), imageId -> {
+            int resourceID = requireActivity().getResources().getIdentifier(imageId, "drawable", requireActivity().getPackageName());
+            Drawable drawable = ContextCompat.getDrawable(requireContext(), resourceID);
+            binding.imageViewExercise1.setBackground(drawable);
+        });
+    }
+
+    // Second exercise
+
+    private void initExerciseSecond() {
+        viewModel.exerciseSecond.observe(getViewLifecycleOwner(), exercise -> binding.textExerciseSecond.setText(exercise));
+    }
+
+    private void initExerciseSecondAnswers() {
+        viewModel.exerciseSecondAnswers.observe(getViewLifecycleOwner(), answers -> {
+                    binding.firstAnswerEng.setText(answers.get(0));
+                    binding.secondAnswerEng.setText(answers.get(1));
+                    binding.thirdAnswerEng.setText(answers.get(2));
+                    binding.fourthAnswerEng.setText(answers.get(3));
+                }
+        );
+    }
+
     private void initButtonFirstAnswer() {
-        binding.firstAnswer.setOnClickListener(view -> viewModel.onButtonFirstAnswerClicked());
+        binding.firstAnswerEng.setOnClickListener(view ->
+                viewModel.onButtonSecondExerciseClicked(binding.firstAnswerEng.getText().toString())
+        );
     }
 
     private void initButtonSecondAnswer() {
-        binding.secondAnswer.setOnClickListener(view -> viewModel.onButtonSecondAnswerClicked());
+        binding.secondAnswerEng.setOnClickListener(view ->
+                viewModel.onButtonSecondExerciseClicked(binding.secondAnswerEng.getText().toString())
+        );
     }
 
     private void initButtonThirdAnswer() {
-        binding.thirdAnswer.setOnClickListener(view -> viewModel.onButtonThirdAnswerClicked());
+        binding.thirdAnswerEng.setOnClickListener(view ->
+                viewModel.onButtonSecondExerciseClicked(binding.thirdAnswerEng.getText().toString())
+        );
     }
 
     private void initButtonFourthAnswer() {
-        binding.fourthAnswer.setOnClickListener(view -> viewModel.onButtonFourthAnswerClicked());
+        binding.fourthAnswerEng.setOnClickListener(view ->
+                viewModel.onButtonSecondExerciseClicked(binding.fourthAnswerEng.getText().toString())
+        );
     }
+
+    // Third
+
+
+    // Navigation
 
     private void initButtonTopics() {
         binding.buttonTopicsEx1.setOnClickListener(view ->
@@ -123,13 +163,7 @@ public class ExerciseFirstFragment extends Fragment {
         );
     }
 
-    private void initGetImgId() {
-        viewModel.imageId.observe(getViewLifecycleOwner(), imageId -> {
-            int resourceID = requireActivity().getResources().getIdentifier(imageId, "drawable", requireActivity().getPackageName());
-            Drawable drawable = ContextCompat.getDrawable(requireContext(), resourceID);
-            binding.imageViewExercise1.setBackground(drawable);
-        });
-    }
+    // Result
 
     private void initAnswerResultShowing() {
         viewModel.showAnswerResult.observe(getViewLifecycleOwner(), aBoolean -> {
@@ -159,6 +193,7 @@ public class ExerciseFirstFragment extends Fragment {
         );
     }
 
+    // Visibility of exercise layouts
     private void initExerciseLayout(ExerciseType exerciseType) {
         switch (exerciseType) {
             case FIRST:
@@ -171,20 +206,6 @@ public class ExerciseFirstFragment extends Fragment {
                 binding.thirdExercise.setVisibility(View.VISIBLE);
                 break;
         }
-    }
-
-    private void initExerciseSecond() {
-        viewModel.exerciseSecond.observe(getViewLifecycleOwner(), exercise -> binding.textExerciseSecond.setText(exercise));
-    }
-
-    private void initExerciseSecondAnswers() {
-        viewModel.exerciseSecondAnswers.observe(getViewLifecycleOwner(), answers -> {
-                    binding.firstAnswerEng.setText(answers.get(0));
-                    binding.secondAnswerEng.setText(answers.get(1));
-                    binding.thirdAnswerEng.setText(answers.get(2));
-                    binding.fourthAnswerEng.setText(answers.get(3));
-                }
-        );
     }
 }
 

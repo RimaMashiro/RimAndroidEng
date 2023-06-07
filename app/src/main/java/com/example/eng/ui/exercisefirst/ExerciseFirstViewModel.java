@@ -41,7 +41,6 @@ public class ExerciseFirstViewModel extends ViewModel {
     private final MutableLiveData<List<String>> _exerciseSecondAnswers = new MutableLiveData<>();
     LiveData<List<String>> exerciseSecondAnswers = _exerciseSecondAnswers;
 
-
     private final SingleLiveEvent<Boolean> _showAnswerResult = new SingleLiveEvent<>();
     public LiveData<Boolean> showAnswerResult = _showAnswerResult;
 
@@ -78,21 +77,10 @@ public class ExerciseFirstViewModel extends ViewModel {
         }
     }
 
+    // First exercise
+
     private void startExerciseFirst() {
         _imageId.setValue(exercise.getImageId());
-    }
-
-    private void startExerciseSecond() {
-        listExerciseSecond = exercise.getWordsExerciseSecond();
-        listAnswersSecond = exercise.getWordsAnswersSecond();
-        String exerciseSecond = listExerciseSecond.get(secondExerciseCurrentIndex);
-        _exerciseSecond.setValue(exerciseSecond);
-
-        List<String> answers = listAnswersSecond.subList(secondExerciseAnswerCurrentIndex, secondExerciseAnswerCurrentIndex + 4);
-        _exerciseSecondAnswers.setValue(answers);
-    }
-
-    private void startExerciseThird() {
     }
 
     public void onAnswerChanged(String answer) {
@@ -106,25 +94,6 @@ public class ExerciseFirstViewModel extends ViewModel {
         } else {
             _showEmptyAnswerMessage.setValue(true);
         }
-    }
-
-    public void onButtonFirstAnswerClicked() {
-
-    }
-
-    public void onButtonSecondAnswerClicked() {
-
-    }
-
-    public void onButtonThirdAnswerClicked() {
-    }
-
-    public void onButtonFourthAnswerClicked() {
-    }
-
-    public void setTopicName(String topicName) {
-        _topicName.setValue(topicName);
-
     }
 
     public void checkAnswerFirst(String answer) {
@@ -151,15 +120,52 @@ public class ExerciseFirstViewModel extends ViewModel {
         }
     }
 
-    public void answerSecondExercise() {
-//        int i = 0;
-//        int exerciseIndex = listExerciseSecond.indexOf(i);
-//        if (exerciseIndex < listExerciseSecond.size() - 1) {
-//            i = listExerciseSecond.get(exerciseIndex + 1);
-//            exerciseSecond.setValue(i.getWordsExerciseSecond());
-//        } else {
-//            _showFinishDialog.setValue(resultRepository.resultFirst.getValue());
-//        }
+    // Second exercise
+
+    private void startExerciseSecond() {
+        listExerciseSecond = exercise.getWordsExerciseSecond();
+        listAnswersSecond = exercise.getWordsAnswersSecond();
+        String exerciseSecond = listExerciseSecond.get(secondExerciseCurrentIndex);
+        _exerciseSecond.setValue(exerciseSecond);
+
+        List<String> answers = listAnswersSecond.subList(secondExerciseAnswerCurrentIndex, secondExerciseAnswerCurrentIndex + 4);
+        _exerciseSecondAnswers.setValue(answers);
+    }
+
+    public void onButtonSecondExerciseClicked(String answer) {
+        checkAnswerSecond(answer);
+        showNextSecondExercise();
+    }
+
+    public void checkAnswerSecond(String answer) {
+        // Проверка правильности ответа
+        // Если ответ правильный, то
+        // resultRepository.setResultSecond();
+        // _showAnswerResult.setValue(isAnswerCorrect);
+    }
+
+    private void showNextSecondExercise() {
+        if (secondExerciseCurrentIndex == listExerciseSecond.size() - 1) {
+            _showFinishDialog.setValue(resultRepository.resultSecond.getValue());
+        } else {
+            secondExerciseCurrentIndex++;
+            secondExerciseAnswerCurrentIndex += 4;
+            String exerciseSecond = listExerciseSecond.get(secondExerciseCurrentIndex);
+            _exerciseSecond.setValue(exerciseSecond);
+
+            List<String> answers = listAnswersSecond.subList(secondExerciseAnswerCurrentIndex, secondExerciseAnswerCurrentIndex + 4);
+            _exerciseSecondAnswers.setValue(answers);
+        }
+    }
+
+    // Third exercise
+
+    private void startExerciseThird() {
+    }
+
+    public void setTopicName(String topicName) {
+        _topicName.setValue(topicName);
+
     }
 
     public void answerThirdExercise() {
