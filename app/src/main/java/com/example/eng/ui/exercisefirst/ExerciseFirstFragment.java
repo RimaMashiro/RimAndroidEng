@@ -56,6 +56,12 @@ public class ExerciseFirstFragment extends Fragment {
         initExerciseType();
         initExerciseSecond();
         initExerciseSecondAnswers();
+        initExerciseThird();
+        initExerciseThirdAnswers();
+        initButtonFirstAnswerThird();
+        initButtonSecondAnswerThird();
+        initButtonThirdAnswerThird();
+        initButtonFourthAnswerThird();
     }
 
     private void initTopicName() {
@@ -146,6 +152,38 @@ public class ExerciseFirstFragment extends Fragment {
 
     // Third
 
+    private void initExerciseThird() {
+        viewModel.exerciseThird.observe(getViewLifecycleOwner(), exercise -> binding.textExerciseThird.setText(exercise));
+    }
+    private void initExerciseThirdAnswers() {
+        viewModel.exerciseThirdAnswers.observe(getViewLifecycleOwner(), answers -> {
+                    binding.firstAnswerThird.setText(answers.get(0));
+                    binding.secondAnswerThird.setText(answers.get(1));
+                    binding.thirdAnswerThird.setText(answers.get(2));
+                    binding.fourthAnswerThird.setText(answers.get(3));
+                }
+        );
+    }
+    private void initButtonFirstAnswerThird() {
+        binding.firstAnswerThird.setOnClickListener(view ->
+                viewModel.onButtonThirdExerciseClicked(binding.firstAnswerThird.getText().toString())
+        );
+    }
+    private void initButtonSecondAnswerThird() {
+        binding.secondAnswerEng.setOnClickListener(view ->
+                viewModel.onButtonThirdExerciseClicked(binding.secondAnswerThird.getText().toString())
+        );
+    }
+    private void initButtonThirdAnswerThird() {
+        binding.thirdAnswerThird.setOnClickListener(view ->
+                viewModel.onButtonThirdExerciseClicked(binding.thirdAnswerThird.getText().toString())
+        );
+    }
+    private void initButtonFourthAnswerThird() {
+        binding.fourthAnswerThird.setOnClickListener(view ->
+                viewModel.onButtonThirdExerciseClicked(binding.fourthAnswerThird.getText().toString())
+        );
+    }
 
     // Navigation
 

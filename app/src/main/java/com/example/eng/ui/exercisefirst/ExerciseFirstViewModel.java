@@ -26,9 +26,15 @@ public class ExerciseFirstViewModel extends ViewModel {
     private ExerciseType type;
     private List<String> listExerciseSecond;
     private List<String> listAnswersSecond;
-
+    private List<String> listRightAnswersSecond;
+    private List<String> listExerciseThird;
+    private List<String> listAnswersThird;
+    private List<String> listRightAnswersThird;
     int secondExerciseCurrentIndex = 0;
     int secondExerciseAnswerCurrentIndex = 0;
+    int thirdExerciseCurrentIndex = 0;
+    int thirdExerciseAnswerCurrentIndex = 0;
+
 
     private final MutableLiveData<String> _topicName = new MutableLiveData<>();
     LiveData<String> topicName = _topicName;
@@ -38,9 +44,13 @@ public class ExerciseFirstViewModel extends ViewModel {
 
     private final MutableLiveData<String> _exerciseSecond = new MutableLiveData<>();
     LiveData<String> exerciseSecond = _exerciseSecond;
+    private final MutableLiveData<String> _exerciseThird = new MutableLiveData<>();
+    LiveData<String> exerciseThird = _exerciseThird;
     private final MutableLiveData<List<String>> _exerciseSecondAnswers = new MutableLiveData<>();
     LiveData<List<String>> exerciseSecondAnswers = _exerciseSecondAnswers;
 
+    private final MutableLiveData<List<String>> _exerciseThirdAnswers = new MutableLiveData<>();
+    LiveData<List<String>> exerciseThirdAnswers = _exerciseThirdAnswers;
     private final SingleLiveEvent<Boolean> _showAnswerResult = new SingleLiveEvent<>();
     public LiveData<Boolean> showAnswerResult = _showAnswerResult;
 
@@ -138,10 +148,12 @@ public class ExerciseFirstViewModel extends ViewModel {
     }
 
     public void checkAnswerSecond(String answer) {
+        boolean isAnswerCorrect = false;
         // Проверка правильности ответа
-        // Если ответ правильный, то
-        // resultRepository.setResultSecond();
-        // _showAnswerResult.setValue(isAnswerCorrect);
+        listRightAnswersSecond=exercise.getWordsRightAnswersSecond();
+        isAnswerCorrect= listRightAnswersSecond.get(secondExerciseCurrentIndex).equals(answer);
+        if(isAnswerCorrect){resultRepository.setResultSecond();}
+        _showAnswerResult.setValue(isAnswerCorrect);
     }
 
     private void showNextSecondExercise() {
@@ -161,6 +173,40 @@ public class ExerciseFirstViewModel extends ViewModel {
     // Third exercise
 
     private void startExerciseThird() {
+        listExerciseThird = exercise.getWordsExerciseThird();
+        listAnswersThird = exercise.getWordsAnswersThird();
+        String exerciseThird = listExerciseThird.get(thirdExerciseCurrentIndex);
+        _exerciseThird.setValue(exerciseThird);
+
+        List<String> answers = listAnswersThird.subList(thirdExerciseAnswerCurrentIndex, thirdExerciseAnswerCurrentIndex + 4);
+        _exerciseThirdAnswers.setValue(answers);
+    }
+    public void onButtonThirdExerciseClicked(String answer) {
+        checkAnswerThird(answer);
+        showNextThirdExercise();
+    }
+
+    public void checkAnswerThird(String answer) {
+        boolean isAnswerCorrect = false;
+        // Проверка правильности ответа
+        listRightAnswersThird=exercise.getWordsRightAnswersThird();
+        isAnswerCorrect= listRightAnswersThird.get(thirdExerciseCurrentIndex).equals(answer);
+        if(isAnswerCorrect){resultRepository.setResultSecond();}
+        _showAnswerResult.setValue(isAnswerCorrect);
+    }
+
+    private void showNextThirdExercise() {
+        if (thirdExerciseCurrentIndex == listExerciseThird.size() - 1) {
+            _showFinishDialog.setValue(resultRepository.resultThird.getValue());
+        } else {
+            thirdExerciseCurrentIndex++;
+            thirdExerciseAnswerCurrentIndex += 4;
+            String exerciseThird = listExerciseThird.get(thirdExerciseCurrentIndex);
+            _exerciseThird.setValue(exerciseThird);
+
+            List<String> answers = listAnswersThird.subList(thirdExerciseAnswerCurrentIndex, thirdExerciseAnswerCurrentIndex + 4);
+            _exerciseThirdAnswers.setValue(answers);
+        }
     }
 
     public void setTopicName(String topicName) {
@@ -168,9 +214,6 @@ public class ExerciseFirstViewModel extends ViewModel {
 
     }
 
-    public void answerThirdExercise() {
-
-    }
 }
 
 
