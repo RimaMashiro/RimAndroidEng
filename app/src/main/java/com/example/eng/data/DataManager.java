@@ -64,21 +64,33 @@ public class DataManager {
         String[] wordsExSecond1 = new String[]{"bird", "heaven", "egg", "card", "cat"};//слва к которым нужно найти перевод
         String[] wordsExThird1 = new String[]{"птица", "небо", "яйцо", "карта", "кошка"};
         String[] wordsAnswSecond1 = new String[]{"птица", "небо", "яйцо", "карта", "кошка", "птица", "небо", "яйцо", "карта", "кошка", "птица", "яйцо", "карта", "кошка", "птица", "небо", "яйцо", "карта", "кошка", "небо"};
-        String[] wordsAnswThird1 = new String[]{"bird", "heaven", "egg", "card", "cat", "bird", "heaven", "egg", "card", "cat", "bird", "heaven", "egg", "card", "cat", "bird", "heaven"};
+        String[] wordsAnswThird1 = new String[]{"bird", "heaven", "egg", "card", "cat", "bird", "heaven", "egg", "card", "egg", "bird", "heaven", "egg", "card", "cat", "bird", "heaven", "egg", "card", "cat"};
+        String[] wordsRightAnswSecond1= new String[]{"птица", "небо", "яйцо", "карта", "кошка"};
+        String[]  wordsRightAnswThird1= new String[] {"bird", "heaven", "egg", "card", "cat"};
+
 
         List<String> wordsExerciseSecond1 = Arrays.asList(wordsExSecond1);
         List<String> wordsExerciseThird1 = Arrays.asList(wordsExThird1);
         List<String> wordsAnswersSecond1 = Arrays.asList(wordsAnswSecond1);
         List<String> wordsAnswersThird1 = Arrays.asList(wordsAnswThird1);
+        List<String> wordsRightAnswersSecond1=Arrays.asList(wordsRightAnswSecond1);
+        List<String> wordsRightAnswersThird1=Arrays.asList(wordsRightAnswThird1);
 
-
-        exercises.add(new Exercise(UUID.randomUUID().toString(), "bird", ExerciseType.FIRST, "Инфинитив", wordsExerciseSecond1, wordsAnswersSecond1, wordsExerciseThird1, wordsAnswersThird1));
-        exercises.add(new Exercise(UUID.randomUUID().toString(), "eag", ExerciseType.FIRST, "Инфинитив", wordsExerciseSecond1, wordsAnswersSecond1, wordsExerciseThird1, wordsAnswersThird1 ));
-        exercises.add(new Exercise(UUID.randomUUID().toString(), "card", ExerciseType.FIRST, "Инфинитив", wordsExerciseSecond1, wordsAnswersSecond1,  wordsExerciseThird1, wordsAnswersThird1));
-        exercises.add(new Exercise(UUID.randomUUID().toString(), "heaven", ExerciseType.FIRST, "Инфинитив", wordsExerciseSecond1,  wordsAnswersSecond1, wordsExerciseThird1, wordsAnswersThird1));
-        exercises.add(new Exercise(UUID.randomUUID().toString(), "cat", ExerciseType.FIRST, "Инфинитив", wordsExerciseSecond1,  wordsAnswersSecond1,wordsExerciseThird1, wordsAnswersThird1));
-        exercises.add(new Exercise(UUID.randomUUID().toString(), "cat", ExerciseType.SECOND, "Инфинитив", wordsExerciseSecond1,  wordsAnswersSecond1, wordsExerciseThird1, wordsAnswersThird1));
-        exercises.add(new Exercise(UUID.randomUUID().toString(), "cat", ExerciseType.SECOND, "Инфинитив", wordsExerciseSecond1, wordsAnswersSecond1, wordsExerciseThird1, wordsAnswersThird1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "bird", ExerciseType.FIRST, "Инфинитив", wordsExerciseSecond1, wordsAnswersSecond1,wordsRightAnswersSecond1, wordsExerciseThird1, wordsAnswersThird1, wordsRightAnswersThird1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "eag", ExerciseType.FIRST, "Инфинитив", wordsExerciseSecond1, wordsAnswersSecond1, wordsRightAnswersSecond1, wordsExerciseThird1, wordsAnswersThird1, wordsRightAnswersThird1 ));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "card", ExerciseType.FIRST, "Инфинитив", wordsExerciseSecond1, wordsAnswersSecond1, wordsRightAnswersSecond1, wordsExerciseThird1, wordsAnswersThird1, wordsRightAnswersThird1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "heaven", ExerciseType.FIRST, "Инфинитив", wordsExerciseSecond1,  wordsAnswersSecond1, wordsRightAnswersSecond1, wordsExerciseThird1, wordsAnswersThird1, wordsRightAnswersThird1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "cat", ExerciseType.FIRST, "Инфинитив", wordsExerciseSecond1,  wordsAnswersSecond1,wordsRightAnswersSecond1, wordsExerciseThird1, wordsAnswersThird1, wordsRightAnswersThird1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "cat", ExerciseType.SECOND, "Инфинитив", wordsExerciseSecond1,  wordsAnswersSecond1, wordsRightAnswersSecond1, wordsExerciseThird1, wordsAnswersThird1, wordsRightAnswersThird1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "cat", ExerciseType.SECOND, "Инфинитив", wordsExerciseSecond1, wordsAnswersSecond1, wordsRightAnswersSecond1, wordsExerciseThird1, wordsAnswersThird1, wordsRightAnswersThird1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "cat", ExerciseType.SECOND, "Инфинитив", wordsExerciseSecond1, wordsAnswersSecond1, wordsRightAnswersSecond1, wordsExerciseThird1, wordsAnswersThird1, wordsRightAnswersThird1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "cat", ExerciseType.SECOND, "Инфинитив", wordsExerciseSecond1, wordsAnswersSecond1, wordsRightAnswersSecond1, wordsExerciseThird1, wordsAnswersThird1, wordsRightAnswersThird1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "cat", ExerciseType.SECOND, "Инфинитив", wordsExerciseSecond1, wordsAnswersSecond1, wordsRightAnswersSecond1, wordsExerciseThird1, wordsAnswersThird1, wordsRightAnswersThird1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "cat", ExerciseType.THIRD, "Инфинитив", wordsExerciseSecond1, wordsAnswersSecond1, wordsRightAnswersSecond1, wordsExerciseThird1, wordsAnswersThird1, wordsRightAnswersThird1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "cat", ExerciseType.THIRD, "Инфинитив", wordsExerciseSecond1, wordsAnswersSecond1, wordsRightAnswersSecond1, wordsExerciseThird1, wordsAnswersThird1, wordsRightAnswersThird1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "cat", ExerciseType.THIRD, "Инфинитив", wordsExerciseSecond1, wordsAnswersSecond1, wordsRightAnswersSecond1, wordsExerciseThird1, wordsAnswersThird1, wordsRightAnswersThird1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "cat", ExerciseType.THIRD, "Инфинитив", wordsExerciseSecond1, wordsAnswersSecond1, wordsRightAnswersSecond1, wordsExerciseThird1, wordsAnswersThird1, wordsRightAnswersThird1));
+        exercises.add(new Exercise(UUID.randomUUID().toString(), "cat", ExerciseType.THIRD, "Инфинитив", wordsExerciseSecond1, wordsAnswersSecond1, wordsRightAnswersSecond1, wordsExerciseThird1, wordsAnswersThird1, wordsRightAnswersThird1));
 
 
         return exercises;

@@ -18,8 +18,10 @@ public class Exercise {
     private String topicName;
     private List<String> wordsExerciseSecond;
     private List<String> wordsAnswersSecond;
+    private List<String> wordsRightAnswersSecond;
     private List<String> wordsExerciseThird;
     private List<String> wordsAnswersThird;
+    private List<String> wordsRightAnswersThird;
     private ExerciseType exerciseType;
 
     public Exercise(
@@ -29,22 +31,27 @@ public class Exercise {
             String topicName,
             List<String> wordsExerciseSecond,
             List<String> wordsAnswersSecond,
+            List<String> wordsRightAnswersSecond,
             List<String> wordsExerciseThird,
-            List<String> wordsAnswersThird
+            List<String> wordsAnswersThird,
+            List<String> wordsRightAnswersThird
+
     ) {
         this.id = id;
         this.imageId = imageId;
         this.wordsExerciseSecond = wordsExerciseSecond;
         this.wordsAnswersSecond = wordsAnswersSecond;
+        this.wordsRightAnswersSecond=wordsRightAnswersSecond;
         this.wordsExerciseThird = wordsExerciseThird;
         this.wordsAnswersThird = wordsAnswersThird;
+        this.wordsRightAnswersThird=wordsRightAnswersThird;
         this.exerciseType = exerciseType;
         this.topicName = topicName;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, imageId, topicName, wordsExerciseSecond, wordsAnswersSecond, wordsExerciseThird, wordsAnswersThird, exerciseType);
+        return Objects.hash(id, imageId, topicName, wordsExerciseSecond, wordsAnswersSecond, wordsExerciseThird, wordsAnswersThird, wordsRightAnswersSecond, wordsRightAnswersThird, exerciseType);
     }
 
     @Override
@@ -59,12 +66,14 @@ public class Exercise {
                 Objects.equals(wordsAnswersSecond, exercise.wordsAnswersSecond) &&
                 Objects.equals(wordsExerciseThird, exercise.wordsExerciseThird) &&
                 Objects.equals(wordsAnswersThird, exercise.wordsAnswersThird) &&
+                Objects.equals(wordsRightAnswersSecond, exercise.wordsRightAnswersSecond)&&
+                Objects.equals(wordsRightAnswersThird, exercise.wordsRightAnswersThird)&&
                 exerciseType == exercise.exerciseType;
     }
 
     @Override
     public String toString() {
-        return "Exercise{" + "id='" + id + '\'' + ", imageId=" + imageId + ", topicName='" + topicName + '\'' + ", wordsEnglish=" + wordsExerciseSecond + ", wordsRussians=" + wordsAnswersSecond + ", wordEngExercise=" + wordsExerciseThird + ", wordRusExercise=" + wordsAnswersThird + ", exerciseType=" + exerciseType + '}';
+        return "Exercise{" + "id='" + id + '\'' + ", imageId=" + imageId + ", topicName='" + topicName + '\'' + ", wordsExerciseSecond=" + wordsExerciseSecond + ", wordsAnswersSecond=" + wordsAnswersSecond + ",wordsRightAnswersSecond="+wordsRightAnswersSecond+", wordsExerciseThird=" + wordsExerciseThird + ", wordsAnswersThird=" + wordsAnswersThird +",wordsRightAnswersThird="+wordsRightAnswersThird+ ", exerciseType=" + exerciseType + '}';
     }
 
     public String getId() {
@@ -129,5 +138,21 @@ public class Exercise {
 
     public void setWordsAnswersThird(List<String> wordsAnswersThird) {
         this.wordsAnswersThird = wordsAnswersThird;
+    }
+
+    public List<String> getWordsRightAnswersSecond() {
+        return wordsRightAnswersSecond;
+    }
+
+    public void setWordsRightAnswersSecond(List<String> wordsRightAnswersSecond) {
+        this.wordsRightAnswersSecond = wordsRightAnswersSecond;
+    }
+
+    public List<String> getWordsRightAnswersThird() {
+        return wordsRightAnswersThird;
+    }
+
+    public void setWordsRightAnswersThird(List<String> wordsRightAnswersThird) {
+        this.wordsRightAnswersThird = wordsRightAnswersThird;
     }
 }
