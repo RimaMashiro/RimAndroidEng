@@ -170,7 +170,7 @@ public class ExerciseFirstFragment extends Fragment {
         );
     }
     private void initButtonSecondAnswerThird() {
-        binding.secondAnswerEng.setOnClickListener(view ->
+        binding.secondAnswerThird.setOnClickListener(view ->
                 viewModel.onButtonThirdExerciseClicked(binding.secondAnswerThird.getText().toString())
         );
     }
@@ -246,6 +246,3 @@ public class ExerciseFirstFragment extends Fragment {
         }
     }
 }
-
-
-

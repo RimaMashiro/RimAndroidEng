@@ -150,9 +150,11 @@ public class ExerciseFirstViewModel extends ViewModel {
     public void checkAnswerSecond(String answer) {
         boolean isAnswerCorrect = false;
         // Проверка правильности ответа
-        listRightAnswersSecond=exercise.getWordsRightAnswersSecond();
-        isAnswerCorrect= listRightAnswersSecond.get(secondExerciseCurrentIndex).equals(answer);
-        if(isAnswerCorrect){resultRepository.setResultSecond();}
+        listRightAnswersSecond = exercise.getWordsRightAnswersSecond();
+        isAnswerCorrect = listRightAnswersSecond.get(secondExerciseCurrentIndex).equals(answer);
+        if (isAnswerCorrect) {
+            resultRepository.setResultSecond();
+        }
         _showAnswerResult.setValue(isAnswerCorrect);
     }
 
@@ -181,6 +183,7 @@ public class ExerciseFirstViewModel extends ViewModel {
         List<String> answers = listAnswersThird.subList(thirdExerciseAnswerCurrentIndex, thirdExerciseAnswerCurrentIndex + 4);
         _exerciseThirdAnswers.setValue(answers);
     }
+
     public void onButtonThirdExerciseClicked(String answer) {
         checkAnswerThird(answer);
         showNextThirdExercise();
@@ -189,9 +192,11 @@ public class ExerciseFirstViewModel extends ViewModel {
     public void checkAnswerThird(String answer) {
         boolean isAnswerCorrect = false;
         // Проверка правильности ответа
-        listRightAnswersThird=exercise.getWordsRightAnswersThird();
-        isAnswerCorrect= listRightAnswersThird.get(thirdExerciseCurrentIndex).equals(answer);
-        if(isAnswerCorrect){resultRepository.setResultSecond();}
+        listRightAnswersThird = exercise.getWordsRightAnswersThird();
+        isAnswerCorrect = listRightAnswersThird.get(thirdExerciseCurrentIndex).equals(answer);
+        if (isAnswerCorrect) {
+            resultRepository.setResultThird();
+        }
         _showAnswerResult.setValue(isAnswerCorrect);
     }
 
@@ -213,8 +218,4 @@ public class ExerciseFirstViewModel extends ViewModel {
         _topicName.setValue(topicName);
 
     }
-
 }
-
-
-
